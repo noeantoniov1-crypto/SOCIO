@@ -1,262 +1,182 @@
-import { Course, LessonStatus } from '../types';
+import { Course } from '../types';
 
 export const COURSES: Course[] = [
   {
-    id: 'bs-jobs',
-    title: 'Bullshit Jobs: A Theory',
-    description: 'Explore David Graeber’s provocative theory on meaningless work and its psychological impact on society.',
-    icon: 'briefcase',
+    id: 'c1-bullshit-jobs',
+    title: 'Bullshit Jobs',
+    description: 'Understand the phenomenon of meaningless work based on David Graeber\'s theory.',
+    icon: 'Briefcase',
     lessons: [
       {
         id: 'bs-101',
         chapter: 1,
-        title: 'What is a Bullshit Job?',
-        youtubeUrl: 'https://www.youtube.com/embed/jIx2e-tJhfk', // David Graeber lecture
+        title: 'The Rise of Pointless Work',
+        youtubeUrl: 'https://www.youtube.com/embed/jHx5rePmz2Y',
         duration: '15 min',
         summaryBullets: [
-          'A bullshit job is a form of paid employment that is so completely pointless that even the employee cannot justify its existence.',
-          'Distinction between shit jobs (bad conditions, useful) and bullshit jobs (good conditions, useless).',
-          'The psychological violence of lack of agency and purpose.'
+          'The definition of a Bullshit Job versus a Shit Job.',
+          'Why technology didn\'t reduce working hours as predicted by Keynes.',
+          'The 5 categories of Bullshit Jobs: Flunkies, Goons, Duct Tapers, Box Tickers, and Taskmasters.'
         ],
         keyTerms: [
-          { term: 'Bullshit Job', definition: 'Paid employment that is so completely pointless, unnecessary, or pernicious that even the employee cannot justify its existence.' },
-          { term: 'Moral Violence', definition: 'The psychological harm caused by the disconnect between labor and value.' }
+          { term: 'Bullshit Job', definition: 'A paid employment that is so completely pointless, unnecessary, or pernicious that even the employee cannot justify its existence.' },
+          { term: 'Keynes\' Prediction', definition: 'The economic theory that technological progress would lead to a 15-hour work week by the end of the 20th century.' }
         ],
         quiz: [
           {
             id: 'q1',
-            question: 'Which of the following defines a "Bullshit Job"?',
+            question: 'Which of the following best describes a "Bullshit Job"?',
             type: 'MCQ',
             options: [
-              'A job with terrible working conditions but high social value',
-              'A job that is pointless, unnecessary, or pernicious',
-              'A job that requires hard manual labor',
-              'A job that is underpaid'
+              'A job that is low paid and physically demanding.',
+              'A job that is dangerous but necessary.',
+              'A job that the employee believes contributes nothing of value to the world.',
+              'A job requiring high intelligence but low effort.'
             ],
-            correctAnswer: 'A job that is pointless, unnecessary, or pernicious',
-            explanation: 'Graeber specifically defines it as a job that even the holder believes shouldn\'t exist.'
-          },
-          {
-            id: 'q2',
-            question: 'What is the key difference between a "Shit Job" and a "Bullshit Job"?',
-            type: 'MCQ',
-            options: [
-              'Shit jobs are paid well; Bullshit jobs are unpaid.',
-              'Shit jobs are often useful but have bad conditions; Bullshit jobs are often comfortable but useless.',
-              'There is no difference.',
-              'Bullshit jobs require physical labor.'
-            ],
-            correctAnswer: 'Shit jobs are often useful but have bad conditions; Bullshit jobs are often comfortable but useless.',
-            explanation: 'Graeber emphasizes that "Shit Jobs" (like cleaning) are vital to society, whereas Bullshit Jobs often come with status and money but no purpose.'
-          },
-          {
-            id: 'q3',
-            question: 'Why does Graeber argue that Bullshit Jobs cause "spiritual violence"?',
-            type: 'MCQ',
-            options: [
-              'Because the pay is too low to survive.',
-              'Because humans have an innate need to see the effects of their actions (cause and effect).',
-              'Because bosses are always cruel.',
-              'Because the office chairs are uncomfortable.'
-            ],
-            correctAnswer: 'Because humans have an innate need to see the effects of their actions (cause and effect).',
-            explanation: 'Depriving a human of the ability to impact the world meaningfully attacks their sense of self and agency.'
+            correctAnswer: 'A job that the employee believes contributes nothing of value to the world.',
+            explanation: 'The defining characteristic is the employee\'s own recognition of the job\'s lack of purpose.'
           }
         ],
         scenarios: [
           {
             id: 's1',
-            prompt: 'STEP 1: You are hired as a "Corporate Vision Coordinator". Your only task is to forward emails from the CEO to the managers, which the managers already receive automatically. You are paid $90k/year. How do you feel?',
+            prompt: 'STEP 1: You are Lilian. Your title is "Digital Project Manager", but your team works fine without you. Your boss is arrogant and gives you no tasks. Anxiety rises. What do you do?',
             choices: [
-              { id: 'c1', text: 'Great! Free money for no work.', isBest: false, feedback: 'While financially secure, Graeber argues this leads to "spiritual violence" and deep anxiety. You might feel good initially, but the lack of purpose will rot your soul.' },
-              { id: 'c2', text: 'Depressed and anxious because I am not contributing to society.', isBest: true, feedback: 'Correct. This reflects the core psychological tension Graeber identifies: humans have a need to feel useful.' },
-              { id: 'c3', text: 'I will try to invent work to look busy.', isBest: false, feedback: 'This is a common coping mechanism ("duct taping") but doesn\'t solve the underlying meaninglessness of the role.' }
+              { id: 'c1', text: 'Go see the boss to demand clear work.', isBest: false, feedback: 'Mistake. In a bullshit job, admitting you have nothing to do is taboo. The boss might see you as a "troublemaker".' },
+              { id: 'c2', text: 'Create two "fake personas": a confident one to motivate the team, a busy one to reassure the boss.', isBest: true, feedback: 'Correct. This is the exhausting strategy adopted by Lilian. She maintains the illusion to justify her salary, but it destroys her self-esteem.' },
+              { id: 'c3', text: 'Bring your guitar and play in the office.', isBest: false, feedback: 'This breaks the "simulation". You will be fired for not respecting the comedy of work.' }
             ],
-            guidance: 'Reflect on the human need for agency and cause-effect in one\'s actions.'
+            guidance: 'Think about the necessity of maintaining the social appearance of work.'
           },
           {
             id: 's2',
-            prompt: 'STEP 2: You go to a dinner party. An old friend asks, "So, what do you actually DO at Global Corp?" How do you respond?',
+            prompt: 'STEP 2: The comedy has lasted for months. You earn good money, but you feel you are losing your real skills. You develop "imposter syndrome". What is the ultimate solution according to the book\'s witnesses?',
             choices: [
-              { id: 'c1', text: 'Lie and make up a complex project to sound important.', isBest: false, feedback: 'This reinforces the "falseness" of your existence and increases your imposter syndrome and isolation.' },
-              { id: 'c2', text: 'Admit honestly: "Honestly, nothing useful. I just forward emails."', isBest: true, feedback: 'Acknowledging the reality is the first step in breaking the spell of the bullshit job, though it may be socially awkward.' },
-              { id: 'c3', text: 'Defend the company: "I facilitate high-level communication strategy."', isBest: false, feedback: 'You have internalized the corporate rhetoric. You are now protecting the system that traps you.' }
+              { id: 'c1', text: 'Stay for the money and ignore your feelings.', isBest: false, feedback: 'Graeber notes this often leads to depression or psychosomatic illness. Money does not compensate for "spiritual violence".' },
+              { id: 'c2', text: 'Resign to find work that has meaning (even if paid less).', isBest: true, feedback: 'Correct. Like Charles (the musician) or Annie, the only way to heal the soul is often to leave the toxic environment to find a real "cause".' },
+              { id: 'c3', text: 'Ask for a raise.', isBest: false, feedback: 'This strengthens the trap ("golden handcuffs") and does not solve the existential void.' }
             ],
-            guidance: 'Consider the social pressure to define oneself by one\'s labor.'
+            guidance: 'Reflect on the psychological cost of uselessness versus financial gain.'
           }
         ]
       },
       {
-        id: 'bs-102',
-        chapter: 2,
-        title: 'The Five Types of Bullshit Jobs',
-        youtubeUrl: 'https://www.youtube.com/embed/6YkZ2v5r1rA', 
-        duration: '12 min',
+        id: 'bs-107',
+        chapter: 7,
+        title: 'GRAEBER – Chapter 7: Bullshit Jobs and Political Hatred',
+        youtubeUrl: 'https://www.youtube.com/embed/wWXr4U2l5G4',
+        duration: '18 min',
         summaryBullets: [
-          'Flunkies: Exist to make others look important.',
-          'Goons: Act aggressively on behalf of an employer (e.g., corporate lawyers).',
-          'Duct Tapers: Fix problems that shouldn’t exist.',
-          'Box Tickers: Allow an organization to claim it is doing something it is not.',
-          'Taskmasters: Assign work to others or create unnecessary supervision.'
+          'Managerial Feudalism: The proliferation of useless jobs is a tool for social control. Keeping the population exhausted prevents political revolt.',
+          'Moral Envy: The system creates resentment between the "working class" (useful, underpaid) and the "liberal elite" (useless, overpaid), protecting the real owners of capital.',
+          'Universal Basic Income (UBI): The proposed solution to break the link between livelihood and work, allowing people to refuse useless jobs.',
+          'The Laziness Myth: Graeber argues humans naturally want to be useful; UBI would free energy for meaningful contribution, not idleness.'
         ],
         keyTerms: [
-          { term: 'Flunky', definition: 'An employee whose primary purpose is to make their superior look important.' },
-          { term: 'Duct Taper', definition: 'Employees whose jobs exist only because of a glitch or fault in the organization.' }
+          { term: 'Managerial Feudalism', definition: 'A system where power creates subordinates (bullshit jobs) to validate its own status and maintain hierarchy, rather than for efficiency.' },
+          { term: 'Moral Envy', definition: 'The resentment weaponized by politicians, pitting useful workers against perceived "elites" in administrative roles.' },
+          { term: 'Universal Basic Income', definition: 'An unconditional income that dissociates survival from employment, acting as the ultimate "strike fund" against bullshit jobs.' }
         ],
         quiz: [
-           {
+          {
             id: 'q1',
-            question: 'A receptionist who sits in an empty lobby just so the company looks "professional" is an example of:',
-            type: 'MCQ',
-            options: ['Goon', 'Flunky', 'Taskmaster', 'Box Ticker'],
-            correctAnswer: 'Flunky',
-            explanation: 'Flunkies exist primarily to boost the prestige of their superiors or the organization.'
-           },
-           {
-            id: 'q2',
-            question: 'What is the primary role of a "Duct Taper"?',
+            question: 'What is the "political utility" of Bullshit Jobs according to this chapter?',
             type: 'MCQ',
             options: [
-              'To fix plumbing issues.',
-              'To aggressively attack competitors.',
-              'To undo the damage done by a poorly designed system or incompetent superior.',
-              'To manage other people.'
+              'They generate tax revenue.',
+              'Social Control: keeping the population busy and exhausted prevents political contestation.',
+              'They drive innovation.',
+              'They solve the problem of automation.'
             ],
-            correctAnswer: 'To undo the damage done by a poorly designed system or incompetent superior.',
-            explanation: 'Duct tapers are hired to patch holes in a system that shouldn\'t have holes in the first place.'
-           },
-           {
-            id: 'q3',
-            question: 'Which type of Bullshit Job involves creating unnecessary work for others?',
+            correctAnswer: 'Social Control: keeping the population busy and exhausted prevents political contestation.',
+            explanation: 'Graeber argues that a population with free time is dangerous to the ruling class. "Managerial Feudalism" maintains order via busyness.'
+          },
+          {
+            id: 'q2',
+            question: 'How does "Universal Basic Income" (UBI) specifically target Bullshit Jobs?',
             type: 'MCQ',
-            options: ['Taskmaster', 'Goon', 'Box Ticker', 'Flunky'],
-            correctAnswer: 'Taskmaster',
-            explanation: 'Taskmasters fall into two categories: those who supervise people who don\'t need supervision, and those who invent bullshit tasks for others to do.'
-           }
+            options: [
+              'It pays people to do them.',
+              'It gives employers money to hire more people.',
+              'By decoupling income from work, it empowers people to refuse useless jobs, causing the system to collapse.',
+              'It makes bullshit jobs illegal.'
+            ],
+            correctAnswer: 'By decoupling income from work, it empowers people to refuse useless jobs, causing the system to collapse.',
+            explanation: 'If survival is guaranteed, workers will only choose jobs that have meaning or high utility, filtering out the "bullshit".'
+          },
+          {
+            id: 'q3',
+            question: 'What is the "Paradox" of automation mentioned in the text?',
+            type: 'MCQ',
+            options: [
+              'Robots are too expensive.',
+              'Increased productivity led to more administrative bloat instead of a 15-hour work week.',
+              'Robots cannot do bullshit jobs.',
+              'Automation created more factory jobs.'
+            ],
+            correctAnswer: 'Increased productivity led to more administrative bloat instead of a 15-hour work week.',
+            explanation: 'As Keynes predicted, we have the tech for leisure, but we chose "feudal" employment to keep people occupied.'
+          }
         ],
         scenarios: [
-           {
+          {
             id: 's1',
-            prompt: 'STEP 1: Your company hires you to compile reports that no one ever reads, just to satisfy a regulatory requirement that is never audited. What type of bullshit job is this?',
+            prompt: 'STEP 1: You are a politician proposing UBI. A critic says: "People are naturally lazy. If you pay them, they will do nothing." How do you refute this using Graeber\'s insight?',
             choices: [
-              { id: 'c1', text: 'Box Ticker', isBest: true, feedback: 'Correct! You are there just to "tick the box" that the report exists.' },
-              { id: 'c2', text: 'Goon', isBest: false, feedback: 'Goons have an aggressive element (e.g., telemarketers). This job is passive.' }
+              { id: 'c1', text: 'Admit they are right but argue for compassion.', isBest: false, feedback: 'Graeber disagrees with the premise of laziness.' },
+              { id: 'c2', text: 'Cite the psychological suffering of Bullshit Jobs: Humans are depressed when they are useless. They crave contribution, not idleness.', isBest: true, feedback: 'Correct. The fact that people in comfortable but useless jobs are miserable proves the human need to be a "cause" and contribute.' },
+              { id: 'c3', text: 'Say that laziness is good for the environment.', isBest: false, feedback: 'Not the core argument.' }
             ],
-            guidance: 'Consider the functional purpose of the role within the bureaucracy.'
-           },
-           {
+            guidance: 'Think about why people in "do-nothing" jobs are unhappy.'
+          },
+          {
             id: 's2',
-            prompt: 'STEP 2: Your boss realizes you finish the report in 2 hours but work an 8-hour day. He asks you to format the report in three different fonts "just in case". What is the boss becoming?',
+            prompt: 'STEP 2: UBI is passed. You work as a "Strategic Vision Coordinator" (useless). You can now quit and volunteer to build community gardens (useful).',
             choices: [
-              { id: 'c1', text: 'A Taskmaster', isBest: true, feedback: 'Correct. He is assigning you unnecessary tasks just to occupy your time and justify his own management role.' },
-              { id: 'c2', text: 'A Duct Taper', isBest: false, feedback: 'He isn\'t fixing a glitch; he is creating busy work.' },
-              { id: 'c3', text: 'Efficient', isBest: false, feedback: 'Efficiency would be letting you go home or doing useful work. This is performative labor.' }
+              { id: 'c1', text: 'Stay in the office for the fancy title.', isBest: false, feedback: 'This sustains the feudal system.' },
+              { id: 'c2', text: 'Quit. Use UBI to support yourself while doing meaningful work.', isBest: true, feedback: 'Correct. This is the intended effect of UBI: redistributing labor from "bullshit" to "real value".' },
+              { id: 'c3', text: 'Work both jobs.', isBest: false, feedback: 'Likely leading to burnout.' }
             ],
-            guidance: 'Think about the logic of "management" when there is nothing real to manage.'
-           }
+            guidance: 'UBI is the "power to say no".'
+          }
         ]
       }
     ]
   },
   {
     id: 'give-take',
-    title: 'Giving and Taking: Cooperation',
-    description: 'Understand Norbert Alter’s sociology of innovation and how "illicit" cooperation drives organizational success.',
-    icon: 'users',
+    title: 'Give and Take',
+    description: 'Adam Grant’s insights on reciprocity styles and success.',
+    icon: 'HandHeart',
     lessons: [
-      {
+       {
         id: 'gt-101',
         chapter: 1,
-        title: 'Cooperating is Giving',
-        youtubeUrl: 'https://www.youtube.com/embed/gJmIZsp1w5c',
-        duration: '18 min',
+        title: 'Givers, Takers, and Matchers',
+        youtubeUrl: 'https://www.youtube.com/embed/YyXRYgjQXX0',
+        duration: '12 min',
         summaryBullets: [
-          'In this first chapter, Norbert Alter puts forward the central thesis: cooperation in companies is not reduced to the coordination of tasks, but relies on an act of donation, a voluntary gesture that creates a social link between the actors.',
-          'Contrary to what managerial logic often emphasizes (efficiency, procedures, calculation of personal interests), cooperation is based on social exchanges that do not directly result from a commercial or contractual interest, but from a human desire to share, to help and exchange.',
-          'Alter draws on the theory of giving, notably that of Marcel Mauss, to show that social exchange consists of three moments: give, receive and give back. A process that weaves bonds and generates reciprocal obligations.',
-          'This chapter therefore aims to show that cooperating is first of all giving: voluntarily offering information, help, support or skills that are not strictly required by an employment contract.'
+          'The three reciprocity styles: Givers, Takers, and Matchers.',
+          'Who is at the bottom of the success ladder? (Givers)',
+          'Who is at the top? (Also Givers)'
         ],
         keyTerms: [
-          { term: 'Don/Contre-don (Gift/Counter-gift)', definition: 'The cycle of giving, receiving, and reciprocating that creates social bonds and trust, based on Marcel Mauss\'s theory.' },
-          { term: 'Work-to-rule (Grève du zèle)', definition: 'A situation where employees follow regulations to the letter, which paradoxically paralyzes the organization, proving that formal rules alone are insufficient for efficiency.' }
+          { term: 'Giver', definition: 'Someone who contributes to others without expecting anything in return.' },
+          { term: 'Taker', definition: 'Someone who tries to get as much as possible from others while contributing as little as possible.' },
+          { term: 'Matcher', definition: 'Someone who strives for an equal balance of giving and getting.' }
         ],
         quiz: [
           {
-            id: 'q1',
-            question: 'According to Alter and Mauss, what are the three moments of the social exchange cycle?',
-            type: 'MCQ',
-            options: [
-              'Plan, Execute, Review',
-              'Give, Receive, Give Back',
-              'Negotiate, Contract, Pay',
-              'Listen, Obey, Report'
-            ],
-            correctAnswer: 'Give, Receive, Give Back',
-            explanation: 'Social bonds are woven through this triple obligation. Refusing to receive or failing to give back breaks the cooperative link.'
-          },
-          {
-            id: 'q2',
-            question: 'What does the phenomenon of "work-to-rule" (grève du zèle) demonstrate about organizations?',
-            type: 'MCQ',
-            options: [
-              'That rules are perfect and should always be followed.',
-              'That workers are naturally lazy.',
-              'That formal procedures are insufficient; organizations rely on workers voluntarily "giving" more than the contract requires.',
-              'That managers need to write more detailed procedures.'
-            ],
-            correctAnswer: 'That formal procedures are insufficient; organizations rely on workers voluntarily "giving" more than the contract requires.',
-            explanation: 'If everyone follows the rules strictly, the system jams. Real efficiency requires the "illicit" gift of cooperation (shortcuts, mutual help) beyond the rules.'
-          },
-          {
-            id: 'q3',
-            question: 'According to Alter, cooperation differs from coordination because:',
-            type: 'MCQ',
-            options: [
-              'Coordination is voluntary, Cooperation is mandatory.',
-              'Cooperation involves a voluntary "gift" of self, whereas coordination is mechanical and procedural.',
-              'They are the same thing.',
-              'Cooperation is for managers, coordination is for workers.'
-            ],
-            correctAnswer: 'Cooperation involves a voluntary "gift" of self, whereas coordination is mechanical and procedural.',
-            explanation: 'You can coordinate machines, but only humans can cooperate through the giving of trust and time.'
-          },
-          {
-            id: 'q4',
-            question: 'Why is the "gift" in an organization often considered "illicit" or hidden?',
-            type: 'MCQ',
-            options: [
-              'Because it involves stealing company property.',
-              'Because it often involves bypassing official rules/procedures to get the job done efficiently.',
-              'Because managers forbid talking to colleagues.',
-              'Because it is illegal to help others.'
-            ],
-            correctAnswer: 'Because it often involves bypassing official rules/procedures to get the job done efficiently.',
-            explanation: 'Real cooperation often requires stepping outside the rigid "legal" framework of the organization to solve unique problems.'
+             id: 'q1',
+             question: 'According to Adam Grant, which group is most likely to be at the very bottom of the performance ladder?',
+             type: 'MCQ',
+             options: ['Givers', 'Takers', 'Matchers', 'None of the above'],
+             correctAnswer: 'Givers',
+             explanation: 'Selfless givers often burn out or get exploited, landing them at the bottom.'
           }
         ],
-        scenarios: [
-          {
-            id: 's1',
-            prompt: 'STEP 1: You are a maintenance technician. A machine breaks down. The official procedure requires a Level 2 Supervisor to approve the fix (4-hour delay). You know how to fix it immediately, but it technically violates the protocol. What is the act of "cooperation" here?',
-            choices: [
-              { id: 'c1', text: 'Follow the procedure strictly to protect yourself.', isBest: false, feedback: 'This is "work-to-rule". It protects you legally, but harms the collective efficiency. It is the opposite of the cooperative gift.' },
-              { id: 'c2', text: 'Fix it immediately (transgressing the rule) to help the team.', isBest: true, feedback: 'Correct. In Alter\'s view, cooperation often involves an "illicit" gift—taking a risk to solve a problem for the group, which creates a debt of gratitude.' },
-              { id: 'c3', text: 'Demand a bonus before fixing it.', isBest: false, feedback: 'This treats the interaction as a market exchange, not a social gift, and fails to build the cooperative bond.' }
-            ],
-            guidance: 'Consider the difference between "contractual obedience" and "social effectiveness".'
-          },
-          {
-            id: 's2',
-            prompt: 'STEP 2: You fixed the machine. The team meets their quota. The supervisor finds out you broke the rule. How does the "Gift/Counter-gift" logic apply here?',
-            choices: [
-              { id: 'c1', text: 'The supervisor should fire you for disobedience.', isBest: false, feedback: 'This applies bureaucratic logic, but destroys the social fabric. It ensures no one will ever take a risk to help again.' },
-              { id: 'c2', text: 'The supervisor ignores the violation (Counter-gift of leniency) because you saved the day.', isBest: true, feedback: 'Correct. By "closing his eyes" to the rule-breaking, the supervisor returns your gift. A bond of trust ("complicity") is formed.' },
-              { id: 'c3', text: 'You ask the supervisor to pay you for the repair.', isBest: false, feedback: 'Gifts are not paid for; they are reciprocated with trust, status, or future help.' }
-            ],
-            guidance: 'Think about how trust is built through mutual vulnerability, not just following contracts.'
-          }
-        ]
-      }
+        scenarios: []
+       }
     ]
   }
 ];

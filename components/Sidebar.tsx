@@ -31,7 +31,10 @@ const Sidebar: React.FC<Props> = ({ course, currentLessonId, progress, onSelectL
       <div className="flex-1 overflow-y-auto hide-scrollbar p-4 space-y-3">
         {course.lessons.map((lesson, idx) => {
           const lessonProgress = progress[lesson.id] as ProgressData | undefined;
-          const isLocked = idx > 0 && !((progress[course.lessons[idx - 1].id] as ProgressData)?.scenarioCompleted);
+          
+          // Logic: Locked if NOT Premium AND previous lesson not completed
+          const isLocked = !progress.isPremium && idx > 0 && !((progress[course.lessons[idx - 1].id] as ProgressData)?.scenarioCompleted);
+          
           const isActive = currentLessonId === lesson.id;
           const isCompleted = lessonProgress?.scenarioCompleted;
 

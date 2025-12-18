@@ -5,6 +5,7 @@ import { Lesson, Course, ProgressStore, ProgressData, BookedSession, User } from
 import Sidebar from './components/Sidebar';
 import LessonView from './components/LessonView';
 import CourseCard from './components/CourseCard';
+import CourseOverview from './components/CourseOverview'; // NEW IMPORT
 import Chatbot from './components/Chatbot';
 import SubscriptionModal from './components/SubscriptionModal';
 import PremiumHub from './components/PremiumHub';
@@ -106,8 +107,6 @@ const App: React.FC = () => {
     };
     setProgress(prev => ({ ...prev, user: newUser }));
     setShowAuthModal(false);
-    
-    // Optional: Redirect to profile or show a welcome toast
   };
 
   const handleLogout = () => {
@@ -158,7 +157,8 @@ const App: React.FC = () => {
     } else {
       if (COURSES.length > 0 && COURSES[0].lessons.length > 0) {
         setCurrentCourseId(COURSES[0].id);
-        setCurrentLessonId(COURSES[0].lessons[0].id);
+        // Change: Instead of jumping to lesson, go to overview (lessonId null)
+        setCurrentLessonId(null); 
       }
     }
   };
@@ -170,15 +170,9 @@ const App: React.FC = () => {
     }));
   };
 
-  // Keep this for when we implement the chat from the session list in future
-  const handleMentorChat = (mentor: any) => {
-    if (!progress.isPremium) {
-      setShowSubModal(true);
-    } else {
-      setSelectedMentor(mentor);
-    }
-  };
+  // --- RENDER LOGIC ---
 
+  // 1. If Course AND Lesson are selected -> Show Player (Sidebar + LessonView)
   if (currentCourse && currentLesson) {
     return (
       <div className="flex h-screen overflow-hidden bg-white animate-fade-in font-['Plus_Jakarta_Sans'] relative">
@@ -188,7 +182,7 @@ const App: React.FC = () => {
           progress={progress}
           onSelectLesson={setCurrentLessonId}
           onBack={() => {
-            setCurrentCourseId(null);
+            // BACK BUTTON in Player now goes to OVERVIEW, not Home
             setCurrentLessonId(null);
           }}
         />
@@ -210,6 +204,21 @@ const App: React.FC = () => {
     );
   }
 
+  // 2. If Course is selected but NO Lesson -> Show Course Overview (Dashboard)
+  if (currentCourse && !currentLessonId) {
+    return (
+      <div className="min-h-screen bg-[#fcfdfe] animate-fade-in font-['Plus_Jakarta_Sans']">
+         <CourseOverview 
+           course={currentCourse}
+           progress={progress}
+           onSelectLesson={setCurrentLessonId}
+           onBack={() => setCurrentCourseId(null)} // Back to Home
+         />
+      </div>
+    );
+  }
+
+  // 3. Default: Home View
   return (
     <div className="min-h-screen animate-fade-in font-['Plus_Jakarta_Sans'] bg-[#fcfdfe] relative flex flex-col">
       <header className="sticky top-0 z-40 w-full glass border-b border-slate-100">
@@ -263,7 +272,7 @@ const App: React.FC = () => {
             onLogout={handleLogout}
             onNavigateToCourse={(id) => {
               setCurrentCourseId(id);
-              setCurrentLessonId(COURSES.find(c => c.id === id)?.lessons[0].id || null);
+              setCurrentLessonId(null); // Go to overview first
               setView('HOME');
             }}
           />
@@ -367,7 +376,9 @@ const App: React.FC = () => {
                     progressStore={progress}
                     onClick={() => {
                       setCurrentCourseId(course.id);
-                      setCurrentLessonId(course.lessons[0].id);
+                      // Don't auto-start first lesson. 
+                      // Set null to trigger CourseOverview
+                      setCurrentLessonId(null); 
                     }}
                   />
                 </div>
@@ -387,9 +398,9 @@ const App: React.FC = () => {
         <AuthModal onClose={() => setShowAuthModal(false)} onLogin={handleLogin} />
       )}
 
-      {/* Persona-aware Chatbot - Only if selectedMentor is set, which we might use later for post-booking chat */}
+      {/* Chatbot (General context if no specific lesson) */}
       <Chatbot 
-        activeLesson={currentLesson} 
+        activeLesson={undefined} // No specific lesson context on home
         mentor={selectedMentor} 
         onMentorClear={() => setSelectedMentor(null)} 
         isPremium={progress.isPremium}
