@@ -1,0 +1,5 @@
+{
+  "name": "SocioLearn - Sociological Mastery Platform",
+  "description": "A Busuu-inspired interactive platform for learning sociology, featuring David Graeber's 'Bullshit Jobs' and Norbert Alter's 'Giving & Taking'. Features video lessons, quizzes, and scenario-based learning with local progress tracking.",
+  "requestFramePermissions": []
+}
