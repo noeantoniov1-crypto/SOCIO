@@ -48,6 +48,10 @@ const U = {
   rgpd: "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
   aiact: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
   crossplay: "https://esportsinsider.com/marvel-rivals-crossplay",
+  newzoo: "https://insider-gaming.com/almost-half-of-players-who-quit-overwatch-jumped-to-marvel-rivals/",
+  vgc: "https://www.videogameschronicle.com/news/overwatch-2s-average-pc-player-count-has-dropped-39-since-marvel-rivals-was-released/",
+  thegamer: "https://www.thegamer.com/marvel-rivals-no-longer-casual-friendly-black-panther-matchmaking/",
+  respawn: "https://respawn.outlookindia.com/gaming/gaming-originals/the-marvel-rivals-decline-that-everyone-saw-coming",
   gdoc: "https://docs.google.com/document/d/1nOhcAL2wfeAHOK6x6UZH-Hg5yh9Ofxxko7FY47r5Vzc/edit",
 };
 
@@ -85,11 +89,47 @@ const U = {
   pageNum(s, 2);
   s.addNotes("30 secondes. Depuis le lancement, la fréquentation moyenne sur Steam a perdu 76 %. Après un sommet en janvier 2025 (306 000), elle chute pendant neuf mois, puis stagne entre 64 000 et 89 000 depuis un an : les nouvelles saisons font des rebonds, pas une remontée. Pourtant 40 millions de joueurs sont venus en trois mois. Le jeu sait attirer ; il ne sait pas garder. Attention : Steam, c'est le PC seulement.");
 
-  // 3. Diagnostic : H5 en trois temps (≈ 30 s)
+  // 3. Contexte : deux populations au lancement (≈ 30 s)
+  s = pres.addSlide(); s.background = { color: LIGHT };
+  title(s, "Au lancement, deux publics se croisent", "Contexte · qui est arrivé en décembre 2024");
+  const pops = [
+    [fa.FaCrosshairs, "Les vétérans du genre", [
+      ["45 %", " des joueurs qui ont arrêté Overwatch 2 en décembre 2024 ont joué à Marvel Rivals (Newzoo)"],
+      ["−22 %", " de joueurs moyens sur Overwatch 2 (PC) le mois du lancement de Marvel Rivals"],
+    ], "Ils maîtrisent déjà les rôles, la visée et le jeu d'équipe."],
+    [fa.FaMask, "Les joueurs venus pour Marvel", [
+      ["10 M", " de joueurs en 3 jours, 20 M en moins de 2 semaines, 40 M en 3 mois"],
+      ["Gratuit", " et porté par une licence grand public : beaucoup découvrent le hero shooter"],
+    ], "Ils apprennent le jeu en même temps qu'ils le jouent."],
+  ];
+  for (let i = 0; i < 2; i++) {
+    const x = 0.5 + i * 4.6;
+    s.addShape("roundRect", { x, y: 1.35, w: 4.4, h: 2.55, fill: { color: WHITE }, line: { color: "E3E5EE" }, rectRadius: 0.08 });
+    await badge(s, pops[i][0], x + 0.2, 1.5, 0.45, i === 0 ? NAVY : RED);
+    s.addText(pops[i][1], { x: x + 0.8, y: 1.5, w: 3.45, h: 0.45, fontFace: H, fontSize: 15, bold: true, color: INK, margin: 0, valign: "middle", isTextBox: true });
+    const runs = [];
+    pops[i][2].forEach((r, j) => {
+      runs.push({ text: r[0], options: { bold: true, color: i === 0 ? NAVY : RED, fontSize: 16 } });
+      runs.push({ text: r[1], options: { color: INK, breakLine: true } });
+      if (j === 0) runs.push({ text: " ", options: { fontSize: 5, breakLine: true } });
+    });
+    s.addText(runs, { x: x + 0.2, y: 2.08, w: 4.0, h: 1.3, fontFace: B, fontSize: 11, margin: 0, valign: "top", isTextBox: true });
+    s.addText(pops[i][3], { x: x + 0.2, y: 3.42, w: 4.0, h: 0.4, fontFace: B, fontSize: 11, italic: true, color: MUTED, margin: 0, valign: "top", isTextBox: true });
+  }
+  s.addShape("roundRect", { x: 0.5, y: 4.05, w: 9, h: 1.05, fill: { color: NAVY }, line: { color: NAVY }, rectRadius: 0.08 });
+  s.addText([
+    { text: "Sans calibrage, ils se croisent. ", options: { bold: true, color: RED } },
+    { text: "Tout le monde démarre en Bronze III en classé jusqu'à la saison 5. Ensuite, la base se durcit : parmi les auteurs d'avis Steam, 5 % avaient plus de 200 h de jeu fin 2024, 42 % à l'été 2025. La presse résume : « plus un jeu pour le fan de Marvel occasionnel » (TheGamer, 09/08/2025).", options: { color: WHITE } },
+  ], { x: 0.7, y: 4.08, w: 8.6, h: 1.0, fontFace: B, fontSize: 11.5, margin: 0, valign: "middle", isTextBox: true });
+  source(s, [{ text: "Newzoo (09/04/2025)", url: U.newzoo }, { text: "VGC", url: U.vgc }, { text: "GWO", url: U.gwo }, { text: "PCGamesN", url: U.pcg }, { text: "avis Steam", url: U.steamapi }, { text: "TheGamer", url: U.thegamer }]);
+  pageNum(s, 3);
+  s.addNotes("30 secondes. Au lancement, deux publics arrivent en même temps. D'un côté, des vétérans du genre : selon Newzoo, 45 % des joueurs qui ont quitté Overwatch 2 en décembre 2024 ont joué à Marvel Rivals, et Overwatch 2 perd 22 % de joueurs sur PC ce mois-là. Attention, « ont joué » ne veut pas dire « ont migré ». De l'autre, un public massif venu pour Marvel : 10 millions en trois jours, 40 millions en trois mois, dont beaucoup découvrent le genre. Le jeu ne les distingue pas : tout le monde commence en Bronze III. Ensuite la base se durcit : chez les auteurs d'avis Steam, les plus de 200 heures passent de 5 % à 42 %. Ce chiffre grimpe aussi parce que le jeu vieillit, mais la presse fait le même constat.");
+
+  // 4. Diagnostic : H5 en trois temps (≈ 30 s)
   s = pres.addSlide(); s.background = { color: LIGHT };
   title(s, "H5 : les nouveaux perdent trop tôt et partent", "Diagnostic · H5 en trois temps (HYPOTHÈSE, à valider sur vos données)");
   const steps = [
-    [fa.FaUserFriends, "2025 : ce qui n'a pas marché", "Des joueurs de tous niveaux arrivent en même temps, sans calibrage (Bronze III pour tous en classé jusqu'à la S5). Les moins expérimentés perdent lourdement et partent."],
+    [fa.FaUserFriends, "2025 : ce qui n'a pas marché", "Vétérans et nouveaux venus se rencontrent sans calibrage. Les moins expérimentés perdent lourdement et partent."],
     [fa.FaFilter, "Conséquence", "Le départ filtre la population : il reste surtout des joueurs expérimentés."],
     [fa.FaDoorOpen, "Aujourd'hui : ce qui ne marche toujours pas", "Un nouveau arrive en partie rapide face à cette population. Faute de joueurs, la fourchette de niveau s'élargit. Il perd et part : la base ne se renouvelle pas."],
   ];
@@ -105,8 +145,8 @@ const U = {
     { text: "", options: { breakLine: true } },
     { text: "A · démarrage à froid (MMR de départ mal réglé)  ·  B · manque de joueurs (fourchette élargie aux heures creuses)", options: { color: INK } },
   ], { x: 0.5, y: 4.4, w: 9, h: 0.55, fontFace: B, fontSize: 12, margin: 0, isTextBox: true });
-  source(s, [{ text: "PCGamesN (Bronze III)", url: U.pcg }, { text: "vidéo NetEase du 21/08/2025 (fourchette)", url: U.video }]);
-  pageNum(s, 3);
+  source(s, [{ text: "vidéo NetEase du 21/08/2025 (fourchette élargie)", url: U.video }]);
+  pageNum(s, 4);
   s.addNotes("Notre hypothèse principale, H5, en trois temps. En 2025, tout le monde arrive sans calibrage ; les moins expérimentés perdent et partent. Il reste surtout des joueurs expérimentés. Aujourd'hui, un nouveau arrive en partie rapide face à eux, dans des parties que le manque de joueurs élargit ; il part à son tour. Deux causes possibles : un MMR de départ mal réglé, ou le manque de joueurs. Elles appellent des leviers différents, c'est pourquoi on audite avant d'agir.");
 
   // 4. Diagnostic : preuves (≈ 30 s)
@@ -131,7 +171,7 @@ const U = {
     s.addText(facts[i][1], { x: 6.3, y: y + 0.5, w: 3.2, h: 0.65, fontFace: B, fontSize: 11, color: INK, margin: 0, valign: "top", isTextBox: true });
   }
   source(s, [{ text: "API publique des avis Steam (notre collecte)", url: U.steamapi }, { text: "notes de patch S5", url: U.s5 }, { text: "vidéo du 21/08/2025", url: U.video }]);
-  pageNum(s, 4);
+  pageNum(s, 5);
   s.addNotes("Les faits qui appuient H5. Pendant la chute, la part des avis négatifs qui parlent du matchmaking passe de 7 à 41 %. Les explications officielles d'août 2025 ne la font pas baisser. En revanche, quand NetEase ajoute des placements en classé, les avis négatifs chutent de 36 à 14 %. Mais la partie rapide, par où passent tous les nouveaux, n'a jamais été corrigée. Ce sont des corrélations : seules vos données internes peuvent trancher.");
 
   // 5. Recommandation : objectif + audit (≈ 1 min)
@@ -154,7 +194,7 @@ const U = {
   s.addTable(rows, { x: 0.5, y: 2.15, w: 9, colW: [3.2, 2.9, 2.9], fontFace: B, fontSize: 9.5, color: INK, border: { type: "solid", pt: 0.5, color: "D5D8E3" }, fill: { color: WHITE }, valign: "middle", margin: [2, 5, 2, 5], rowH: [0.28, 0.4, 0.4, 0.4, 0.4, 0.4] });
   s.addText("Ensuite, pour écarter les autres explications : héros joué, parties avec bots, joueurs en groupe, comptes arrivés en 2025. Toutes ces données existent déjà dans vos serveurs.", { x: 0.5, y: 4.78, w: 9, h: 0.38, fontFace: B, fontSize: 9.5, italic: true, color: MUTED, margin: 0, isTextBox: true });
   source(s, [{ text: "plan de collecte complet (12 données notées, détail et justification)", url: U.gdoc }]);
-  pageNum(s, 5);
+  pageNum(s, 6);
   s.addNotes("Recommandation, première partie : d'abord mesurer. L'objectif traduit notre hypothèse en chiffre : si perdre au début fait partir, les nouveaux qui perdent partent plus que les autres. On vise un écart d'au plus 1,2 fois au 31 mars 2027. Cinq données d'abord. Un : les résultats des dix premiers matchs et le départ à sept jours, c'est la mesure même de l'objectif. Deux : dans quel mode et sur quelle plateforme jouent les nouveaux, pour savoir quoi corriger en premier. Trois et quatre : chacune teste une des deux causes possibles. Cinq : NetEase a déjà changé le placement en classé à la saison 5 ; comparer avant et après, c'est une expérience gratuite. Tout existe déjà dans vos serveurs : pas de nouvelle collecte. Et si l'écart est déjà sous 1,2, on n'investit pas dans le matchmaking.");
 
   // 6. Recommandation : leviers (≈ 1 min)
@@ -186,7 +226,7 @@ const U = {
     { text: "rôles imposés (liberté de composition).", options: { color: INK } },
   ], { x: 0.5, y: 4.47, w: 9, h: 0.65, fontFace: B, fontSize: 11, margin: 0, valign: "top", isTextBox: true });
   source(s, [{ text: "vidéo NetEase du 21/08/2025 (écart élargi quand la file est longue)", url: U.video }, { text: "crossplay en partie rapide", url: U.crossplay }]);
-  pageNum(s, 6);
+  pageNum(s, 7);
   s.addNotes("Recommandation, deuxième partie. Deux causes peuvent expliquer que les nouveaux perdent trop. Cause A, le démarrage à froid : le jeu ne sait rien d'un nouveau compte, il lui donne un niveau par défaut et le place mal pendant ses premiers matchs. Cause B, le manque de joueurs : quand la file est vide, le jeu accepte des écarts de niveau plus grands pour lancer la partie ; NetEase l'a lui-même expliqué en août 2025. Les données les distinguent : A, l'écart est fort sur les premiers matchs à toute heure ; B, il grandit quand la file se vide. On ne teste que le levier de la cause trouvée, avec un groupe témoin. Nous écartons les rôles imposés : la liberté de composition fait partie de l'identité du jeu.");
 
   // 7. Roadmap (1 min)
@@ -207,7 +247,7 @@ const U = {
     s.addText(ph[i][2], { x: x + 0.2, y: 2.8, w: 2.45, h: 1.2, fontFace: B, fontSize: 11, color: INK, margin: 0, valign: "top", isTextBox: true });
     s.addText([{ text: "Décision : ", options: { bold: true, color: RED } }, { text: ph[i][3], options: { color: INK } }], { x: x + 0.2, y: 4.05, w: 2.45, h: 0.8, fontFace: B, fontSize: 11, margin: 0, valign: "top", isTextBox: true });
   }
-  pageNum(s, 7);
+  pageNum(s, 8);
   s.addNotes("La roadmap, une minute. Trente jours d'audit, qui démarrent quand l'accord de sous-traitance et le hachage sont validés : c'est J0. Si le ratio est déjà sous 1,2, on s'arrête et on bascule sur le plan B (équilibrage, monétisation, attrition naturelle), avec les données déjà extraites. Sinon, 60 jours de tests A/B contre un groupe témoin, puis généralisation jusqu'au 31 mars 2027.");
 
   // 8. Risques & KPIs (30 s)
@@ -231,7 +271,7 @@ const U = {
     s.addText([{ text: risks[i][1] + " : ", options: { bold: true, color: INK } }, { text: risks[i][2], options: { color: INK } }], { x: 1.1, y, w: 8.4, h: 0.6, fontFace: B, fontSize: 11, margin: 0, valign: "middle", isTextBox: true });
   }
   source(s, [{ text: "RGPD", url: U.rgpd }, { text: "AI Act", url: U.aiact }]);
-  pageNum(s, 8);
+  pageNum(s, 9);
   s.addNotes("30 secondes sur les garde-fous. Chaque KPI a un seuil qui déclenche une décision : 1,2 pour lancer les tests, 5 minutes d'attente pour les arrêter, 50 % pour choisir le mode visé. Côté risques : accord de sous-traitance et pseudonymisation, aucun profilage individuel, et jamais de bots cachés. Pour démarrer, nous vous demandons deux choses : signer l'accord de sous-traitance et lancer l'audit de 30 jours, environ 33 jours-homme. Si l'hypothèse est confirmée, vous tenez votre levier de rétention ; sinon, vous évitez d'investir au mauvais endroit. Merci, je prends vos questions.");
 
   // 9. Sources (annexe)
@@ -245,13 +285,16 @@ const U = {
     ["Notes de patch Season 5, placements (14/11/2025)", U.s5],
     ["Notes de patch Season 7, placement individuel (18/03/2026)", U.s7],
     ["Classé : Bronze III pour tous (PCGamesN)", U.pcg],
+    ["45 % des joueurs ayant quitté Overwatch 2 ont joué à Marvel Rivals (Newzoo, via Insider Gaming, 09/04/2025)", U.newzoo],
+    ["Overwatch 2 : baisse des joueurs moyens sur PC (VGC)", U.vgc],
+    ["« Plus un jeu pour le fan occasionnel » (TheGamer, 09/08/2025)", U.thegamer],
     ["Crossplay : partie rapide commune, classé séparé (Esports Insider)", U.crossplay],
     ["Écart de niveau et churn (Heliyon, 2024, analogie)", U.heliyon],
     ["RGPD (EUR-Lex)", U.rgpd], ["AI Act (EUR-Lex)", U.aiact],
     ["Plan de collecte complet (Google Docs)", U.gdoc],
   ];
-  s.addText(src.map((r, i, a) => ({ text: r[0], options: { hyperlink: { url: r[1] }, color: "2F3C7E", bullet: true, breakLine: i < a.length - 1 } })), { x: 0.5, y: 1.35, w: 9, h: 3.8, fontFace: B, fontSize: 12, paraSpaceAfter: 4, valign: "top", isTextBox: true });
-  pageNum(s, 9);
+  s.addText(src.map((r, i, a) => ({ text: r[0], options: { hyperlink: { url: r[1] }, color: "2F3C7E", bullet: true, breakLine: i < a.length - 1 } })), { x: 0.5, y: 1.35, w: 9, h: 3.8, fontFace: B, fontSize: 10.5, paraSpaceAfter: 2, valign: "top", isTextBox: true });
+  pageNum(s, 10);
   s.addNotes("Annexe, à montrer seulement si on vous demande une source.");
 
   await pres.writeFile({ fileName: "/home/user/SOCIO/docs/presentation/pitch_marvel_rivals_netease.pptx" });
