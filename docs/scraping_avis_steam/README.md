@@ -4,5 +4,6 @@
 - **Pondération** : chaque semaine est pondérée par son volume réel d'avis (`volumes_par_semaine.csv`, population estimée : 303 135 avis).
 - **Minimisation** : ni identifiant Steam ni pseudo conservés ; seulement date, vote (recommandé ou non), temps de jeu au moment de l'avis, nombre de votes « utile » et texte.
 - **Analyse** : `analyse_avis_steam.py` (repérage par mots-clés) ; résultats dans `resultats_analyse.txt`.
+- **Ancienneté des auteurs** : `anciennete_auteurs.py` (répartition pondérée des auteurs par temps de jeu, par trimestre) ; résultats dans `resultats_anciennete_auteurs.txt`. Indice seulement : un jeu plus ancien a mécaniquement des auteurs plus expérimentés.
 - **Limites** : Steam = PC uniquement ; anglais uniquement ; mots-clés imparfaits ; seuls les joueurs qui écrivent un avis sont représentés.
 - Collecte réalisée le 30/09/2026.
