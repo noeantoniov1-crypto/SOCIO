@@ -89,7 +89,7 @@ Légende : **FAIT** = écrit dans une source lue · **HYPOTHÈSE** = à valider 
 | Répartition officielle des rangs en S1.5 : joueurs à moins de 5 matchs classés exclus, à cause du « poids écrasant » des joueurs placés en Bronze | FAIT | [PCGamesN](https://www.pcgamesn.com/marvel-rivals/ranks-competitive) |
 | Part des avis négatifs citant le matchmaking : **25,9 % (oct. 2025) → 17,3 % (nov. 2025)** | FAIT (notre scraping) | §7 |
 
-→ **HYPOTHÈSE** : depuis la S5, un débutant du genre démarre en Silver III, **au-dessus** des joueurs installés en Bronze. Ses premiers matchs classés pourraient être plus durs qu'avant. **À vérifier par NetEase** : rétention des nouveaux comptes avant et après le 14/11/2025.
+→ **Lecture** : les placements de la S5 sont la **correction, par NetEase lui-même, du maillon 2**. Ils confirment après coup que le démarrage sans calibrage posait problème. Juste après leur arrivée, les plaintes sur le matchmaking reculent (de 26 % à 17 % des avis négatifs) et la fréquentation rebondit (décembre 2025 – janvier 2026). C'est une corrélation, pas une causalité : **à confirmer par NetEase** dans la rétention des nouveaux comptes avant et après le 14/11/2025.
 
 ### Maillon 2b — La partie rapide, sas d'entrée des débutants
 
@@ -238,7 +238,7 @@ Sources : [Steam Charts](https://steamcharts.com/app/2767030), lu le 29/09/2026 
 | **Mai – juin 2025** | 102 116 / 79 806 | **−23,9 % / −21,9 %** | 28,3 % / 31,9 % | 29,1 % / 27,6 % | **Cassure anormale** |
 | Juil. – août 2025 | 82 825 / 77 502 | +3,8 % / −6,4 % | 34,6 % / 38,5 % | 37,0 % / **41,0 %** | S3 : un héros par mois ; démenti EOMM (12/08) ; vidéo (21/08) |
 | Sept. – oct. 2025 | 64 418 / 63 716 | −16,9 % / −1,1 % | 37,8 % / 37,6 % | 33,9 % / 25,9 % | Placements repoussés ; plus bas historique |
-| **Nov. 2025** | 65 301 | +2,5 % | **17,6 %** | **17,3 %** | **S5 : placements, Silver III** |
+| **Nov. 2025** | 65 301 | +2,5 % | **17,6 %** | **17,3 %** | **S5 : placements (NetEase corrige le calibrage)** |
 | Déc. 2025 – janv. 2026 | 75 492 / 88 790 | +15,6 % / +17,6 % | 28,1 % / 25,9 % | 18,2 % / 15,4 % | Rebond (corrélation, pas causalité) |
 | Fév. 2026 | 81 368 | −8,4 % | 27,8 % | 15,6 % | Relance d'Overwatch |
 | Mars – sept. 2026 | 30 derniers jours : 68 566 (−14,4 %) | — | 32 à 43 % | 9 à 15 % | Plateau ; les négatifs portent sur d'autres sujets |
@@ -405,7 +405,7 @@ Ce ne sont **pas** les débutants qui écrivent qu'ils sont victimes du matchmak
 
 | Méthode | Question tranchée |
 |---|---|
-| Cohortes avant / après la S5 | Le calibrage réduit-il le churn des nouveaux comptes ? |
+| Cohortes avant / après la S5 | Le démarrage sans calibrage faisait-il partir les nouveaux comptes (preuve du maillon 2) ? |
 | Régression du churn J7 | L'écart de niveau explique-t-il le churn mieux que les séries (H5 contre H1) ? |
 | Tests A/B des garde-fous | Quel levier fait baisser le ratio du O, et à quel coût d'attente ? |
 | Text mining des avis Steam | La perception suit-elle les changements ? |
@@ -442,7 +442,7 @@ Ce ne sont **pas** les débutants qui écrivent qu'ils sont victimes du matchmak
 | Composition par équipe (héros par rôle) × résultat × rang | Garde-fous de rôles : à quels rangs ? | Oui | Intérêt légitime | **INDISPENSABLE** | 4 | 5 | 5 | **4,7** | 0-30 j |
 | Part de parties d'entraînement (bots) × segment | Transparence et effet réel sur la rétention | Oui (si elles existent) | Intérêt légitime + **test de balance** | **INDISPENSABLE** | 4 | 5 | 5 | **4,7** | 0-30 j |
 | Écart de **MMR caché en partie rapide** × ancienneté ; vitesse de convergence | Faut-il une file débutants avant le niveau 15 ? | Oui (probable) | Intérêt légitime | **INDISPENSABLE** | 5 | 4 | 4 | **4,3** | 0-30 j |
-| Rétention des nouveaux comptes avant et après la S5 | Garder, ajuster ou étendre les placements | Oui | Intérêt légitime | **INDISPENSABLE** | 4 | 4 | 5 | **4,3** | 0-30 j |
+| Rétention des nouveaux comptes avant et après la S5 | Prouver que le démarrage sans calibrage faisait partir (maillon 2) | Oui | Intérêt légitime | **INDISPENSABLE** | 4 | 4 | 5 | **4,3** | 0-30 j |
 | Groupe contre solo × composition × ancienneté | Les groupes exploitent-ils le méta contre les débutants ? | Oui | Intérêt légitime | **INDISPENSABLE** | 4 | 4 | 5 | **4,3** | 0-30 j |
 | Rôle joué × rôle habituel du joueur | Mesurer les « imbalanced team roles » | Oui (utilisé par le matchmaking) | Intérêt légitime | **INDISPENSABLE** | 4 | 4 | 4 | **4,0** | 0-30 j |
 | Courbe de performance sur les 20 premiers matchs | Repérer vétérans et smurfs **sans identité** | Oui | Intérêt légitime (anti-triche) | **INDISPENSABLE** | 4 | 4 | 4 | **4,0** | 0-30 j |
@@ -475,7 +475,6 @@ Ce ne sont **pas** les débutants qui écrivent qu'ils sont victimes du matchmak
 | Écart de taux de victoire entre la meilleure et la pire composition, par rang | > 10 points | Rééquilibrage ciblé |
 | Durée médiane des combats bloqués par les ultimes | > 15 s | Ajuster le coût des ultimes |
 | Part de parties d'entraînement non annoncées | > 0 % | Étiquette « match d'entraînement » |
-| Gain de rétention J7 après la S5 | < 2 points | Revoir le rang estimé Silver III |
 | Score d'équité perçue | < 3/5 alors que l'écart réel est normal | Transparence, pas de nouvel algorithme |
 | **Part des avis Steam négatifs citant le matchmaking (contrôle externe du O)** | > 8 % (base : 10,5 % en sept. 2026) | Text mining ciblé + communication |
 | % d'avis Steam récents positifs | < 70 % | Alerte + text mining |
@@ -540,7 +539,7 @@ Ce ne sont **pas** les débutants qui écrivent qu'ils sont victimes du matchmak
 | « Le 45 % de Newzoo est biaisé. » | Oui, Newzoo le dit lui-même (p. 45). Il ne sert qu'à la **tendance**. La mesure exacte est **dans votre télémétrie**. |
 | « Les avis Steam, ce sont des râleurs. » | Oui : c'est de la **perception**, sur PC et en anglais. Mais sa **chronologie** (7 % → 41 % → 17 % après la S5) colle aux événements du jeu, et la perception est justement ce qui fait partir. |
 | « Les débutants ne se plaignent pas du matchmaking. » | Exact (2,8 % des négatifs à moins de 10 h). Deux raisons : ils partent **sans écrire** (biais du survivant), et l'écart est dénoncé **par les vétérans**, qui subissent la même hétérogénéité. Seul votre churn tranche. |
-| « Les placements de la S5 ont réglé le problème. » | Ils semblent avoir aidé (plaintes −9 points). Mais pour le classé seulement, et Silver III peut durcir les premiers matchs : c'est **mesurable** avant et après le 14/11/2025. |
+| « Les placements de la S5 ont réglé le problème. » | Justement, ils **confirment le diagnostic** : en corrigeant le calibrage, vous avez vu les plaintes reculer de 9 points. Mais ils ne couvrent que le classé. La partie rapide, où les joueurs débutent avant le niveau 15, reste sans calibrage connu, et les écarts liés à la population (H5b) et aux compositions (maillon 7) demeurent. |
 | « La liberté de composition, c'est l'ADN du jeu. » | Nous ne la remettons pas en cause. Nous proposons des garde-fous **aux rangs bas uniquement**, là où jouent les débutants. |
 | « Une role queue tuerait les files d'attente. » | C'est pourquoi on la **teste** en version souple, avec l'attente p90 comme seuil d'arrêt. |
 | « Le jeu n'est pas en échec. » | Exact : vos résultats Q3 2025 le citent positivement ([S26](https://equibles.com/stocks/ntes/calls/2025-q3)). Nous parlons d'un **plancher bas et fragile**, avec un potentiel de reprise mesurable. |
@@ -575,7 +574,8 @@ Ce ne sont **pas** les débutants qui écrivent qu'ils sont victimes du matchmak
 |---|---|
 | Newzoo p. 24, 42, 45, 73 et 78 ; mécanisme PlayTracker ; triangulation SteamDB | **RETENU** (sources lues) |
 | Pondérations, fourchette qui s'élargit, « rank gaps », « imbalanced team roles » (vidéo officielle) | **RETENU** |
-| Placements S5, Silver III (notes de patch officielles) | **RETENU** |
+| Placements S5 (notes de patch officielles), utilisés comme preuve du maillon 2 | **RETENU** |
+| « Depuis la S5, le départ en Silver III durcit les premiers matchs » | **RETIRÉ** : nouvelle hypothèse non souhaitée |
 | Refus de la role queue (Chen), « oppressive moments » (Zhiyong) | **RETENU** |
 | Scraping des avis Steam : méthode, pondération, minimisation | **RETENU** — scripts dans `docs/scraping_avis_steam/` : **relancez-les vous-même** et capturez la sortie |
 | Chronologie des plaintes (7 % → 41 % → 17 % après la S5) | **RETENU** comme perception, corrélation seulement |
