@@ -1,5 +1,6 @@
 # Convertit un Markdown en texte « copiable-collable » dans Word / Google Docs :
-# pas de tableaux à barres, pas de **, pas de <br>, pas de blocs de code, liens en URL brutes.
+# option --tableaux : garde les tableaux (Markdown) ; sinon, tableaux mis en liste.
+# Pas de **, pas de <br>, pas de blocs de code, liens en URL brutes.
 import re, sys
 
 def inline(s):
@@ -15,7 +16,9 @@ def cells(line):
     line = line.strip().strip('|')
     return [inline(c) for c in line.split('|')]
 
-src = open(sys.argv[1]).read().split('\n')
+KEEP_TABLES = '--tableaux' in sys.argv
+args = [a for a in sys.argv[1:] if a != '--tableaux']
+src = open(args[0]).read().split('\n')
 out = []
 i = 0
 def blank():
@@ -43,6 +46,14 @@ while i < len(src):
         head = cells(rows[0])
         body = [cells(r) for r in rows[2:]]
         blank()
+        if KEEP_TABLES:
+            fix = lambda c: c.replace(' §BR§ ', ' — ').replace('§BR§', ' — ')
+            out.append('| ' + ' | '.join(fix(c) for c in head) + ' |')
+            out.append('|' + '---|' * len(head))
+            for r in body:
+                out.append('| ' + ' | '.join(fix(c) for c in r) + ' |')
+            blank()
+            continue
         if len(head) == 2 and all(h == '' for h in head):
             for r in body:
                 parts = [x.strip() for x in r[1].split('§BR§')]
@@ -88,6 +99,6 @@ while i < len(src):
         blank(); i += 1; continue
     out.append(inline(l)); i += 1
 out = [y.replace(' §BR§ ', ' ; ').replace('§BR§', ';') for y in out]
-txt = '\n'.join((x + '  ') if x.strip() else x for x in out)
+txt = '\n'.join((x + '  ') if x.strip() and not x.startswith('|') else x for x in out)
 txt = re.sub(r'\n{3,}', '\n\n', txt).strip() + '\n'
-open(sys.argv[2], 'w').write(txt)
+open(args[1], 'w').write(txt)

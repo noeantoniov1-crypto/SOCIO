@@ -9,18 +9,12 @@ Consultées les 29 et 30/09/2026. Pour chaque source :
 
 GRILLE DE FIABILITÉ  
 
-• A  
-   – Signification : Source primaire : éditeur (NetEase), étude à comité de lecture, rapport d'origine, données brutes  
-   – Usage dans le dossier : Peut porter un FAIT seule  
-• B  
-   – Signification : Presse spécialisée qui cite une source primaire (vidéo, interview, patch)  
-   – Usage dans le dossier : FAIT si la source primaire est identifiable, sinon à recouper  
-• C  
-   – Signification : Communauté (forums Steam, Reddit, avis) ou presse qui rapporte des témoignages  
-   – Usage dans le dossier : Verbatim ou HYPOTHÈSE seulement, jamais un chiffre  
-• D  
-   – Signification : Source déformante, invérifiable ou hors sujet  
-   – Usage dans le dossier : REJETÉE  
+| Note | Signification | Usage dans le dossier |
+|---|---|---|
+| A | Source primaire : éditeur (NetEase), étude à comité de lecture, rapport d'origine, données brutes | Peut porter un FAIT seule |
+| B | Presse spécialisée qui cite une source primaire (vidéo, interview, patch) | FAIT si la source primaire est identifiable, sinon à recouper |
+| C | Communauté (forums Steam, Reddit, avis) ou presse qui rapporte des témoignages | Verbatim ou HYPOTHÈSE seulement, jamais un chiffre |
+| D | Source déformante, invérifiable ou hors sujet | REJETÉE |
 
 Critères utilisés pour noter :  
 • proximité avec la source primaire ;  
@@ -173,12 +167,14 @@ https://steamcommunity.com/app/2767030/discussions/0/688618675547317727/
 5.1 Newzoo, PC & Console Gaming Report 2025 — A (rapport d'origine), lu (PDF que vous m'avez fourni)  
 Copie publique : https://www.scribd.com/document/911720849/2025-Newzoo-The-PC-and-Console-Gaming-Report-1  
 
-• p. 24 : « 45% of players who stopped playing Overwatch 2 in December played Marvel Rivals » ; 7 % de la croissance F2P 2024 ; Overwatch 2 −8 %  
-• p. 42 : « churn between titles »  
-• p. 45 : Télémétrie brute de plus d'1 M de joueurs ; au moins 2 h par titre ; au moins 10 joueurs par titre ; avertissement « core audiences »  
-• p. 73 : −26 % pour Overwatch Classic, « coincided »  
-• p. 78 : DAU d'Overwatch 2 revenus au niveau d'Overwatch 1  
-• p. 8 : 73 000 = Global Gamer Study (sondage)  
+| Page | Ce qui y est écrit |
+|---|---|
+| p. 24 | « 45% of players who stopped playing Overwatch 2 in December played Marvel Rivals » ; 7 % de la croissance F2P 2024 ; Overwatch 2 −8 % |
+| p. 42 | « churn between titles » |
+| p. 45 | Télémétrie brute de plus d'1 M de joueurs ; au moins 2 h par titre ; au moins 10 joueurs par titre ; avertissement « core audiences » |
+| p. 73 | −26 % pour Overwatch Classic, « coincided » |
+| p. 78 | DAU d'Overwatch 2 revenus au niveau d'Overwatch 1 |
+| p. 8 | 73 000 = Global Gamer Study (sondage) |
 
 • Fiabilité : A pour ce qui est écrit ; biais déclaré vers les joueurs engagés. Méthode de correction non publiée.  
 
@@ -215,22 +211,24 @@ Même reprise.
 https://steamcharts.com/app/2767030  
 • Tiré :  
 
-• Déc. 2024 : 279 402  
-• Janv. 2025 : 306 066  
-• Févr. 2025 : 228 000  
-• Mars 2025 : 144 302  
-• Avr. 2025 : 134 118  
-• Mai 2025 : 102 116  
-• Juin 2025 : 79 806  
-• Juil. 2025 : 82 825  
-• Août 2025 : 77 502  
-• Sept. 2025 : 64 418  
-• Oct. 2025 : 63 716  
-• Nov. 2025 : 65 301  
-• Déc. 2025 : 75 492  
-• Janv. 2026 : 88 790  
-• Févr. 2026 : 81 368  
-• 30 derniers jours : 68 566  
+| Période | Moyenne mensuelle |
+|---|---|
+| Déc. 2024 | 279 402 |
+| Janv. 2025 | 306 066 |
+| Févr. 2025 | 228 000 |
+| Mars 2025 | 144 302 |
+| Avr. 2025 | 134 118 |
+| Mai 2025 | 102 116 |
+| Juin 2025 | 79 806 |
+| Juil. 2025 | 82 825 |
+| Août 2025 | 77 502 |
+| Sept. 2025 | 64 418 |
+| Oct. 2025 | 63 716 |
+| Nov. 2025 | 65 301 |
+| Déc. 2025 | 75 492 |
+| Janv. 2026 | 88 790 |
+| Févr. 2026 | 81 368 |
+| 30 derniers jours | 68 566 |
 
 Pic historique : 642 333.  
 • À vérifier : moyenne contre moyenne, pic contre pic. Recoupement possible sur SteamDB : https://steamdb.info/app/2767030/charts/  
@@ -288,12 +286,14 @@ https://store.steampowered.com/appreviews/2767030?json=1&filter=recent&language=
 
 9. SOURCES REJETÉES  
 
-• https://goombastomp.com/marvel-rivals-matchmaking-how-does-it-work/ : Explication non sourcée, contredite par la vidéo officielle  
-• https://www.reddit.com/r/marvelrivals/comments/1kgdgid/yes_the_matchmaking_is_rigged_and_its_fascinating/ : Fil « data scientist » : méthode invérifiable, conclusion EOMM contraire au démenti ; Reddit par ailleurs bloqué (403) depuis mon environnement  
-• https://www.thegamer.com/overwatch-2-players-switched-to-marvel-rivals/ : Déforme « played » en « switched »  
-• https://ojs.aaai.org/index.php/aaai/article/view/28760 : Valable comme R&D NetEase, rejeté comme « algorithme de Marvel Rivals »  
-• « Panel de 73 000 joueurs » (Newzoo p. 8) : C'est un sondage, pas le panel de télémétrie  
-• « PlayTracker = source des 45 % » : Chronologie incompatible (partenariat après le rapport)  
+| Source | Pourquoi |
+|---|---|
+| https://goombastomp.com/marvel-rivals-matchmaking-how-does-it-work/ | Explication non sourcée, contredite par la vidéo officielle |
+| https://www.reddit.com/r/marvelrivals/comments/1kgdgid/yes_the_matchmaking_is_rigged_and_its_fascinating/ | Fil « data scientist » : méthode invérifiable, conclusion EOMM contraire au démenti ; Reddit par ailleurs bloqué (403) depuis mon environnement |
+| https://www.thegamer.com/overwatch-2-players-switched-to-marvel-rivals/ | Déforme « played » en « switched » |
+| https://ojs.aaai.org/index.php/aaai/article/view/28760 | Valable comme R&D NetEase, rejeté comme « algorithme de Marvel Rivals » |
+| « Panel de 73 000 joueurs » (Newzoo p. 8) | C'est un sondage, pas le panel de télémétrie |
+| « PlayTracker = source des 45 % » | Chronologie incompatible (partenariat après le rapport) |
 
 10. PRIORITÉS DE VÉRIFICATION  
 
