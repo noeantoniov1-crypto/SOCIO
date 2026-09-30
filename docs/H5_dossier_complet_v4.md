@@ -343,33 +343,82 @@ Ce ne sont **pas** les débutants qui écrivent qu'ils sont victimes du matchmak
 
 ## 8. BODAK
 
-**Le modèle de la slide 18 (League of Legends) :**
-- **B** : « L'engagement DAU de LoL **baisse de 12 %** sur les **vétérans 3+ ans**, **malgré** une acquisition stable. **Cannibalisation par TFT ?** » → fait chiffré + segment + « malgré » + hypothèse en question.
-- **O** : « **Ramener** stickiness DAU/MAU des joueurs 3+ ans **à 45 %** d'ici **la fin de Season 15** » → verbe + KPI + segment + valeur cible + échéance.
+**Ce que demande la slide 18 :** une **phrase précise par lettre**, qui répond à la question de la lettre, sur le modèle de l'exemple League of Legends.
 
-La slide 21 demande aussi explicitement un « O (**objectif SMART**) » et des KPIs « **spécifiques** (D30 post-Season 3) » plutôt que génériques.
+| Lettre | Question de la slide | Exemple LoL (slide 18) | Forme à reproduire |
+|---|---|---|---|
+| **B** | Quel problème business résout-on ? | « L'engagement DAU de LoL baisse de 12 % sur les vétérans 3+ ans, malgré une acquisition stable. Cannibalisation par TFT ? » | Fait chiffré + segment + « malgré » + hypothèse en question |
+| **O** | Quel objectif mesurable, à quelle échéance ? | « Ramener stickiness DAU/MAU des joueurs 3+ ans à 45 % d'ici la fin de Season 15 » | Ramener + KPI + segment + valeur cible + échéance |
+| **D** | Quelles données pour comprendre ET agir ? | « Sessions par titre Riot (LoL, TFT, Valorant), transitions inter-jeux, changements de mode principal » | Liste des données, précises et nommées |
+| **A** | Quelle méthode d'analyse ? | « Analyse de cohortes croisées + funnel de switch + interviews joueurs D30-quitters » | Méthodes enchaînées par des « + » |
+| **K** | Quels KPIs prouvent le succès ? | « Stickiness LoL, taux de retour post-patch, satisfaction vétérans, revenus battle pass » | 3 à 5 indicateurs nommés |
 
-| Lettre | Contenu |
+### 8.1 Notre BODAK
+
+> **Décision à éclairer :** NetEase doit décider s'il modifie l'entrée en jeu de Marvel Rivals (matchmaking des débutants, garde-fous de rôles) face à un plancher d'audience bas et fragile depuis mi-2025.
+
+| Lettre | Phrase |
 |---|---|
-| **B** | « La moyenne Steam de Marvel Rivals a chuté de **79 %** entre janvier 2025 (306 K) et octobre 2025 (64 K) et plafonne depuis entre 64 et 90 K, **malgré 40 M de joueurs acquis en 3 mois**. Sur la même période, la part des avis négatifs citant le matchmaking est passée de **7 % à 41 %**. **Écart d'expérience vétérans / débutants que le matchmaking ne calibre pas ?** » |
-| **O (SMART)** | « **Ramener à 1,2 maximum** le ratio de churn J7 entre les **nouveaux comptes ayant perdu au moins 7 de leurs 10 premiers matchs** et les autres nouveaux comptes, **d'ici le 31 mars 2027** (6 mois, horizon du brief). » |
-| **D** | Matrice §9 : essentiellement des **données existantes** dans votre télémétrie ; 2 nouvelles collectes sous consentement ; données externes (Newzoo, avis Steam agrégés) pour le contexte et le contrôle. |
-| **A** | 1) Cohortes avant et après la S5. 2) Régression du churn J7 sur l'écart, l'ancienneté, la population et la composition (test qui départage H1 et H5). 3) Tests A/B des garde-fous. 4) Text mining des avis Steam, en continu. |
-| **K** | §10. Chaque KPI a un seuil et une action. |
+| **B — Business problem** | « La moyenne Steam de Marvel Rivals baisse de **79 %** entre janvier et octobre 2025 (306 K → 64 K) et plafonne depuis sous 90 K, **malgré 40 M de joueurs acquis en 3 mois**. **Écart d'expérience vétérans / débutants que le matchmaking ne calibre pas ?** » |
+| **O — Objective** | « **Ramener à 1,2** le ratio de churn J7 entre les **nouveaux comptes ayant perdu au moins 7 de leurs 10 premiers matchs** et les autres nouveaux comptes, **d'ici le 31/03/2027** (≈ fin de Season 12, calendrier à confirmer). » |
+| **D — Data** | « Écart de score et de MMR caché (classé et partie rapide) × ancienneté du compte, largeur de fourchette × joueurs en file, compositions par rôle × résultat × rang, parties avec bots, churn J7 par cohorte, avis Steam agrégés. » |
+| **A — Analysis** | « Cohortes avant / après les placements de la S5 + régression du churn J7 sur écart, ancienneté, population et composition (test H1 contre H5) + tests A/B des garde-fous + text mining des avis Steam. » |
+| **K — KPIs** | « Ratio de churn J7 des nouveaux comptes perdants, ratio d'écart de score comptes de moins de 30 jours / anciens, attente p90 par rang, part des matchs Bronze-Or avec au moins 4 héros du même rôle, part des avis Steam négatifs citant le matchmaking. » |
 
-Sources du B : [Steam Charts](https://steamcharts.com/app/2767030), [Game World Observer](https://gameworldobserver.com/2025/02/20/marvel-rivals-40-million-players-netease-fy24-report), scraping Steam du 30/09/2026.
+### 8.2 Justification de chaque phrase
 
-**Pourquoi un ratio dans le O ?** Nous ne connaissons pas la valeur de départ interne : NetEase la mesurera. Un ratio est **mesurable sans base publique** et dit exactement ce qu'on vise : **qu'une mauvaise entrée dans le jeu ne fasse plus fuir davantage** qu'une bonne. Quand NetEase fournit la base (par exemple un churn J7 de 60 %), on peut réécrire le O en valeur absolue, comme sur la slide LoL : « Ramener le churn J7 des nouveaux comptes perdants de 60 % à 45 % d'ici le 31/03/2027 ».
+**B — les chiffres et leur preuve**
 
-**Indicateur de contrôle externe (vérifiable publiquement) :** part des avis Steam négatifs citant le matchmaking **sous 8 %** au 31/03/2027. Base : **10,5 %** en septembre 2026.
+| Élément de la phrase | Valeur | Statut | Source |
+|---|---|---|---|
+| Moyenne Steam janvier 2025 → octobre 2025 | 306 066 → 63 716 (−79 %) | FAIT (PC uniquement, moyenne contre moyenne) | https://steamcharts.com/app/2767030 |
+| Plateau depuis | 64 à 89 K de moyenne mensuelle | FAIT | idem |
+| Acquisition | 40 M de joueurs en ~3 mois | FAIT *(extrait)* | https://gameworldobserver.com/2025/02/20/marvel-rivals-40-million-players-netease-fy24-report |
+| Hypothèse en question | H5, appuyée par les avis Steam : la part des négatifs citant le matchmaking passe de 7 % à 41 % (déc. 2024 → août 2025) | HYPOTHÈSE | §7 |
 
-| Critère SMART | Vérification |
+⚠️ Le B de la slide cible un **segment** (« vétérans 3+ ans »). Nous ne pouvons pas segmenter publiquement : le segment « nouveaux comptes perdants » apparaît donc dans le **O**. Si NetEase fournit ses données, on pourra réécrire le B sur ce segment (« La rétention J7 des nouveaux comptes baisse de X %… »).
+
+**O — grille SMART**
+
+| Critère | Vérification |
 |---|---|
 | **S — Spécifique** | Un segment précis (nouveaux comptes perdants), un indicateur précis (churn J7), pas un indicateur générique comme les DAU |
-| **M — Mesurable** | Ratio calculable sur la télémétrie de NetEase ; contrôle externe par le scraping Steam |
-| **A — Atteignable** | Leviers testables en 90 jours (file débutants, garde-fous de rôles aux rangs bas, transparence sur les bots). Précédent : les plaintes sur le matchmaking sont passées de 26 % à 17 % des négatifs juste après les placements de la S5. |
+| **M — Mesurable** | Ratio calculable sur la télémétrie de NetEase ; valeur cible chiffrée (1,2) |
+| **A — Atteignable** | Leviers testables en 90 jours (file débutants, garde-fous de rôles aux rangs bas, transparence sur les bots). Précédent : les plaintes sur le matchmaking passent de 26 % à 17 % des négatifs juste après les placements de la S5. |
 | **R — Pertinent** | Découle directement du B : si l'écart d'expérience fait fuir, c'est chez les nouveaux comptes perdants qu'on le voit |
-| **T — Temporel** | 31/03/2027, soit les 6 mois du brief. L'équivalent en saison est **à confirmer** avec le calendrier NetEase (saisons de 2 mois depuis la S3). |
+| **T — Temporel** | 31/03/2027, soit les 6 mois du brief ; numéro de saison à confirmer (saisons de 2 mois depuis la S3) |
+
+*Pourquoi un ratio ?* La valeur de départ interne est inconnue : un ratio est mesurable sans base publique. Quand NetEase fournit la base (par exemple un churn J7 de 60 %), on réécrit comme sur la slide : « Ramener le churn J7 des nouveaux comptes perdants de 60 % à 45 % d'ici la fin de Season 12 ».
+
+**D — chaque donnée sert à comprendre OU à agir** (détail et ICE au §9)
+
+| Donnée | Comprendre (quel maillon) | Agir (quelle décision) |
+|---|---|---|
+| Écart de score et de MMR × ancienneté | Maillons 2, 2b, 3 | File débutants, file protégée |
+| Largeur de fourchette × joueurs en file | Maillon 5 (H5b) | Resserrer ou non la fourchette |
+| Compositions × résultat × rang | Maillon 7 | Garde-fous de rôles : à quels rangs |
+| Parties avec bots | Maillon 2b | Étiquette « match d'entraînement » |
+| Churn J7 par cohorte | Maillon 4 | Mesure du O |
+| Avis Steam agrégés | Perception (H1 contre H5) | Contrôle externe du O |
+
+**A — ce que chaque méthode tranche**
+
+| Méthode | Question tranchée |
+|---|---|
+| Cohortes avant / après la S5 | Le calibrage réduit-il le churn des nouveaux comptes ? |
+| Régression du churn J7 | L'écart de niveau explique-t-il le churn mieux que les séries (H5 contre H1) ? |
+| Tests A/B des garde-fous | Quel levier fait baisser le ratio du O, et à quel coût d'attente ? |
+| Text mining des avis Steam | La perception suit-elle les changements ? |
+
+**K — chaque KPI a un seuil et une action** (détail au §10)
+
+| KPI | Seuil | Rôle |
+|---|---|---|
+| Ratio de churn J7 des nouveaux comptes perdants | ≤ 1,2 | **KPI du O** |
+| Ratio d'écart de score, comptes de moins de 30 jours / anciens | < 1,5 | Cause (écart réel) |
+| Attente p90 par rang | < 5 min | **Garde-fou** : un test qui la dépasse est arrêté |
+| Part des matchs Bronze-Or avec au moins 4 héros du même rôle | < 20 % | Cause (maillon 7) |
+| Part des avis Steam négatifs citant le matchmaking | < 8 % (base : 10,5 % en sept. 2026) | Perception, contrôle externe |
 
 ---
 
