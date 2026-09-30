@@ -380,84 +380,248 @@ Ce ne sont **pas** les débutants qui écrivent qu'ils sont victimes du matchmak
 
 *Pourquoi un ratio ?* La valeur de départ interne est inconnue : un ratio est mesurable sans base publique. Quand NetEase fournit la base (par exemple un churn J7 de 60 %), on réécrit l'objectif en valeur absolue : « Ramener le churn J7 des nouveaux comptes perdants de 60 % à 45 % d'ici la fin de Season 12 ».
 
-**D — données utilisées : pourquoi, dans quel but, et ce qui se passe selon le résultat** (priorisation ICE au §9)
+**D — chaque donnée : pourquoi on la collecte, quel lien avec les hypothèses, et ce que son résultat change** (priorisation ICE au §9)
 
-Toutes ces données servent l'objectif SMART : faire passer le ratio de churn J7 des nouveaux comptes perdants à 1,2 au plus. Chacune répond à une question fermée. Sa réponse **déclenche** un levier ou **l'écarte** : aucune n'est collectée « pour voir ».
+Chaque donnée répond à une question fermée. Son résultat renforce ou affaiblit une hypothèse, puis **déclenche** un levier ou **l'écarte** : aucune n'est collectée « pour voir ». Pour chacune, la fiche précise son rôle dans le raisonnement :
+
+| Rôle | Ce que ça veut dire |
+|---|---|
+| **Condition nécessaire** | Si elle ne montre rien, H5 tombe seule |
+| **Cause possible** | H5 tient si au moins une des causes possibles confirme ; elle tombe si toutes sont négatives |
+| **Aggravant** | Si elle ne montre rien, H5 tient toujours, sans l'aggravation |
+| **Départage** | Elle dit laquelle de deux hypothèses est la bonne |
+| **Précision d'une cause** / **Soutien** | Elle affine une autre donnée, sans valider ni réfuter H5 seule |
+| **Orientation de la réponse** / **Coût d'une décision** / **Contexte** | Elle ne teste pas H5 : elle dit comment agir, ou à quel prix |
 
 **D1. Churn J7 par cohorte × bilan des 10 premiers matchs**
+
 | | |
 |---|---|
 | **Définition** | Part des nouveaux comptes qui ne rejouent pas dans les 7 jours, selon leurs victoires et défaites sur leurs 10 premiers matchs (partie rapide et classé) |
-| **Pourquoi la collecter** | C'est l'indicateur de l'objectif : sans elle, le O n'est pas mesurable |
-| **But** | Fixer la valeur de départ du ratio, puis suivre son évolution jusqu'au 31/03/2027 |
-| **Si elle ne montre rien** (ratio déjà ≤ 1,2 : perdre ses premiers matchs ne fait pas plus partir) | **H5 est réfutée sur le churn.** L'objectif n'a plus de raison d'être : on arrête les tests de matchmaking et on réoriente l'audit vers H2 (équilibrage), H3 (monétisation) ou la perception pure (H1 : communication plutôt qu'algorithme). |
-| **Si elle confirme** (ratio nettement > 1,2) | Le coût d'un mauvais démarrage est prouvé et chiffré. L'objectif est validé, et on passe aux données D2 à D6 pour trouver **quelle** cause corriger. |
+| **Pourquoi on la collecte** | C'est l'indicateur de l'objectif SMART : sans elle, le O n'est pas mesurable |
+| **Lien avec les hypothèses** | **H5, maillon 4** (les défaites font partir). Sert aussi de contrôle pour **H3** (croisée avec payeurs / non-payeurs) |
+| **Rôle dans le raisonnement** | **Condition nécessaire** : si elle ne montre rien, H5 tombe seule |
+| **Si elle confirme** | *Hypothèse :* le coût d'un mauvais démarrage est prouvé. H5 reste possible ; il faut en trouver la cause (D2, D3, D6).<br>*Décision :* l'objectif est validé et on fixe sa valeur de départ. |
+| **Si elle ne montre rien** | *Hypothèse :* **H5 est réfutée comme explication du churn**, même si un écart d'expérience existe. Avant de conclure, on vérifie la robustesse : seuil de 5 défaites sur 10, fenêtre J30, partie rapide seule, PC contre console.<br>*Décision :* on abandonne l'objectif et les tests de matchmaking ; l'audit se réoriente vers H2, H3 ou H1. |
 
 **D2. Écart de score intra-match × ancienneté du compte (classé)**
+
 | | |
 |---|---|
 | **Définition** | Différence de score compétitif moyen entre les deux équipes d'un match, croisée avec l'âge des comptes présents |
-| **Pourquoi la collecter** | Pour vérifier les maillons 2 et 3 : les nouveaux comptes subissent-ils des matchs plus déséquilibrés que les autres ? |
-| **But** | Départager H5 (écart d'expérience) et H1 (séries artificielles) : c'est la donnée qui répond à la question du B |
-| **Si elle ne montre rien** (écarts identiques pour tous les comptes) | Les défaites des débutants ne viennent pas d'un appariement déséquilibré. **Pas de file protégée** en classé : le levier est écarté. Si le churn (D1) reste élevé, la cause est ailleurs : difficulté du jeu, onboarding, perception. |
-| **Si elle confirme** (ratio d'écart > 1,5 pour les comptes de moins de 30 jours) | **Test A/B d'une file protégée** pour les nouveaux comptes, et réponse factuelle aux accusations d'EOMM : l'écart vient de l'ancienneté, pas d'une manipulation. |
+| **Pourquoi on la collecte** | Pour savoir si les nouveaux comptes subissent des matchs plus déséquilibrés que les autres |
+| **Lien avec les hypothèses** | **H5, maillons 2 et 3**. **Départage H5 et H1** : sous H5, l'écart dépend de l'ancienneté ; sous H1 (séries artificielles), il n'en dépend pas |
+| **Rôle dans le raisonnement** | **Cause possible** (avec D3 et D6 : H5 tient si au moins l'une des trois confirme) |
+| **Si elle confirme** | *Hypothèse :* H5 est renforcée et **H1 affaiblie** : l'injustice ressentie a une cause mesurable qui n'est pas une manipulation.<br>*Décision :* test A/B d'une file protégée pour les nouveaux comptes, et réponse chiffrée aux accusations d'EOMM. |
+| **Si elle ne montre rien** | *Hypothèse :* le classé n'est pas en cause pour les débutants ; H5 ne tient plus que par D3 ou D6.<br>*Décision :* pas de file protégée en classé. |
 
 **D3. Écart de MMR caché en partie rapide × ancienneté**
+
 | | |
 |---|---|
-| **Définition** | Même mesure sur le MMR interne de la partie rapide, pour les comptes sous le niveau 15 (le classé leur est fermé) |
-| **Pourquoi la collecter** | La partie rapide est la porte d'entrée des débutants (maillon 2b), et son fonctionnement n'est pas documenté publiquement |
-| **But** | Savoir si le premier contact avec le jeu est déséquilibré, avant même le classé |
-| **Si elle ne montre rien** | La partie rapide n'est pas en cause. **Pas de file « débutants »** : on concentre l'effort sur le classé et les compositions. |
-| **Si elle confirme** | **Test A/B d'une file « débutants » jusqu'au niveau 15.** C'est probablement le levier le plus direct sur le O, car il agit sur les 10 premiers matchs. |
+| **Définition** | Écart de MMR interne entre les équipes de partie rapide, pour les comptes sous le niveau 15 (le classé leur est fermé) |
+| **Pourquoi on la collecte** | La partie rapide est la porte d'entrée des débutants, et son fonctionnement n'est pas documenté publiquement |
+| **Lien avec les hypothèses** | **H5, maillon 2b** |
+| **Rôle dans le raisonnement** | **Cause possible** (avec D2 et D6) |
+| **Si elle confirme** | *Hypothèse :* H5 est renforcée sur le point le plus sensible : le premier contact avec le jeu.<br>*Décision :* test A/B d'une file « débutants » jusqu'au niveau 15. C'est le levier le plus direct sur le O, car il agit sur les 10 premiers matchs. |
+| **Si elle ne montre rien** | *Hypothèse :* la porte d'entrée n'est pas déséquilibrée ; le maillon 2b tombe.<br>*Décision :* pas de file débutants ; l'effort porte sur le classé et les compositions. |
 
-**D4. Largeur de fourchette × joueurs en file**
+**D4. Rétention des nouveaux comptes avant et après la S5**
+
+| | |
+|---|---|
+| **Définition** | Rétention J7 et J30 des comptes créés avant et après l'arrivée des placements (14/11/2025) |
+| **Pourquoi on la collecte** | Les placements sont la correction, par NetEase, du démarrage sans calibrage : leur effet est une preuve interne du maillon 2 |
+| **Lien avec les hypothèses** | **H5, maillon 2** (preuve a posteriori) |
+| **Rôle dans le raisonnement** | **Preuve de soutien** : elle renforce H5 mais ne suffit pas à la réfuter |
+| **Si elle confirme** | *Hypothèse :* le manque de calibrage faisait bien partir les joueurs : H5 est renforcée, et la chute des plaintes Steam après la S5 (26 % → 17 %) n'est pas qu'une coïncidence.<br>*Décision :* on prolonge la même logique de calibrage à la partie rapide (D3). |
+| **Si elle ne montre rien** | *Hypothèse :* les placements n'ont pas changé la rétention ; le maillon 2 est affaibli. La baisse des plaintes Steam relevait alors surtout de la perception.<br>*Décision :* on ne mise pas sur le calibrage seul ; on regarde D5 et D6. |
+
+**D5. Largeur de fourchette + attente × joueurs en file**
+
 | | |
 |---|---|
 | **Définition** | Écart de rang maximal accepté par le matchmaking, et temps d'attente, selon le nombre de joueurs en file |
-| **Pourquoi la collecter** | Pour vérifier H5b (maillon 5) : la baisse de population force-t-elle le système à mélanger des niveaux éloignés ? |
-| **But** | Arbitrer entre attente et équité : c'est le coût de tout levier qui resserre les matchs |
-| **Si elle ne montre rien** (fourchette stable même quand la population baisse) | La population n'aggrave pas l'écart. On peut resserrer les files débutants **sans craindre d'allonger l'attente**. |
-| **Si elle confirme** | Tout resserrement aura un coût en attente. On teste avec **l'attente p90 comme seuil d'arrêt** (5 minutes), et on **annonce** l'élargissement aux joueurs au lieu de le cacher. |
+| **Pourquoi on la collecte** | Pour savoir si la baisse de population oblige le système à mélanger des niveaux éloignés |
+| **Lien avec les hypothèses** | **H5b, maillon 5** (aggravation par la population) |
+| **Rôle dans le raisonnement** | **Aggravant** : si elle ne montre rien, H5 tient toujours, sans l'aggravation |
+| **Si elle confirme** | *Hypothèse :* H5b est validée : la baisse d'audience entretient elle-même l'écart (cercle vicieux).<br>*Décision :* tout resserrement coûte de l'attente : on teste avec l'attente p90 comme seuil d'arrêt (5 minutes), et on annonce les élargissements aux joueurs. |
+| **Si elle ne montre rien** | *Hypothèse :* H5b tombe ; l'écart ne dépend pas de la population.<br>*Décision :* on peut resserrer les files débutants sans craindre d'allonger l'attente. |
 
-**D5. Compositions par rôle × résultat × rang**
+**D6. Compositions par rôle × résultat × rang**
+
 | | |
 |---|---|
 | **Définition** | Nombre de héros par rôle dans chaque équipe, résultat du match, rang des joueurs |
-| **Pourquoi la collecter** | Pour vérifier le maillon 7 : aux rangs bas, sans rôles imposés, certaines compositions écrasent-elles les équipes non coordonnées ? |
-| **But** | Décider s'il faut des garde-fous de rôles, et à quels rangs seulement |
-| **Si elle ne montre rien** (écarts de taux de victoire entre compositions < 10 points) | La liberté de composition ne pénalise pas les débutants. **On ne touche pas à ce choix de design**, ce qui évite un conflit avec l'identité du jeu. |
-| **Si elle confirme** | **Test A/B d'un minimum de 1 tank et 1 soigneur** en Bronze-Or uniquement, et/ou des bans de héros dès Or ou Platine. |
+| **Pourquoi on la collecte** | Pour savoir si, sans rôles imposés, certaines compositions écrasent les équipes non coordonnées aux rangs bas |
+| **Lien avec les hypothèses** | **H5, maillon 7** (écart tactique). Sert aussi pour **H2** (équilibrage des héros) |
+| **Rôle dans le raisonnement** | **Cause possible** (avec D2 et D3) |
+| **Si elle confirme** | *Hypothèse :* l'écart est aussi tactique ; H5 est renforcée, et H2 en partie.<br>*Décision :* test A/B d'un minimum de 1 tank et 1 soigneur en Bronze-Or uniquement, et/ou des bans de héros dès Or ou Platine. |
+| **Si elle ne montre rien** | *Hypothèse :* la liberté de composition ne pénalise pas les débutants ; le maillon 7 tombe.<br>*Décision :* on ne touche pas à ce choix de design, ce qui évite un conflit avec l'identité du jeu. |
 
-**D6. Parties avec bots × segment**
+**D7. Groupe contre solo × composition × ancienneté**
+
+| | |
+|---|---|
+| **Définition** | Résultat des matchs selon que l'équipe joue en groupe ou en solo, sa composition et l'ancienneté des joueurs |
+| **Pourquoi on la collecte** | Les compositions abusives demandent de la coordination : les groupes de vétérans pourraient en profiter contre des débutants en solo |
+| **Lien avec les hypothèses** | **H5, maillon 7** (précise comment l'écart tactique s'exerce) |
+| **Rôle dans le raisonnement** | **Précision d'une cause** : elle ne valide ni ne réfute H5 seule |
+| **Si elle confirme** | *Hypothèse :* l'écart tactique passe par la coordination.<br>*Décision :* on teste la séparation des groupes et des joueurs solo aux rangs bas. |
+| **Si elle ne montre rien** | *Hypothèse :* le groupe n'aggrave pas l'écart.<br>*Décision :* pas de restriction sur les groupes (elles sont impopulaires, cf. avis Steam). |
+
+**D8. Rôle joué × rôle habituel du joueur**
+
+| | |
+|---|---|
+| **Définition** | Part des matchs où un joueur est sur un rôle qu'il joue rarement |
+| **Pourquoi on la collecte** | NetEase reconnaît lui-même des « imbalanced team roles » (joueur forcé sur un rôle inconnu) |
+| **Lien avec les hypothèses** | **H5, maillon 7** |
+| **Rôle dans le raisonnement** | **Précision d'une cause** |
+| **Si elle confirme** | *Hypothèse :* les débutants subissent des rôles imposés par défaut ; le maillon 7 est renforcé.<br>*Décision :* le matchmaking pondère davantage le rôle habituel ; test du minimum de rôles aux rangs bas. |
+| **Si elle ne montre rien** | *Hypothèse :* les joueurs jouent leur rôle habituel ; ce mécanisme ne compte pas.<br>*Décision :* pas de changement sur la prise en compte des rôles. |
+
+**D9. Durée cumulée des ultimes de soin actifs par combat**
+
+| | |
+|---|---|
+| **Définition** | Temps pendant lequel un combat est bloqué par des ultimes de soin enchaînés |
+| **Pourquoi on la collecte** | Les combats bloqués plus de 30 s (triple Strategist) sont vécus comme injustes et peuvent ressembler à un match truqué |
+| **Lien avec les hypothèses** | **H5, maillon 7** et **H1** (le méta exploité nourrit la perception d'EOMM). Aussi **H2** |
+| **Rôle dans le raisonnement** | **Précision d'une cause** et de la perception |
+| **Si elle confirme** | *Hypothèse :* la mécanique exploitée persiste ; elle alimente la défiance.<br>*Décision :* ajustement du coût des ultimes (seuil : 15 s de blocage médian). |
+| **Si elle ne montre rien** | *Hypothèse :* le problème a été corrigé par la S1.5.<br>*Décision :* pas de nouvel ajustement. |
+
+**D10. Attente simulée avec une role queue, par rôle demandé**
+
+| | |
+|---|---|
+| **Définition** | Temps d'attente estimé si chaque équipe devait compter un nombre fixe de joueurs par rôle |
+| **Pourquoi on la collecte** | NetEase refuse la role queue à cause de l'attente : il faut chiffrer ce coût au lieu de le supposer |
+| **Lien avec les hypothèses** | Aucune hypothèse : elle chiffre le **coût d'un levier** lié au maillon 7 |
+| **Rôle dans le raisonnement** | **Coût d'une décision** |
+| **Si elle confirme** | *Hypothèse :* (attente acceptable) : l'argument contre la role queue s'affaiblit.<br>*Décision :* test d'une role queue souple aux rangs bas. |
+| **Si elle ne montre rien** | *Hypothèse :* (attente trop longue) : l'argument de NetEase est confirmé.<br>*Décision :* on se limite aux garde-fous légers (minimum 1 tank et 1 soigneur). |
+
+**D11. Parties avec bots × segment**
+
 | | |
 |---|---|
 | **Définition** | Part des matchs contenant des bots, par ancienneté du compte et selon les séries de défaites |
-| **Pourquoi la collecter** | Des joueurs signalent des bots non annoncés : si c'est le cas, ils masquent le problème et créent un risque de réputation |
-| **But** | Mesurer leur effet réel sur la rétention et décider de la transparence |
-| **Si elle ne montre rien** (pas de bots, ou aucun effet sur la rétention) | On peut **démentir publiquement avec des chiffres**, ce qui réduit la défiance. Ou bien on les supprime s'ils n'aident pas. |
-| **Si elle confirme** (bots fréquents chez les perdants, effet positif sur la rétention) | Ils traitent le symptôme sans la cause : on les garde **uniquement annoncés** (étiquette « match d'entraînement ») et on corrige la cause avec D2 et D3. |
+| **Pourquoi on la collecte** | Des joueurs signalent des bots non annoncés : s'ils existent, ils masquent le problème et créent un risque de réputation |
+| **Lien avec les hypothèses** | **H5, maillon 2b**, et **H1** (les bots cachés alimentent la défiance) |
+| **Rôle dans le raisonnement** | **Orientation de la réponse** : ne valide ni ne réfute H5 |
+| **Si elle confirme** | *Hypothèse :* (bots fréquents chez les perdants, effet positif sur la rétention) : ils traitent le symptôme sans la cause.<br>*Décision :* on les garde uniquement annoncés (étiquette « match d'entraînement ») et on corrige la cause (D2, D3). |
+| **Si elle ne montre rien** | *Hypothèse :* (pas de bots, ou aucun effet) : les accusations sont infondées.<br>*Décision :* démenti public chiffré, ou suppression des bots s'ils n'aident pas. |
 
-**D7. Avis Steam agrégés**
+**D12. Courbe de performance sur les 20 premiers matchs**
+
+| | |
+|---|---|
+| **Définition** | Évolution du score de performance d'un nouveau compte sur ses 20 premiers matchs |
+| **Pourquoi on la collecte** | Un vétéran d'un autre hero shooter performe fort dès le début ; un débutant du genre progresse lentement. C'est le seul moyen de distinguer les deux **sans identité** |
+| **Lien avec les hypothèses** | **H5, maillon 1** (deux populations). Aussi **H1b** (smurfs : comptes neufs à performance anormale) |
+| **Rôle dans le raisonnement** | **Condition de départ** : sans deux populations distinctes, il n'y a pas d'écart d'expérience |
+| **Si elle confirme** | *Hypothèse :* les deux populations existent et on connaît leur part ; le maillon 1 est prouvé.<br>*Décision :* on peut orienter les files et l'onboarding selon le profil détecté. |
+| **Si elle ne montre rien** | *Hypothèse :* les nouveaux comptes forment une seule population ; **H5 perd son point de départ** (le maillon 1 tombe).<br>*Décision :* on abandonne les files séparées ; si D1 confirme, on regarde l'onboarding et la difficulté. |
+
+**D13. Question d'onboarding « Premier hero shooter ? » (facultative)**
+
+| | |
+|---|---|
+| **Définition** | Réponse déclarative du joueur à sa création de compte |
+| **Pourquoi on la collecte** | Pour mesurer directement la part de débutants du genre, que Newzoo ne peut pas mesurer |
+| **Lien avec les hypothèses** | **H5, maillon 1**. Recoupe D12 |
+| **Rôle dans le raisonnement** | **Soutien** de D12 |
+| **Si elle confirme** | *Hypothèse :* la part de débutants du genre est connue et importante.<br>*Décision :* on peut dimensionner la file débutants. |
+| **Si elle ne montre rien** | *Hypothèse :* peu de débutants du genre ; le maillon 1 est affaibli.<br>*Décision :* la file débutants concerne peu de joueurs ; on privilégie d'autres leviers. |
+
+**D14. Héros maîtrisés × ancienneté**
+
+| | |
+|---|---|
+| **Définition** | Nombre de héros joués avec un bon niveau, selon l'ancienneté du compte |
+| **Pourquoi on la collecte** | Un héros par mois alourdit le jeu : les débutants risquent de ne jamais rattraper les vétérans |
+| **Lien avec les hypothèses** | **H5, maillon 6**, et **H2** (fatigue liée aux contenus) |
+| **Rôle dans le raisonnement** | **Aggravant** |
+| **Si elle confirme** | *Hypothèse :* le rythme des sorties creuse l'écart ; le maillon 6 est renforcé.<br>*Décision :* aide à l'apprentissage des nouveaux héros (essai, tutoriels), sans ralentir les sorties. |
+| **Si elle ne montre rien** | *Hypothèse :* le rythme n'est pas un problème.<br>*Décision :* pas de changement du calendrier des héros. |
+
+**D15. Micro-sondage d'équité perçue après le match (1 match sur 10)**
+
+| | |
+|---|---|
+| **Définition** | Note de 1 à 5 donnée par le joueur sur l'équité du match qu'il vient de jouer |
+| **Pourquoi on la collecte** | Pour séparer l'injustice **réelle** (mesurée par D2) de l'injustice **perçue** |
+| **Lien avec les hypothèses** | **Départage H1 et H5** : sous H5, la perception suit l'écart réel ; sous H1, elle s'en détache |
+| **Rôle dans le raisonnement** | **Départage** |
+| **Si elle confirme** | *Hypothèse :* (perception alignée sur l'écart réel) : la défiance vient bien de vrais déséquilibres ; H5 est renforcée.<br>*Décision :* on corrige le matchmaking. |
+| **Si elle ne montre rien** | *Hypothèse :* (injustice perçue alors que l'écart réel est normal) : le problème relève de H1, c'est-à-dire de la perception.<br>*Décision :* transparence et communication plutôt qu'un nouvel algorithme. |
+
+**D16. Avis Steam agrégés**
+
 | | |
 |---|---|
 | **Définition** | Part des avis négatifs citant le matchmaking, par mois (§7) |
-| **Pourquoi la collecter** | La défiance est ce qui fait partir, même quand le matchmaking est juste : il faut suivre la **perception**, pas seulement la réalité |
-| **But** | Contrôle externe et public de l'objectif (cible : moins de 8 %) |
-| **Si elle ne montre rien** (la plainte ne baisse pas alors que D1 et D2 s'améliorent) | Le problème devient un problème de **perception** : on investit dans la transparence (page « comment fonctionne le matchmaking », statistiques publiées), pas dans un nouvel algorithme. |
-| **Si elle confirme** (la plainte baisse avec les leviers) | Les corrections sont **perçues** par les joueurs : on peut les généraliser et en faire un argument de communication. |
+| **Pourquoi on la collecte** | La défiance fait partir les joueurs même quand le matchmaking est juste : il faut suivre la perception, publiquement |
+| **Lien avec les hypothèses** | **H1** (perception) et **H5** (chronologie : la plainte monte avec la cassure et baisse après la S5) |
+| **Rôle dans le raisonnement** | **Contrôle externe du O** ; ne valide ni ne réfute H5 seule (biais du survivant, PC et anglais uniquement) |
+| **Si elle confirme** | *Hypothèse :* (la plainte baisse avec les leviers) : les corrections sont perçues par les joueurs.<br>*Décision :* on généralise les corrections et on en fait un argument de communication. |
+| **Si elle ne montre rien** | *Hypothèse :* (la plainte ne baisse pas alors que D1 et D2 s'améliorent) : le problème restant relève de la perception (H1).<br>*Décision :* on investit dans la transparence (page « comment fonctionne le matchmaking », statistiques publiées). |
 
-**Synthèse : comment les données orientent la décision finale**
+**D17. Benchmark Newzoo (flux entre jeux, agrégé)**
 
-| Résultat des données | Effet sur la décision de NetEase |
+| | |
 |---|---|
-| D1 confirme, et D2 ou D3 confirment | **H5 validée** : on lance les tests A/B (file débutants, file protégée), avec D4 comme garde-fou d'attente |
-| D1 confirme, D2 et D3 ne montrent rien, D5 confirme | L'écart est **tactique**, pas de niveau : on teste les garde-fous de rôles aux rangs bas |
-| D1 confirme, mais aucune cause (D2 à D5) ne ressort | Le churn des perdants est réel mais **pas dû au matchmaking** : on réoriente vers l'onboarding et la difficulté du jeu |
-| D1 ne montre rien | **H5 réfutée** : on n'investit pas dans le matchmaking des débutants et on passe à H1, H2 ou H3 |
-| D7 ne baisse pas alors que les autres s'améliorent | Le problème restant est la **perception** : levier de transparence plutôt qu'algorithmique |
+| **Définition** | Part des joueurs d'autres hero shooters qui ont joué à Marvel Rivals |
+| **Pourquoi on la collecte** | Pour situer l'arrivée des vétérans dans le contexte concurrentiel |
+| **Lien avec les hypothèses** | **H5, maillon 1** (contexte), et **H4** (attrition du genre) |
+| **Rôle dans le raisonnement** | **Contexte** : panel biaisé vers les joueurs engagés, il ne tranche rien |
+| **Si elle confirme** | *Hypothèse :* le contexte est cohérent avec H5.<br>*Décision :* aucune décision directe. |
+| **Si elle ne montre rien** | *Hypothèse :* rien ne change : la mesure qui compte est interne (D12).<br>*Décision :* aucune décision directe. |
 
-→ Dans tous les cas, NetEase **décide sur preuve** : un résultat négatif fait économiser un développement inutile, ce qui est aussi un gain.
+**Vue d'ensemble : quelle donnée teste quelle hypothèse**
+
+| Donnée | H5 (maillon) | H5b | H1 | H1b | H2 | H3 | H4 | Rôle |
+|---|---|---|---|---|---|---|---|---|
+| D1 Churn J7 × 10 premiers matchs | 4 | | | | | ✓ | | Condition nécessaire |
+| D2 Écart de score × ancienneté | 2, 3 | | ✓ | | | | | Cause possible + départage |
+| D3 MMR partie rapide × ancienneté | 2b | | | | | | | Cause possible |
+| D4 Rétention avant / après S5 | 2 | | | | | | | Soutien |
+| D5 Fourchette × joueurs en file | 5 | ✓ | | | | | | Aggravant |
+| D6 Compositions × résultat × rang | 7 | | | | ✓ | | | Cause possible |
+| D7 Groupe / solo × composition | 7 | | | | | | | Précision |
+| D8 Rôle joué × rôle habituel | 7 | | | | | | | Précision |
+| D9 Ultimes de soin par combat | 7 | | ✓ | | ✓ | | | Précision |
+| D10 Attente simulée role queue | — | | | | | | | Coût d'une décision |
+| D11 Parties avec bots | 2b | | ✓ | | | | | Orientation de la réponse |
+| D12 Performance sur 20 matchs | 1 | | | ✓ | | | | Condition de départ |
+| D13 Question d'onboarding | 1 | | | | | | | Soutien |
+| D14 Héros maîtrisés × ancienneté | 6 | | | | ✓ | | | Aggravant |
+| D15 Micro-sondage d'équité | | | ✓ | | | | | Départage H1 / H5 |
+| D16 Avis Steam | chronologie | | ✓ | | | | | Contrôle externe |
+| D17 Newzoo | 1 | | | | | | ✓ | Contexte |
+
+**Comment H5 peut être réfutée** (annoncé d'avance, pour que le test soit honnête)
+
+| Situation | Conclusion |
+|---|---|
+| **D1 ne montre rien**, même après les tests de robustesse | H5 tombe seule : l'écart d'expérience, s'il existe, ne fait pas partir les joueurs |
+| **D12 ne montre rien** (une seule population de nouveaux comptes) | H5 perd son point de départ : il n'y a pas deux populations à mal apparier |
+| D1 confirme, mais **D2, D3 et D6 ne montrent rien toutes les trois** | H5 tombe : les joueurs partent, mais pas à cause du matchmaking (onboarding, difficulté, perception) |
+| D5 ne montre rien | Seule H5b tombe ; H5 tient |
+
+**Synthèse : comment les données orientent la décision finale de NetEase**
+
+| Résultat des données | Effet sur la décision |
+|---|---|
+| D1 et D12 confirment, et D2 ou D3 confirment | **H5 validée** : tests A/B (file débutants, file protégée), avec D5 et D10 pour le coût en attente |
+| D1 et D12 confirment, D2 et D3 ne montrent rien, D6 confirme | L'écart est **tactique**, pas de niveau : garde-fous de rôles aux rangs bas (précisés par D7, D8, D9) |
+| D1 confirme, mais aucune cause ne ressort | Le churn des perdants est réel mais **pas dû au matchmaking** : réorientation vers l'onboarding et la difficulté |
+| D1 ou D12 ne montre rien | **H5 réfutée** : pas d'investissement dans le matchmaking des débutants ; passage à H1, H2 ou H3 |
+| D15 et D16 montrent une défiance sans écart réel | Le problème est la **perception** (H1) : transparence plutôt qu'un nouvel algorithme |
+
+→ Dans tous les cas, NetEase **décide sur preuve** : un résultat négatif évite de financer un développement inutile, ce qui est aussi un gain.
 
 **A — ce que chaque méthode tranche**
 
@@ -490,31 +654,33 @@ Toutes ces données servent l'objectif SMART : faire passer le ratio de churn J7
 | **C — Confiance** : la donnée tranche-t-elle vraiment ? | Indirecte, très bruitée | Indicateur partiel | Mesure directe de l'hypothèse |
 | **E — Facilité** : coût, délai, conformité | Nouvelle collecte lourde ou sensible | Extraction ou développement modéré | **Existe déjà chez NetEase**, extraction simple |
 
+La colonne « Réf. » renvoie aux fiches D1 à D17 du §8.2 (pourquoi chaque donnée est collectée et ce que son résultat change).
+
 **Score ICE = moyenne des trois notes, sur 5.** **Règle d'arbitrage** : 4 ou plus → phase 0-30 jours ; de 3 à 3,9 → phase 30-90 jours ; moins de 3 → optionnel.
 
-| Donnée | Décision éclairée | Existe chez NetEase ? | Base légale (portée par NetEase) | Priorité | I | C | E | **ICE /5** | Phase |
-|---|---|---|---|---|---|---|---|---|---|
-| Largeur de fourchette + attente × joueurs en file | Arbitrer attente contre équité (H5b) | Oui | Intérêt légitime | **INDISPENSABLE** | 5 | 5 | 5 | **5,0** | 0-30 j |
-| Écart de score intra-match × ancienneté du compte (classé) | Départager H1 et H5 | Oui (probable) | Contrat / intérêt légitime | **INDISPENSABLE** | 5 | 4 | 5 | **4,7** | 0-30 j |
-| Churn J7/J30 par cohorte × bilan des 10 premiers matchs | Mesurer le coût du démarrage à froid (**KPI du O**) | Oui | Intérêt légitime | **INDISPENSABLE** | 5 | 4 | 5 | **4,7** | 0-30 j |
-| Composition par équipe (héros par rôle) × résultat × rang | Garde-fous de rôles : à quels rangs ? | Oui | Intérêt légitime | **INDISPENSABLE** | 4 | 5 | 5 | **4,7** | 0-30 j |
-| Part de parties d'entraînement (bots) × segment | Transparence et effet réel sur la rétention | Oui (si elles existent) | Intérêt légitime + **test de balance** | **INDISPENSABLE** | 4 | 5 | 5 | **4,7** | 0-30 j |
-| Écart de **MMR caché en partie rapide** × ancienneté ; vitesse de convergence | Faut-il une file débutants avant le niveau 15 ? | Oui (probable) | Intérêt légitime | **INDISPENSABLE** | 5 | 4 | 4 | **4,3** | 0-30 j |
-| Rétention des nouveaux comptes avant et après la S5 | Prouver que le démarrage sans calibrage faisait partir (maillon 2) | Oui | Intérêt légitime | **INDISPENSABLE** | 4 | 4 | 5 | **4,3** | 0-30 j |
-| Groupe contre solo × composition × ancienneté | Les groupes exploitent-ils le méta contre les débutants ? | Oui | Intérêt légitime | **INDISPENSABLE** | 4 | 4 | 5 | **4,3** | 0-30 j |
-| Rôle joué × rôle habituel du joueur | Mesurer les « imbalanced team roles » | Oui (utilisé par le matchmaking) | Intérêt légitime | **INDISPENSABLE** | 4 | 4 | 4 | **4,0** | 0-30 j |
-| Courbe de performance sur les 20 premiers matchs | Repérer vétérans et smurfs **sans identité** | Oui | Intérêt légitime (anti-triche) | **INDISPENSABLE** | 4 | 4 | 4 | **4,0** | 0-30 j |
-| **Avis Steam agrégés** (scraping, sans identifiant) | Suivre la perception ; **KPI de contrôle du O** | Non, mais public et déjà collecté | Intérêt légitime ; données publiques, minimisées | **INDISPENSABLE** | 3 | 3 | 5 | **3,7** | Continu |
-| Durée cumulée des ultimes de soin actifs par combat | Détecter les blocages de combat | Oui (à extraire) | Intérêt légitime | **INDISPENSABLE** | 3 | 4 | 3 | **3,3** | 30-90 j |
-| Attente simulée avec role queue, par rôle demandé | Chiffrer le coût d'une role queue | Non (simulation) | Intérêt légitime | **INDISPENSABLE** | 4 | 3 | 3 | **3,3** | 30-90 j |
-| Micro-sondage post-match sur l'équité perçue (1 match sur 10) | Séparer iniquité réelle et perçue | **Non : nouvelle** | **Consentement** | UTILE | 4 | 3 | 3 | **3,3** | 30-90 j |
-| Question d'onboarding « Premier hero shooter ? » (facultative) | Mesurer la part de débutants du genre | **Non : nouvelle** | **Consentement** | UTILE | 3 | 3 | 4 | **3,3** | 30-90 j |
-| Héros maîtrisés × ancienneté | Tester le maillon 6 | Oui | Intérêt légitime | UTILE | 2 | 3 | 5 | **3,3** | 30-90 j |
-| Benchmark Newzoo (flux entre jeux, agrégé) | Contexte concurrentiel | Non (achat) | Contrat B2B, données agrégées | UTILE (une fois) | 2 | 2 | 3 | **2,3** | Optionnel |
-| Historique de jeu individuel sur d'autres titres | — | — | Disproportionné, profilage | **INUTILE** | — | — | — | *non noté* | Écarté |
-| N° de téléphone (anti-smurf) | — | — | Disproportionné, contournable | **INUTILE** | — | — | — | *non noté* | Écarté |
-| Chat vocal ou texte complet | — | — | Disproportionné | **INUTILE** | — | — | — | *non noté* | Écarté |
-| Âge exact pour « profiler » les casuals | — | — | La courbe de performance suffit | **INUTILE** | — | — | — | *non noté* | Écarté |
+| Réf. | Donnée | Décision éclairée | Existe chez NetEase ? | Base légale (portée par NetEase) | Priorité | I | C | E | **ICE /5** | Phase |
+|---|---|---|---|---|---|---|---|---|---|---|
+| D5 | Largeur de fourchette + attente × joueurs en file | Arbitrer attente contre équité (H5b) | Oui | Intérêt légitime | **INDISPENSABLE** | 5 | 5 | 5 | **5,0** | 0-30 j |
+| D2 | Écart de score intra-match × ancienneté du compte (classé) | Départager H1 et H5 | Oui (probable) | Contrat / intérêt légitime | **INDISPENSABLE** | 5 | 4 | 5 | **4,7** | 0-30 j |
+| D1 | Churn J7/J30 par cohorte × bilan des 10 premiers matchs | Mesurer le coût du démarrage à froid (**KPI du O**) | Oui | Intérêt légitime | **INDISPENSABLE** | 5 | 4 | 5 | **4,7** | 0-30 j |
+| D6 | Composition par équipe (héros par rôle) × résultat × rang | Garde-fous de rôles : à quels rangs ? | Oui | Intérêt légitime | **INDISPENSABLE** | 4 | 5 | 5 | **4,7** | 0-30 j |
+| D11 | Part de parties d'entraînement (bots) × segment | Transparence et effet réel sur la rétention | Oui (si elles existent) | Intérêt légitime + **test de balance** | **INDISPENSABLE** | 4 | 5 | 5 | **4,7** | 0-30 j |
+| D3 | Écart de **MMR caché en partie rapide** × ancienneté ; vitesse de convergence | Faut-il une file débutants avant le niveau 15 ? | Oui (probable) | Intérêt légitime | **INDISPENSABLE** | 5 | 4 | 4 | **4,3** | 0-30 j |
+| D4 | Rétention des nouveaux comptes avant et après la S5 | Prouver que le démarrage sans calibrage faisait partir (maillon 2) | Oui | Intérêt légitime | **INDISPENSABLE** | 4 | 4 | 5 | **4,3** | 0-30 j |
+| D7 | Groupe contre solo × composition × ancienneté | Les groupes exploitent-ils le méta contre les débutants ? | Oui | Intérêt légitime | **INDISPENSABLE** | 4 | 4 | 5 | **4,3** | 0-30 j |
+| D8 | Rôle joué × rôle habituel du joueur | Mesurer les « imbalanced team roles » | Oui (utilisé par le matchmaking) | Intérêt légitime | **INDISPENSABLE** | 4 | 4 | 4 | **4,0** | 0-30 j |
+| D12 | Courbe de performance sur les 20 premiers matchs | Repérer vétérans et smurfs **sans identité** | Oui | Intérêt légitime (anti-triche) | **INDISPENSABLE** | 4 | 4 | 4 | **4,0** | 0-30 j |
+| D16 | **Avis Steam agrégés** (scraping, sans identifiant) | Suivre la perception ; **KPI de contrôle du O** | Non, mais public et déjà collecté | Intérêt légitime ; données publiques, minimisées | **INDISPENSABLE** | 3 | 3 | 5 | **3,7** | Continu |
+| D9 | Durée cumulée des ultimes de soin actifs par combat | Détecter les blocages de combat | Oui (à extraire) | Intérêt légitime | **INDISPENSABLE** | 3 | 4 | 3 | **3,3** | 30-90 j |
+| D10 | Attente simulée avec role queue, par rôle demandé | Chiffrer le coût d'une role queue | Non (simulation) | Intérêt légitime | **INDISPENSABLE** | 4 | 3 | 3 | **3,3** | 30-90 j |
+| D15 | Micro-sondage post-match sur l'équité perçue (1 match sur 10) | Séparer iniquité réelle et perçue | **Non : nouvelle** | **Consentement** | UTILE | 4 | 3 | 3 | **3,3** | 30-90 j |
+| D13 | Question d'onboarding « Premier hero shooter ? » (facultative) | Mesurer la part de débutants du genre | **Non : nouvelle** | **Consentement** | UTILE | 3 | 3 | 4 | **3,3** | 30-90 j |
+| D14 | Héros maîtrisés × ancienneté | Tester le maillon 6 | Oui | Intérêt légitime | UTILE | 2 | 3 | 5 | **3,3** | 30-90 j |
+| D17 | Benchmark Newzoo (flux entre jeux, agrégé) | Contexte concurrentiel | Non (achat) | Contrat B2B, données agrégées | UTILE (une fois) | 2 | 2 | 3 | **2,3** | Optionnel |
+| — | Historique de jeu individuel sur d'autres titres | — | — | Disproportionné, profilage | **INUTILE** | — | — | — | *non noté* | Écarté |
+| — | N° de téléphone (anti-smurf) | — | — | Disproportionné, contournable | **INUTILE** | — | — | — | *non noté* | Écarté |
+| — | Chat vocal ou texte complet | — | — | Disproportionné | **INUTILE** | — | — | — | *non noté* | Écarté |
+| — | Âge exact pour « profiler » les casuals | — | — | La courbe de performance suffit | **INUTILE** | — | — | — | *non noté* | Écarté |
 
 → **Arbitrage lisible pour le comité** : les 10 données notées 4 ou plus **existent déjà** dans la télémétrie de NetEase. L'audit des 30 premiers jours ne demande donc **aucune nouvelle collecte**. Les deux collectes nouvelles (sondage, question d'onboarding) arrivent seulement ensuite, et sous consentement. C'est le « Smart Data » du cours appliqué.
 
