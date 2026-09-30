@@ -4,7 +4,7 @@
 
 **Ce qui change dans la version 4 :**
 - **analyse de 303 K avis Steam** (scraping pondéré, section 7) : la part des avis négatifs citant le matchmaking passe de 7 % à 41 %, puis retombe après les placements ;
-- **B et O du BODAK** reformulés sur le modèle de la slide 18 (League of Legends), avec un **O vraiment SMART** et sa grille de justification ;
+- **BODAK** reformulé : une phrase précise par lettre, un **O vraiment SMART**, et le détail des données utilisées et de leur usage ;
 - **matrice ICE notée sur 5** (échelle 1 à 5 alignée sur la matrice P × I de la slide 27) ;
 - nouveau contre-argument (« les débutants ne se plaignent pas du matchmaking ») et nouveau KPI de contrôle externe.
 
@@ -18,7 +18,7 @@ Légende : **FAIT** = écrit dans une source lue · **HYPOTHÈSE** = à valider 
 
 | | |
 |---|---|
-| **Problème** | Sur Steam (PC), la moyenne mensuelle est passée de 306 K (janvier 2025) à un **plateau de 64 à 90 K** depuis septembre 2025. Dans les avis Steam, la part des négatifs qui citent le matchmaking est passée de **7 % (déc. 2024) à 41 % (août 2025)**, malgré votre démenti EOMM du 12/08/2025. **La défiance fixe le plancher.** |
+| **Problème** | Sur Steam (PC), la moyenne mensuelle de joueurs simultanés est passée de **279 K le mois de la sortie** (décembre 2024) à un **plateau de 64 à 89 K** depuis septembre 2025, soit **−77 %**. Dans les avis Steam, la part des négatifs qui citent le matchmaking est passée de **7 % (déc. 2024) à 41 % (août 2025)**, malgré votre démenti EOMM du 12/08/2025. **La défiance fixe le plancher.** |
 | **Diagnostic proposé (H5)** | La perception d'injustice vient en grande partie d'un **écart d'expérience** entre vétérans du genre et débutants venus pour la licence Marvel. Trois facteurs l'amplifient : (1) démarrage à froid sans calibrage, surtout en partie rapide ; (2) fourchettes de rang qui s'élargissent quand la population baisse ; (3) liberté de composition exploitée par les joueurs expérimentés. **Cette explication n'implique aucun EOMM : elle est corrigeable.** |
 | **Signal encourageant** | Juste après les placements de la S5 (14/11/2025), les plaintes sur le matchmaking tombent à **17 %** des avis négatifs. Le calibrage semble compter (corrélation, pas preuve). |
 | **Recommandation** | Un audit d'équité en 30 jours **sur vos données existantes**, puis 3 tests A/B : file réservée aux débutants, garde-fous de rôles aux rangs bas, transparence sur les parties d'entraînement (bots). |
@@ -343,23 +343,13 @@ Ce ne sont **pas** les débutants qui écrivent qu'ils sont victimes du matchmak
 
 ## 8. BODAK
 
-**Ce que demande la slide 18 :** une **phrase précise par lettre**, qui répond à la question de la lettre, sur le modèle de l'exemple League of Legends.
-
-| Lettre | Question de la slide | Exemple LoL (slide 18) | Forme à reproduire |
-|---|---|---|---|
-| **B** | Quel problème business résout-on ? | « L'engagement DAU de LoL baisse de 12 % sur les vétérans 3+ ans, malgré une acquisition stable. Cannibalisation par TFT ? » | Fait chiffré + segment + « malgré » + hypothèse en question |
-| **O** | Quel objectif mesurable, à quelle échéance ? | « Ramener stickiness DAU/MAU des joueurs 3+ ans à 45 % d'ici la fin de Season 15 » | Ramener + KPI + segment + valeur cible + échéance |
-| **D** | Quelles données pour comprendre ET agir ? | « Sessions par titre Riot (LoL, TFT, Valorant), transitions inter-jeux, changements de mode principal » | Liste des données, précises et nommées |
-| **A** | Quelle méthode d'analyse ? | « Analyse de cohortes croisées + funnel de switch + interviews joueurs D30-quitters » | Méthodes enchaînées par des « + » |
-| **K** | Quels KPIs prouvent le succès ? | « Stickiness LoL, taux de retour post-patch, satisfaction vétérans, revenus battle pass » | 3 à 5 indicateurs nommés |
-
-### 8.1 Notre BODAK
-
 > **Décision à éclairer :** NetEase doit décider s'il modifie l'entrée en jeu de Marvel Rivals (matchmaking des débutants, garde-fous de rôles) face à un plancher d'audience bas et fragile depuis mi-2025.
+
+### 8.1 Le BODAK en cinq phrases
 
 | Lettre | Phrase |
 |---|---|
-| **B — Business problem** | « La moyenne Steam de Marvel Rivals baisse de **79 %** entre janvier et octobre 2025 (306 K → 64 K) et plafonne depuis sous 90 K, **malgré 40 M de joueurs acquis en 3 mois**. **Écart d'expérience vétérans / débutants que le matchmaking ne calibre pas ?** » |
+| **B — Business problem** | « Sur Steam, la moyenne mensuelle de joueurs simultanés de Marvel Rivals baisse de **77 %** entre le mois de sa sortie (décembre 2024 : 279 K) et octobre 2025 (64 K), et plafonne depuis sous 90 K, **malgré 40 M de joueurs acquis en 3 mois**. **Écart d'expérience vétérans / débutants que le matchmaking ne calibre pas ?** » |
 | **O — Objective** | « **Ramener à 1,2** le ratio de churn J7 entre les **nouveaux comptes ayant perdu au moins 7 de leurs 10 premiers matchs** et les autres nouveaux comptes, **d'ici le 31/03/2027** (≈ fin de Season 12, calendrier à confirmer). » |
 | **D — Data** | « Écart de score et de MMR caché (classé et partie rapide) × ancienneté du compte, largeur de fourchette × joueurs en file, compositions par rôle × résultat × rang, parties avec bots, churn J7 par cohorte, avis Steam agrégés. » |
 | **A — Analysis** | « Cohortes avant / après les placements de la S5 + régression du churn J7 sur écart, ancienneté, population et composition (test H1 contre H5) + tests A/B des garde-fous + text mining des avis Steam. » |
@@ -367,16 +357,16 @@ Ce ne sont **pas** les débutants qui écrivent qu'ils sont victimes du matchmak
 
 ### 8.2 Justification de chaque phrase
 
-**B — les chiffres et leur preuve**
+**B — données utilisées et à quoi elles servent**
 
-| Élément de la phrase | Valeur | Statut | Source |
-|---|---|---|---|
-| Moyenne Steam janvier 2025 → octobre 2025 | 306 066 → 63 716 (−79 %) | FAIT (PC uniquement, moyenne contre moyenne) | https://steamcharts.com/app/2767030 |
-| Plateau depuis | 64 à 89 K de moyenne mensuelle | FAIT | idem |
-| Acquisition | 40 M de joueurs en ~3 mois | FAIT *(extrait)* | https://gameworldobserver.com/2025/02/20/marvel-rivals-40-million-players-netease-fy24-report |
-| Hypothèse en question | H5, appuyée par les avis Steam : la part des négatifs citant le matchmaking passe de 7 % à 41 % (déc. 2024 → août 2025) | HYPOTHÈSE | §7 |
+| Donnée | Définition précise | Période et valeur | Source | À quoi elle sert |
+|---|---|---|---|---|
+| Moyenne mensuelle de joueurs simultanés sur Steam | Nombre moyen de joueurs connectés en même temps sur le mois, relevé en continu par Steam. **PC uniquement** : PS5 et Xbox ne publient pas leurs chiffres. Comparée **moyenne contre moyenne**, jamais avec un pic. | Déc. 2024 (mois de sortie, jeu lancé le 06/12) : **279 402** → oct. 2025 : **63 716**, soit **−77,2 %** | FAIT — https://steamcharts.com/app/2767030 (lu le 29/09/2026) | **Mesurer l'ampleur de la perte d'audience** depuis la sortie : c'est le symptôme business |
+| Moyenne mensuelle depuis septembre 2025 | Même indicateur | De 63 716 à 88 790 selon les mois ; 68 566 sur les 30 derniers jours | FAIT — idem | **Montrer que la baisse ne se résorbe pas** : il s'agit d'un plancher, pas d'un creux passager |
+| Joueurs acquis | Nombre cumulé de joueurs ayant lancé le jeu, **toutes plateformes**, communiqué par NetEase | 40 M en ~3 mois après la sortie | FAIT *(extrait)* — https://gameworldobserver.com/2025/02/20/marvel-rivals-40-million-players-netease-fy24-report | **Écarter un problème d'acquisition** : les joueurs sont venus, c'est la **rétention** qui pose problème (d'où le « malgré ») |
+| Part des avis Steam négatifs citant le matchmaking | Avis anglais, pondérés par semaine, repérés par mots-clés (§7) | 7,4 % (déc. 2024) → 41,0 % (août 2025) | FAIT (notre collecte du 30/09/2026) — https://store.steampowered.com/appreviews/2767030?json=1 | **Justifier la question posée** (écart d'expérience non calibré) : la plainte sur le matchmaking monte en même temps que l'audience baisse |
 
-⚠️ Le B de la slide cible un **segment** (« vétérans 3+ ans »). Nous ne pouvons pas segmenter publiquement : le segment « nouveaux comptes perdants » apparaît donc dans le **O**. Si NetEase fournit ses données, on pourra réécrire le B sur ce segment (« La rétention J7 des nouveaux comptes baisse de X %… »).
+⚠️ **Limites** : la moyenne Steam ne couvre que le PC ; le mois de décembre 2024 ne compte que 26 jours de jeu (sortie le 06/12). Les 40 M couvrent toutes les plateformes : ils ne se comparent pas directement aux chiffres Steam, ils servent seulement à écarter l'hypothèse d'un problème d'acquisition. Le segment précis (nouveaux comptes perdants) n'est pas mesurable publiquement : il apparaît dans le **O** et sera mesuré sur les données de NetEase.
 
 **O — grille SMART**
 
@@ -388,18 +378,19 @@ Ce ne sont **pas** les débutants qui écrivent qu'ils sont victimes du matchmak
 | **R — Pertinent** | Découle directement du B : si l'écart d'expérience fait fuir, c'est chez les nouveaux comptes perdants qu'on le voit |
 | **T — Temporel** | 31/03/2027, soit les 6 mois du brief ; numéro de saison à confirmer (saisons de 2 mois depuis la S3) |
 
-*Pourquoi un ratio ?* La valeur de départ interne est inconnue : un ratio est mesurable sans base publique. Quand NetEase fournit la base (par exemple un churn J7 de 60 %), on réécrit comme sur la slide : « Ramener le churn J7 des nouveaux comptes perdants de 60 % à 45 % d'ici la fin de Season 12 ».
+*Pourquoi un ratio ?* La valeur de départ interne est inconnue : un ratio est mesurable sans base publique. Quand NetEase fournit la base (par exemple un churn J7 de 60 %), on réécrit l'objectif en valeur absolue : « Ramener le churn J7 des nouveaux comptes perdants de 60 % à 45 % d'ici la fin de Season 12 ».
 
-**D — chaque donnée sert à comprendre OU à agir** (détail et ICE au §9)
+**D — données utilisées et à quoi elles servent** (priorisation ICE au §9)
 
-| Donnée | Comprendre (quel maillon) | Agir (quelle décision) |
-|---|---|---|
-| Écart de score et de MMR × ancienneté | Maillons 2, 2b, 3 | File débutants, file protégée |
-| Largeur de fourchette × joueurs en file | Maillon 5 (H5b) | Resserrer ou non la fourchette |
-| Compositions × résultat × rang | Maillon 7 | Garde-fous de rôles : à quels rangs |
-| Parties avec bots | Maillon 2b | Étiquette « match d'entraînement » |
-| Churn J7 par cohorte | Maillon 4 | Mesure du O |
-| Avis Steam agrégés | Perception (H1 contre H5) | Contrôle externe du O |
+| Donnée | Définition précise | Source | Comprendre (quel maillon) | Agir (quelle décision) |
+|---|---|---|---|---|
+| Écart de score intra-match × ancienneté du compte (classé) | Différence de score compétitif moyen entre les deux équipes d'un match, croisée avec l'âge des comptes présents | Télémétrie NetEase (existante) | Maillons 2 et 3 : les nouveaux comptes subissent-ils plus d'écarts ? | File protégée pour les nouveaux comptes |
+| Écart de MMR caché en partie rapide × ancienneté | Même mesure sur le MMR interne de la partie rapide, pour les comptes sous le niveau 15 | Télémétrie NetEase (probable) | Maillon 2b : la porte d'entrée des débutants est-elle déséquilibrée ? | File « débutants » jusqu'au niveau 15 |
+| Largeur de fourchette × joueurs en file | Écart de rang maximal accepté par le matchmaking, et temps d'attente, selon le nombre de joueurs en file | Télémétrie NetEase (existante) | Maillon 5 (H5b) : la baisse de population élargit-elle les écarts ? | Resserrer ou non la fourchette, au prix de l'attente |
+| Compositions × résultat × rang | Nombre de héros par rôle dans chaque équipe, résultat du match, rang | Télémétrie NetEase (existante) | Maillon 7 : certaines compositions écrasent-elles les équipes non coordonnées aux rangs bas ? | Garde-fous de rôles : à quels rangs |
+| Parties avec bots × segment | Part des matchs contenant des bots, par ancienneté et par série de défaites | Télémétrie NetEase (si elles existent) | Maillon 2b : traitent-elles le symptôme à la place de la cause ? | Étiquette « match d'entraînement » |
+| Churn J7 par cohorte × bilan des 10 premiers matchs | Part des nouveaux comptes qui ne rejouent pas dans les 7 jours, selon leurs victoires et défaites initiales | Télémétrie NetEase (existante) | Maillon 4 : les mauvais débuts font-ils partir ? | **Mesure du O** |
+| Avis Steam agrégés | Part des avis négatifs citant le matchmaking, par mois (§7) | Collecte publique, sans identifiant | Perception : la défiance suit-elle les changements ? | **Contrôle externe du O** |
 
 **A — ce que chaque méthode tranche**
 
