@@ -380,17 +380,84 @@ Ce ne sont **pas** les débutants qui écrivent qu'ils sont victimes du matchmak
 
 *Pourquoi un ratio ?* La valeur de départ interne est inconnue : un ratio est mesurable sans base publique. Quand NetEase fournit la base (par exemple un churn J7 de 60 %), on réécrit l'objectif en valeur absolue : « Ramener le churn J7 des nouveaux comptes perdants de 60 % à 45 % d'ici la fin de Season 12 ».
 
-**D — données utilisées et à quoi elles servent** (priorisation ICE au §9)
+**D — données utilisées : pourquoi, dans quel but, et ce qui se passe selon le résultat** (priorisation ICE au §9)
 
-| Donnée | Définition précise | Source | Comprendre (quel maillon) | Agir (quelle décision) |
-|---|---|---|---|---|
-| Écart de score intra-match × ancienneté du compte (classé) | Différence de score compétitif moyen entre les deux équipes d'un match, croisée avec l'âge des comptes présents | Télémétrie NetEase (existante) | Maillons 2 et 3 : les nouveaux comptes subissent-ils plus d'écarts ? | File protégée pour les nouveaux comptes |
-| Écart de MMR caché en partie rapide × ancienneté | Même mesure sur le MMR interne de la partie rapide, pour les comptes sous le niveau 15 | Télémétrie NetEase (probable) | Maillon 2b : la porte d'entrée des débutants est-elle déséquilibrée ? | File « débutants » jusqu'au niveau 15 |
-| Largeur de fourchette × joueurs en file | Écart de rang maximal accepté par le matchmaking, et temps d'attente, selon le nombre de joueurs en file | Télémétrie NetEase (existante) | Maillon 5 (H5b) : la baisse de population élargit-elle les écarts ? | Resserrer ou non la fourchette, au prix de l'attente |
-| Compositions × résultat × rang | Nombre de héros par rôle dans chaque équipe, résultat du match, rang | Télémétrie NetEase (existante) | Maillon 7 : certaines compositions écrasent-elles les équipes non coordonnées aux rangs bas ? | Garde-fous de rôles : à quels rangs |
-| Parties avec bots × segment | Part des matchs contenant des bots, par ancienneté et par série de défaites | Télémétrie NetEase (si elles existent) | Maillon 2b : traitent-elles le symptôme à la place de la cause ? | Étiquette « match d'entraînement » |
-| Churn J7 par cohorte × bilan des 10 premiers matchs | Part des nouveaux comptes qui ne rejouent pas dans les 7 jours, selon leurs victoires et défaites initiales | Télémétrie NetEase (existante) | Maillon 4 : les mauvais débuts font-ils partir ? | **Mesure du O** |
-| Avis Steam agrégés | Part des avis négatifs citant le matchmaking, par mois (§7) | Collecte publique, sans identifiant | Perception : la défiance suit-elle les changements ? | **Contrôle externe du O** |
+Toutes ces données servent l'objectif SMART : faire passer le ratio de churn J7 des nouveaux comptes perdants à 1,2 au plus. Chacune répond à une question fermée. Sa réponse **déclenche** un levier ou **l'écarte** : aucune n'est collectée « pour voir ».
+
+**D1. Churn J7 par cohorte × bilan des 10 premiers matchs**
+| | |
+|---|---|
+| **Définition** | Part des nouveaux comptes qui ne rejouent pas dans les 7 jours, selon leurs victoires et défaites sur leurs 10 premiers matchs (partie rapide et classé) |
+| **Pourquoi la collecter** | C'est l'indicateur de l'objectif : sans elle, le O n'est pas mesurable |
+| **But** | Fixer la valeur de départ du ratio, puis suivre son évolution jusqu'au 31/03/2027 |
+| **Si elle ne montre rien** (ratio déjà ≤ 1,2 : perdre ses premiers matchs ne fait pas plus partir) | **H5 est réfutée sur le churn.** L'objectif n'a plus de raison d'être : on arrête les tests de matchmaking et on réoriente l'audit vers H2 (équilibrage), H3 (monétisation) ou la perception pure (H1 : communication plutôt qu'algorithme). |
+| **Si elle confirme** (ratio nettement > 1,2) | Le coût d'un mauvais démarrage est prouvé et chiffré. L'objectif est validé, et on passe aux données D2 à D6 pour trouver **quelle** cause corriger. |
+
+**D2. Écart de score intra-match × ancienneté du compte (classé)**
+| | |
+|---|---|
+| **Définition** | Différence de score compétitif moyen entre les deux équipes d'un match, croisée avec l'âge des comptes présents |
+| **Pourquoi la collecter** | Pour vérifier les maillons 2 et 3 : les nouveaux comptes subissent-ils des matchs plus déséquilibrés que les autres ? |
+| **But** | Départager H5 (écart d'expérience) et H1 (séries artificielles) : c'est la donnée qui répond à la question du B |
+| **Si elle ne montre rien** (écarts identiques pour tous les comptes) | Les défaites des débutants ne viennent pas d'un appariement déséquilibré. **Pas de file protégée** en classé : le levier est écarté. Si le churn (D1) reste élevé, la cause est ailleurs : difficulté du jeu, onboarding, perception. |
+| **Si elle confirme** (ratio d'écart > 1,5 pour les comptes de moins de 30 jours) | **Test A/B d'une file protégée** pour les nouveaux comptes, et réponse factuelle aux accusations d'EOMM : l'écart vient de l'ancienneté, pas d'une manipulation. |
+
+**D3. Écart de MMR caché en partie rapide × ancienneté**
+| | |
+|---|---|
+| **Définition** | Même mesure sur le MMR interne de la partie rapide, pour les comptes sous le niveau 15 (le classé leur est fermé) |
+| **Pourquoi la collecter** | La partie rapide est la porte d'entrée des débutants (maillon 2b), et son fonctionnement n'est pas documenté publiquement |
+| **But** | Savoir si le premier contact avec le jeu est déséquilibré, avant même le classé |
+| **Si elle ne montre rien** | La partie rapide n'est pas en cause. **Pas de file « débutants »** : on concentre l'effort sur le classé et les compositions. |
+| **Si elle confirme** | **Test A/B d'une file « débutants » jusqu'au niveau 15.** C'est probablement le levier le plus direct sur le O, car il agit sur les 10 premiers matchs. |
+
+**D4. Largeur de fourchette × joueurs en file**
+| | |
+|---|---|
+| **Définition** | Écart de rang maximal accepté par le matchmaking, et temps d'attente, selon le nombre de joueurs en file |
+| **Pourquoi la collecter** | Pour vérifier H5b (maillon 5) : la baisse de population force-t-elle le système à mélanger des niveaux éloignés ? |
+| **But** | Arbitrer entre attente et équité : c'est le coût de tout levier qui resserre les matchs |
+| **Si elle ne montre rien** (fourchette stable même quand la population baisse) | La population n'aggrave pas l'écart. On peut resserrer les files débutants **sans craindre d'allonger l'attente**. |
+| **Si elle confirme** | Tout resserrement aura un coût en attente. On teste avec **l'attente p90 comme seuil d'arrêt** (5 minutes), et on **annonce** l'élargissement aux joueurs au lieu de le cacher. |
+
+**D5. Compositions par rôle × résultat × rang**
+| | |
+|---|---|
+| **Définition** | Nombre de héros par rôle dans chaque équipe, résultat du match, rang des joueurs |
+| **Pourquoi la collecter** | Pour vérifier le maillon 7 : aux rangs bas, sans rôles imposés, certaines compositions écrasent-elles les équipes non coordonnées ? |
+| **But** | Décider s'il faut des garde-fous de rôles, et à quels rangs seulement |
+| **Si elle ne montre rien** (écarts de taux de victoire entre compositions < 10 points) | La liberté de composition ne pénalise pas les débutants. **On ne touche pas à ce choix de design**, ce qui évite un conflit avec l'identité du jeu. |
+| **Si elle confirme** | **Test A/B d'un minimum de 1 tank et 1 soigneur** en Bronze-Or uniquement, et/ou des bans de héros dès Or ou Platine. |
+
+**D6. Parties avec bots × segment**
+| | |
+|---|---|
+| **Définition** | Part des matchs contenant des bots, par ancienneté du compte et selon les séries de défaites |
+| **Pourquoi la collecter** | Des joueurs signalent des bots non annoncés : si c'est le cas, ils masquent le problème et créent un risque de réputation |
+| **But** | Mesurer leur effet réel sur la rétention et décider de la transparence |
+| **Si elle ne montre rien** (pas de bots, ou aucun effet sur la rétention) | On peut **démentir publiquement avec des chiffres**, ce qui réduit la défiance. Ou bien on les supprime s'ils n'aident pas. |
+| **Si elle confirme** (bots fréquents chez les perdants, effet positif sur la rétention) | Ils traitent le symptôme sans la cause : on les garde **uniquement annoncés** (étiquette « match d'entraînement ») et on corrige la cause avec D2 et D3. |
+
+**D7. Avis Steam agrégés**
+| | |
+|---|---|
+| **Définition** | Part des avis négatifs citant le matchmaking, par mois (§7) |
+| **Pourquoi la collecter** | La défiance est ce qui fait partir, même quand le matchmaking est juste : il faut suivre la **perception**, pas seulement la réalité |
+| **But** | Contrôle externe et public de l'objectif (cible : moins de 8 %) |
+| **Si elle ne montre rien** (la plainte ne baisse pas alors que D1 et D2 s'améliorent) | Le problème devient un problème de **perception** : on investit dans la transparence (page « comment fonctionne le matchmaking », statistiques publiées), pas dans un nouvel algorithme. |
+| **Si elle confirme** (la plainte baisse avec les leviers) | Les corrections sont **perçues** par les joueurs : on peut les généraliser et en faire un argument de communication. |
+
+**Synthèse : comment les données orientent la décision finale**
+
+| Résultat des données | Effet sur la décision de NetEase |
+|---|---|
+| D1 confirme, et D2 ou D3 confirment | **H5 validée** : on lance les tests A/B (file débutants, file protégée), avec D4 comme garde-fou d'attente |
+| D1 confirme, D2 et D3 ne montrent rien, D5 confirme | L'écart est **tactique**, pas de niveau : on teste les garde-fous de rôles aux rangs bas |
+| D1 confirme, mais aucune cause (D2 à D5) ne ressort | Le churn des perdants est réel mais **pas dû au matchmaking** : on réoriente vers l'onboarding et la difficulté du jeu |
+| D1 ne montre rien | **H5 réfutée** : on n'investit pas dans le matchmaking des débutants et on passe à H1, H2 ou H3 |
+| D7 ne baisse pas alors que les autres s'améliorent | Le problème restant est la **perception** : levier de transparence plutôt qu'algorithmique |
+
+→ Dans tous les cas, NetEase **décide sur preuve** : un résultat négatif fait économiser un développement inutile, ce qui est aussi un gain.
 
 **A — ce que chaque méthode tranche**
 
