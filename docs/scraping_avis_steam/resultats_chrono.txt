@@ -1,0 +1,87 @@
+mois | n | %nég | nég citant MM | nég citant EQUIL | nég citant QP | nég citant RANK
+2024-12 | 1200 | 16.1 | 7.4 | 8.0 | 4.4 | 11.7
+2025-01 | 2000 | 18.0 | 10.9 | 4.1 | 5.2 | 10.6
+2025-02 | 1600 | 18.9 | 12.1 | 5.3 | 2.6 | 10.2
+2025-03 | 1600 | 16.4 | 20.3 | 4.3 | 4.9 | 14.6
+2025-04 | 1695 | 20.4 | 21.1 | 5.9 | 4.7 | 12.8
+2025-05 | 1905 | 28.3 | 29.1 | 9.1 | 5.4 | 19.4
+2025-06 | 1599 | 31.9 | 27.6 | 9.5 | 5.5 | 12.4
+2025-07 | 2000 | 34.6 | 37.0 | 7.3 | 5.9 | 15.6
+2025-08 | 1600 | 38.5 | 41.0 | 6.6 | 6.8 | 20.1
+2025-09 | 1727 | 37.8 | 33.9 | 6.9 | 6.1 | 16.7
+2025-10 | 1872 | 37.6 | 25.9 | 6.5 | 5.9 | 12.9
+2025-11 | 1600 | 17.6 | 17.3 | 7.1 | 2.0 | 11.2
+2025-12 | 1743 | 28.1 | 18.2 | 10.0 | 2.9 | 10.5
+2026-01 | 1856 | 25.9 | 15.4 | 7.5 | 4.7 | 11.3
+2026-02 | 1598 | 27.8 | 15.6 | 14.1 | 4.5 | 11.9
+2026-03 | 1654 | 37.1 | 13.4 | 14.7 | 5.8 | 12.6
+2026-04 | 1943 | 36.7 | 14.4 | 6.4 | 4.3 | 11.9
+2026-05 | 1600 | 37.0 | 14.7 | 6.5 | 4.9 | 10.3
+2026-06 | 1659 | 36.9 | 14.2 | 8.7 | 3.9 | 10.8
+2026-07 | 1941 | 31.9 | 8.8 | 6.2 | 4.1 | 7.4
+2026-08 | 1600 | 35.7 | 13.4 | 7.1 | 3.4 | 8.2
+2026-09 | 1998 | 43.1 | 10.5 | 6.6 | 3.8 | 6.6
+
+2024-12-28 | partie rapide | Dexerto : bots repérés en partie rapide après 2 défaites | nég 15.0→18.9 | nég citant QP 4.3→5.3 | n 800/800
+   - [09/01/2025, 6 h, 2 utiles] Third casual match and I am getting matched against Platinum III players with 58 hs played (looked out his career profile) and also roasting us on chat (obviously we are getting wrecked against them). This game doesn't deserve the Very Positive reviews, it has good graphics and that's all. Horrible 
+   - [02/01/2025, 6 h, 1 utiles] Banned in quick match for afk? god forbid you have a life or emergency. wtf is that.
+2025-01-10 | classé | S1 : premier reset de rang (tout le monde repart bas) | nég 18.9→16.7 | nég citant RANK 8.6→12.3 | n 800/800
+   - [16/01/2025, 46 h, 4 utiles] The game could be a lot of fun. The core mechanics are good and the design is fun. Unfortunately all the good sides of this game are killed be the terrible matchmaking. You either stomp the enemy team or get stomped. No matter if you play casual or competitive. Close games are very rare.
+   - [23/01/2025, 31 h, 2 utiles] Free Taiwan. Also the System of not having a roll specific Que in Ranked is ass.
+2025-02-11 | classé | Dev Talk Vol.10 : reset mi-saison de 4 divisions, début de saison 6 divisions | nég 17.1→21.3 | nég citant RANK 11.1→10.0 | n 800/800
+   - [13/02/2025, 44 h, 2 utiles] fun game, but the ranked has the be the worst experience i've ever had. I enjoyed breaking my wrist more than playing ranked. after waiting 5 minutes to find a lobby, 80% of games have somebody quit 3 minutes in, and out of the games you actually do get to play, half of them are lobbies where everyb
+   - [20/02/2025, 37 h, 2 utiles] My ranked teammate said "I'm DPS Jeff" and proceeded to go 0-20. We lost. Uninstalling for my mental health.
+2025-02-21 | équilibrage | S1.5 : nerfs contre le triple support (Luna Snow, Loki...) | nég 21.3→18.0 | nég citant EQUIL 4.6→6.9 | n 800/800
+   - [27/02/2025, 54 h, 1 utiles] Nerf Spooderman and Iron Fist...Stop drinking Mt Dew and sticking cheetos up your ass devs ffs. Edit: Human Torch too. unhittable. gg
+   - [27/02/2025, 173 h, 0 utiles] Since season 1 part 2 the game seems unplayable to me, it's not fun to play at the moment the current meta is just play a flying hero.
+2025-03-17 | partie rapide | Dexerto : nouveaux joueurs contre des One Above All en partie rapide | nég 15.7→17.3 | nég citant QP 5.5→4.1 | n 800/800
+   - [20/03/2025, 218 h, 0 utiles] Quick match is infested with bots so it's not really worth doing. We are then left with competitive matches, but they also suck. Why? - 6 stacks play against solo queues. It's just ridiculous. - EOMM sucks. Their algorithm is really bad. - Anti-cheat system is garbage therefore an absurd amount of c
+   - [27/03/2025, 262 h, 0 utiles] Brutal to play recently. Old characters with lower hp and no teleportation and iframes cannot keep up with newer insane characters. You cannot escape to quickplay because then you have to play against even higher ranks with no bans. Good luck when you want to try a new character or play relaxed. No 
+2025-04-11 | équilibrage | S2 : patch d'équilibrage de saison | nég 21.0→20.0 | nég citant EQUIL 7.1→4.7 | n 800/800
+   - [24/04/2025, 95 h, 4 utiles] Such absolutely blatant use of EOMM. The Developers will address literally everything except the terrible matchmaking. 3rd consecutive buff to the same character? You got it. 4th consecutive nerf to the another? Sure, enjoy. New gooner skin? We think you're gonna love it. Chrono shield only benefits
+   - [24/04/2025, 287 h, 2 utiles] Season 2 is worse of all for match making. In start u can easy see if u win or lose, before match start. Not ballanced at all... Too much stress in any game mode, specially they nerf support heroes and everyone refuse to play them...
+2025-05-30 | équilibrage | S2.5 : patch d'équilibrage mi-saison | nég 30.0→31.2 | nég citant EQUIL 11.0→10.4 | n 800/799
+   - [04/06/2025, 144 h, 6 utiles] Deleted this game from my PC after how badly they nerfed Jeff. I do not agree with the heavy handed rework after 6 months of people enjoying the character and they nerfed one of the few characters that 1st got me into this game. Jeff deserved more respect then that and then as a band-aid you drop a 
+   - [04/06/2025, 460 h, 5 utiles] This game has gotten so bad since it came out, the devs constantly listen and cater to whiners. This causes an extreme imbalance in the ranking system where people who don't know how to play the game are in higher ranks where they don't belong, which makes games impossible to win since you have to c
+2025-07-11 | équilibrage | S3 : saisons de 2 mois, un héros par mois | nég 29.2→33.1 | nég citant EQUIL 7.3→7.9 | n 800/800
+   - [17/07/2025, 564 h, 3 utiles] Horrible buffs/nerfs. Nerfs dive characters to the ground whilst only catering for support players. Constant bad creative choices.
+   - [17/07/2025, 629 h, 3 utiles] Terrible match making system, put you in a streak of losing with unbalance player skills or a steak of winning against AI bots. Also too many smurf accounts, terrorizing low elo or new joined players. Whole game is completely depend on the team meta, team without the winning meta will almost certain
+2025-08-08 | classé | S3.5 : taille de groupe limitée par rang en classé | nég 45.9→33.9 | nég citant RANK 19.0→19.4 | n 800/800
+   - [14/08/2025, 538 h, 9 utiles] Incredibly fun game ruined by the matchmaking, It really is that bad. Once in a blue moon you'll get into a nice sweaty competitive match, otherwise you lose 10 win 10. That just isn't fun and it makes me feels like it's player vs matchmaking, not player vs player.
+   - [20/08/2025, 451 h, 7 utiles] don't play until they fix the matchmaking. They say that there isn't EOMM, but even if there isn't the matchmaking is still terrible. some games you'll get gods gift to the game and others you'll get a kid who first times black panther in ranked, swapping to his lord pick after losing the first half
+2025-08-12 | matchmaking | NetEase dément l'EOMM (X officiel) | nég 45.9→33.9 | nég citant MM 47.6→36.4 | n 800/800
+   - [14/08/2025, 469 h, 15 utiles] Game was great at launch and has been speedrunning its way into making it not fun to play with each new update and season. Wanna play something marvel related? Go play something else. Wanna play a hero shooter? Go back to Overwatch or try any other hero shooter. This game is a waste of your time. Go
+   - [14/08/2025, 538 h, 9 utiles] Incredibly fun game ruined by the matchmaking, It really is that bad. Once in a blue moon you'll get into a nice sweaty competitive match, otherwise you lose 10 win 10. That just isn't fun and it makes me feels like it's player vs matchmaking, not player vs player.
+2025-08-21 | matchmaking | Vidéo officielle Zhiyong : fourchette qui s'élargit avec l'attente | nég 36.7→38.4 | nég citant MM 38.2→37.9 | n 751/905
+   - [27/08/2025, 335 h, 36 utiles] Good game being slaughtered by: 1) greatest matchmaking of all time (devs basically admitted theres loser lobby, GOTY) 2) locked ranked for 4+ player teams in A TEAM BASED GAME, instead of making solo/duo and flex 3) unplayble Quick Play due to previous 2 issues and the smurfs as a result + bots in 
+   - [26/08/2025, 124 h, 5 utiles] Insta mute everyone, turn chat off and play on pings only! Community is mostly toxic rage kids and arrogant gooners. If you're lucky they just go afk in ranked instead of sabotaging your entire match. Eomm or not, 75% of all games there will be at least one guy that main character syndrome and expec
+2025-09-03 | classé | Annonce des placements (repoussés après la S4) | nég 38.5→40.5 | nég citant RANK 19.4→16.6 | n 897/807
+   - [03/09/2025, 380 h, 6 utiles] Born to play competitive matches with a stack of friends Forced to play inferior game modes with no rank progression Fat L from the devs
+   - [16/09/2025, 1001 h, 3 utiles] Play it casually because this game has one of the worst ranked experiences. Been playing since launch day and imo the game had plenty of time to fix the core issues.
+2025-11-14 | classé | S5 : 10 matchs de placement, nouveaux joueurs estimés Silver III | nég 36.0→13.9 | nég citant RANK 12.4→10.6 | n 800/800
+   - [20/11/2025, 18 h, 1 utiles] A "competitive" shooter game that barely runs at 200fps on an RX 6800 XT with upscaling is unacceptable. And it is over 100GB to download. Just play something else instead
+   - [19/11/2025, 207 h, 1 utiles] The ranking system was terrible, now the new placement match system is also terrible
+2026-01-16 | équilibrage | S6 : patch d'équilibrage de saison | nég 28.1→25.3 | nég citant EQUIL 7.9→5.9 | n 800/800
+   - [22/01/2026, 506 h, 3 utiles] Hands down the most toxic game i have ever played. I am not sure what has happened in season 6 but the cruelty in chat, the broken characters, and the overall nonsensical match making in comp is just absurd. I have never had an issue in comp until now. There are too many smurfs or cheaters not sure 
+   - [29/01/2026, 232 h, 2 utiles] Bad team mates, bad competitive games, bad character buffs and nerfs, bad everything. Would rather play Overwatch than this. Edit: Even after they added Devil Dinosaur and add Cyclops later, they couldn't add the role change option or random map pick like Overwatch did.
+2026-03-17 | équilibrage | Balance post 20260320 : charge des ultimes −20 % | nég 32.1→40.5 | nég citant EQUIL 12.0→17.3 | n 800/797
+   - [19/03/2026, 654 h, 16 utiles] As of Season 7, i do not recommend playing this game. It is horrible place for a Tank PLayer, somehow tank got nerfed, eventhough every complaining about lack of tank. Now nobody want to play tank. Please fire Zhiyoung.
+   - [18/03/2026, 461 h, 8 utiles] Most incompetent balance team I've ever seen from any game ever for multiple seasons over and over
+2026-03-20 | classé | S7 : placement à la performance individuelle, 3 bans | nég 41.3→34.0 | nég citant RANK 14.3→13.6 | n 799/798
+   - [31/03/2026, 4929 h, 9 utiles] FIX RANKED MATCH MAKING TOO MANY THROWERS TOO MANY PEOPLE WHERE THEY DONT BELONG BASICALLY THROWING GAMES YES GAMES ARE SUPPOSED TO BE FUN BUT THERE IS A GAMEMODE CALLED COMPETIVE FOR A REASON.
+   - [01/04/2026, 757 h, 3 utiles] games comp system is a joke, never playing this game with a ♥♥♥♥ comp system thats not even a comp system, you force people to loce 10 games in a row and then throw them a pity game, just to get them rolled again, your fair matchmaking is a lie your whole game is ♥♥♥♥
+2026-05-15 | équilibrage | S8 : patch d'équilibrage de saison | nég 38.7→35.9 | nég citant EQUIL 5.9→7.0 | n 800/800
+   - [19/05/2026, 1002 h, 2 utiles] The game used to be fun but patches haven't been good for seasons. same 4 characters get skins and the power creep is nuts too. the game could have got better with the right changes but we buff phoenix
+   - [27/05/2026, 451 h, 1 utiles] fkn dog shii game delete it for u fkn sanity waste of ur time and money and disk space dodo dogshii optimization game isnt fkn balanced nothing fkn dies triple support quadruple support just fkn shutdown the game i recommend touching grass
+2026-07-10 | équilibrage | S9 : patch d'équilibrage de saison | nég 32.6→31.2 | nég citant EQUIL 5.8→7.1 | n 800/800
+   - [16/07/2026, 122 h, 4 utiles] season 9 rework on everything is awful, every dps is extremely strong, every tank is unkillable, and healing is garbage, every time you go into a match its either an extremely overpowered or extremely underpowered team, the balance is awful and basically everything that makes the game competitive is
+   - [16/07/2026, 659 h, 1 utiles] The balance team genuinely seems like they have no idea what they’re doing. Psylocke was underperforming, so they buffed her for Season 9, then literally one day later nerfed her so severely that she ended up worse than she has ever been, during a patch where almost everyone else became stronger. At
+2026-09-08 | équilibrage | Balance post 20260911 : refonte Scarlet Witch, nerf énergie stratèges | nég 34.6→37.9 | nég citant EQUIL 6.9→8.6 | n 799/800
+   - [09/09/2026, 747 h, 11 utiles] Terrible ass game. Healers are OP and favored by the devs and take ZERO skill. I main tank and just get raped by the broken dps that come out each season. If you like games that make you want to skin yourself alive then this is what youre looking for.
+   - [09/09/2026, 970 h, 1 utiles] I HIGHLY do not recommend this forsaken game. There is negativity in almost every single game you go in. Visual Clutter from too many ultimate's being used. The community is gooner. This could be proven by going into the community hub, heading to artworks and just scroll through it. They claim there
+2026-09-11 | classé | S10 : nouveau système de bans (Or 3+) | nég 35.3→47.5 | nég citant RANK 9.5→5.6 | n 799/799
+   - [24/09/2026, 365 h, 3 utiles] This game basically has 0 competitive integrity between tiny ♥♥♥♥ smurfs, scripted EOMM matchups and purposefully-kept-broken DPS heroes that has no counters and forced MVP screens to sell skins. Noone respectable cares about Marvel ♥♥♥♥♥♥♥♥ anymore. Horrible matchmaking, horrible players, horrible 
+   - [24/09/2026, 481 h, 2 utiles] Absolutely love almost everything about the game but I cannot in good concience recommend it in its current state, the matchmaking is horrendous and almost impossible to play casually, game desperately needs an unranked for people who want to play more seriously but without the stakes of actual rank
+2026-09-17 | partie rapide | Sanctions plus lourdes, palier propre à la partie rapide | nég 37.0→49.7 | nég citant QP 4.8→3.6 | n 778/1005
+   - [17/09/2026, 553 h, 0 utiles] Leaving a review because the bot matches are just insanely common right now. Im a GM player why am I getting bots every other quick play match right now???
+   - [23/09/2026, 59 h, 0 utiles] I really like that the game focuses on the story a lot. There is a lot of cool skins and this game is really fun to play with friends, but when you don’t have anybody to play with what to do now? There really isn’t any in game LFG and you don’t really have any good chance to meet anyone in game. Als

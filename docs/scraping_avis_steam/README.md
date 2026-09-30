@@ -7,3 +7,4 @@
 - **Ancienneté des auteurs** : `anciennete_auteurs.py` (répartition pondérée des auteurs par temps de jeu, par trimestre) ; résultats dans `resultats_anciennete_auteurs.txt`. Indice seulement : un jeu plus ancien a mécaniquement des auteurs plus expérimentés.
 - **Limites** : Steam = PC uniquement ; anglais uniquement ; mots-clés imparfaits ; seuls les joueurs qui écrivent un avis sont représentés.
 - Collecte réalisée le 30/09/2026.
+- **Chronologie** : `chrono_avis.py` croise les événements datés de `evenements.csv` (patchs, annonces) avec les avis des 14 jours avant et après, par thème (équilibrage, partie rapide, classé, matchmaking) ; résultats dans `resultats_chrono.txt`, synthèse dans `../H5_chronologie_sources_avis.md`. Usage : `python3 chrono_avis.py sample_en.jsonl mois` ou `python3 chrono_avis.py sample_en.jsonl ev evenements.csv`.
