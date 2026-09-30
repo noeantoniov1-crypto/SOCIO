@@ -1,0 +1,97 @@
+Avis : 11463 du 2026-08-01 au 2026-09-29 ; négatifs 4388 (38.3 %)
+Avis de plus de 20 caractères : 6886
+Avant S10 (01/08-10/09) : 7806 avis, 36.0 % nég. | Après S10 (11/09-29/09) : 3657 avis, 43.0 % nég.
+
+Thème | % des négatifs | % des positifs | nég. avant S10 | nég. après S10
+Équilibrage des héros | 12.5 | 3.0 | 12.8 | 11.9
+Toxicité / communauté | 11.3 | 3.7 | 9.2 | 15.2
+Développeurs / NetEase | 10.3 | 1.4 | 7.4 | 15.3
+Matchmaking | 9.9 | 1.3 | 10.6 | 8.6
+Technique (perf, bugs, serveurs) | 9.9 | 2.1 | 10.2 | 9.3
+Rôles (tank, soigneur, DPS) | 9.2 | 2.2 | 8.5 | 10.4
+Classé | 9.0 | 3.4 | 9.0 | 8.9
+Monétisation / skins | 8.3 | 4.2 | 7.5 | 9.7
+Sanctions / bans | 6.3 | 0.3 | 4.4 | 9.6
+Racisme | 6.3 | 0.3 | 1.5 | 14.9
+Comparaison Overwatch | 6.2 | 3.2 | 6.1 | 6.5
+Lâcheurs / AFK / throwers | 4.9 | 0.8 | 5.1 | 4.6
+Contenu sexualisé (« gooner ») | 4.4 | 3.5 | 4.4 | 4.3
+Partie rapide | 3.7 | 0.9 | 3.4 | 4.2
+Bots | 3.3 | 0.4 | 3.4 | 3.0
+EOMM / truqué | 3.1 | 0.3 | 3.4 | 2.4
+Tricheurs | 1.5 | 0.2 | 1.8 | 1.0
+Smurfs | 1.2 | 0.1 | 1.5 | 0.7
+Saison 10 (Gorr, Scarlet Witch) | 1.0 | 0.5 | 0.6 | 1.7
+
+Négatifs sans aucun thème : 48.0 % (dont textes de moins de 20 caractères : 44 %)
+
+== Négatifs par tranche de temps de jeu : n, thèmes principaux
+0-10 h | 595 | Technique (perf, bugs, serveurs) 10 % ; Comparaison Overwatch 9 % ; Contenu sexualisé (« gooner ») 7 % ; Monétisation / skins 6 % ; Équilibrage des héros 5 %
+10-50 h | 784 | Technique (perf, bugs, serveurs) 10 % ; Équilibrage des héros 9 % ; Comparaison Overwatch 7 % ; Matchmaking 6 % ; Monétisation / skins 6 %
+50-200 h | 1006 | Équilibrage des héros 11 % ; Toxicité / communauté 11 % ; Rôles (tank, soigneur, DPS) 10 % ; Matchmaking 9 % ; Technique (perf, bugs, serveurs) 9 %
+200-1000 h | 1513 | Équilibrage des héros 17 % ; Toxicité / communauté 15 % ; Développeurs / NetEase 15 % ; Matchmaking 14 % ; Classé 13 %
+1000-+ h | 490 | Toxicité / communauté 21 % ; Développeurs / NetEase 17 % ; Équilibrage des héros 15 % ; Classé 13 % ; Rôles (tank, soigneur, DPS) 13 %
+
+== Volume quotidien d'avis négatifs (pics)
+2026-09-24 128 négatifs sur 225 (57 %) ; citant le racisme : 40
+2026-09-25 122 négatifs sur 205 (60 %) ; citant le racisme : 34
+2026-09-26 99 négatifs sur 171 (58 %) ; citant le racisme : 25
+2026-08-08 95 négatifs sur 283 (34 %) ; citant le racisme : 0
+2026-09-23 90 négatifs sur 160 (56 %) ; citant le racisme : 35
+2026-09-12 88 négatifs sur 270 (33 %) ; citant le racisme : 1
+2026-08-13 87 négatifs sur 235 (37 %) ; citant le racisme : 1
+2026-08-07 87 négatifs sur 355 (25 %) ; citant le racisme : 0
+
+### Toxicité / communauté
+  - [2026-08-12, 99 h, 398 utiles] Don't play this game and free yourself from all toxic small team lane based games or any games that make you fustrated or angry for a fact! Your soul will thank you in the longrun.
+  - [2026-09-09, 621 h, 21 utiles] Devs have demonstrated time and time again that they have no serious interest in meaningfully balancing characters. It's insane that some heroes ALWAYS get to live in the power fantasy of their character, but the one I put the most time in got hard gutted for the sin of *checks n
+  - [2026-09-24, 696 h, 12 utiles] blatant racism and ignorance from the devs, im so ashamed i ever got into this game in the first place. uninstalled until something changes and they actually listen to their community
+  - [2026-08-12, 849 h, 11 utiles] The game, despite being fun has a RACIST community and a RACIST dev TEAM. STORM the FACE OF MARVEL gets an epic rushed skin while all the others girls have a legendary.. NOT EVEN TALKING ABT LUNA INDUSTRY PLANT SNOW, or M*giKK. Those devs need to question themselves and remember 
+
+### Racisme
+  - [2026-09-23, 0 h, 26 utiles] They're bigots who ban people for NOT being racist or homophobic both in game and in the Discord. Free Palestine, Play a good F2P game in your free time instead. Addendum: Look at the losers/bots crying in the comments. Grow up, grow a spine, and grow some empathy losers lol.
+  - [2026-09-23, 22 h, 16 utiles] It's racist there's no report option for racism I'm white but this ♥♥♥♥ is disgusting free Palestine
+  - [2026-09-24, 1349 h, 13 utiles] Terrible treatment of their black characters, complete erasure of the ability to report for racist remarks, and banning people who support Palestine in their server. Do not play this game if you care about your fellow human beings
+  - [2026-09-24, 696 h, 12 utiles] blatant racism and ignorance from the devs, im so ashamed i ever got into this game in the first place. uninstalled until something changes and they actually listen to their community
+
+### Matchmaking
+  - [2026-09-04, 178 h, 28 utiles] rigged matchmaking, constant losing streaks. honestly makes the game not fun to play.
+  - [2026-08-30, 430 h, 9 utiles] trash game, horrible matchmaking always going against smurfs, the balancing sucks
+  - [2026-09-23, 1076 h, 7 utiles] I have played this game since season 0 and I have seen the community for this game become increasingly more toxic, racist and anti-LGBTQ. These issues have not been addressed by Netease at all and have allowed this kind of behavior in the community to flourish after taking away t
+  - [2026-09-26, 217 h, 6 utiles] won't draw this out too much horribly toxic community that bigoted company netease won't do anything about, very laughable balance decisions that even *casuals* get tired of, very awful matchmaking (qp bot lobbies just shouldn't be a thing, they only exist to boost player morale 
+
+### Équilibrage des héros
+  - [2026-08-09, 189 h, 162 utiles] An unbalanced piece of garbage. Oversaturated with the amount of characters it has right now, the fights are just a cluster ♥♥♥♥ of everyones abilities being spammed where it is impossible to understand what the ♥♥♥♥ is going on. A game for people with adhd, short attention spans
+  - [2026-09-09, 621 h, 21 utiles] Devs have demonstrated time and time again that they have no serious interest in meaningfully balancing characters. It's insane that some heroes ALWAYS get to live in the power fantasy of their character, but the one I put the most time in got hard gutted for the sin of *checks n
+  - [2026-08-21, 429 h, 13 utiles] unoptimized goyslop, banning anything and anyone for nothing, horrible screen shakes, horrible balancing but let's just give luna her 50th legendary cause why not
+  - [2026-09-09, 747 h, 11 utiles] Terrible ass game. Healers are OP and favored by the devs and take ZERO skill. I main tank and just get raped by the broken dps that come out each season. If you like games that make you want to skin yourself alive then this is what youre looking for.
+
+### Classé
+  - [2026-08-09, 12 h, 113 utiles] Menu is so damn bad i thought i was playing a gacha game instead of competitive hero shooter, also hilariously unoptimized.
+  - [2026-08-22, 82 h, 54 utiles] genuinely the worst "competitive" game ive ever played in my life 11 minutes felt like 50 i never felt more bored in my life, big butts thats all thats good, i never rated a game in my life but this just deserves it
+  - [2026-09-24, 3597 h, 7 utiles] enables and encourages racism and homophobia with their ban system. dont play this game if u are any minority they wont ban the person spewing hateful remarks at u. they will comm and rank ban u for defending urself instead. i had it happen to me 3 times this game will not get an
+  - [2026-09-25, 1751 h, 5 utiles] Game full of racists, including devs. Trying to play any game QP, ranked it so trash atm. the game is not what it use to be and I'm not playing until its fixed and they take some accountability ( witch might be never ). I'm sad to say it's unplayable now but its true. I'll be on 
+
+### Partie rapide
+  - [2026-09-26, 217 h, 6 utiles] won't draw this out too much horribly toxic community that bigoted company netease won't do anything about, very laughable balance decisions that even *casuals* get tired of, very awful matchmaking (qp bot lobbies just shouldn't be a thing, they only exist to boost player morale 
+  - [2026-09-26, 301 h, 5 utiles] This game's community is one of the worse since league in its prime. The amount of racism, sexism, and just people exploding over small mistakes in quick play actually needs to be studied and that's not even covering the game itself, hit boxes dont work, majority of champs have m
+  - [2026-09-25, 1751 h, 5 utiles] Game full of racists, including devs. Trying to play any game QP, ranked it so trash atm. the game is not what it use to be and I'm not playing until its fixed and they take some accountability ( witch might be never ). I'm sad to say it's unplayable now but its true. I'll be on 
+  - [2026-08-22, 664 h, 5 utiles] Used to be enjoyable, but its now just absolute ♥♥♥♥♥♥♥♥ lately in quick play and in general for rank. Piss poor match making, plagued by smurfs in rank or cheaters dropping 50 final hits in a Diamond lobby game. Meet on average a lord on the most obnoxious hero, spiderman/black 
+
+### Bots
+  - [2026-09-23, 0 h, 26 utiles] They're bigots who ban people for NOT being racist or homophobic both in game and in the Discord. Free Palestine, Play a good F2P game in your free time instead. Addendum: Look at the losers/bots crying in the comments. Grow up, grow a spine, and grow some empathy losers lol.
+  - [2026-09-26, 217 h, 6 utiles] won't draw this out too much horribly toxic community that bigoted company netease won't do anything about, very laughable balance decisions that even *casuals* get tired of, very awful matchmaking (qp bot lobbies just shouldn't be a thing, they only exist to boost player morale 
+  - [2026-08-07, 141 h, 4 utiles] When you que for quickplay there is a chance you get queued into a bot match. Im here to play pvp. If I wanted to plat bot matches, Ill que for bot matches. Bot matches offer no challenge are really damn boring. And if you leave said bot matches, you get penalized as if you were 
+  - [2026-09-07, 1077 h, 3 utiles] It's a fun game, but matchmaking sucks. As a result, quick play matches are very one sided. Either you're rolling the opponent or they're rolling you OR you're fighting bots. Also, players can be pretty toxic sometimes. I guess it comes with the territory of a team/competitive ga
+
+### Saison 10 (Gorr, Scarlet Witch)
+  - [2026-09-18, 196 h, 2 utiles] The game is absolutely not fun anymore you get a little joy of playing with friends, but overall the devs do not know how to balance this game. Gorr for example, should’ve been a Vanguard, seems like the community is vocal about their likes and dislikes and they do not care to be
+  - [2026-09-15, 795 h, 1 utiles] This game has some of the worst balancing i've ever seen. over tuned dps, over tuned heals, but the worst part about it is, it's not across the board. you see the same 15 characters out of 40 in games while the others are left to just rot with 0 meaningful changes if any at all. 
+  - [2026-09-15, 59 h, 1 utiles] This is the most gut wrenching video game I have ever laid my hands on, everygame feels like im gonna have a heart attack and die. I don't know how to put it into words how awful it feels to get destroyed by a Gorr player with zero skill meanwhile i'm trying my best to help my te
+  - [2026-09-13, 150 h, 1 utiles] season 10 is not good. bugs, screen clutter, ugly skins in pass. I'm done with this game for a while. rushed garbage.
+
+### Technique (perf, bugs, serveurs)
+  - [2026-09-06, 191 h, 113 utiles] The devs cant see that this game is trash and unoptimised because they're too busy making more gooner skins
+  - [2026-08-09, 12 h, 113 utiles] Menu is so damn bad i thought i was playing a gacha game instead of competitive hero shooter, also hilariously unoptimized.
+  - [2026-09-24, 1349 h, 13 utiles] Terrible treatment of their black characters, complete erasure of the ability to report for racist remarks, and banning people who support Palestine in their server. Do not play this game if you care about your fellow human beings
+  - [2026-08-21, 429 h, 13 utiles] unoptimized goyslop, banning anything and anyone for nothing, horrible screen shakes, horrible balancing but let's just give luna her 50th legendary cause why not
