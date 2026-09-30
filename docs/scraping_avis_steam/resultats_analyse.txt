@@ -1,0 +1,94 @@
+TOTAL 37990 du 2024-12 au 2026-09
+population estimée 303135
+négatifs (pondéré) 22.9%
+mention matchmaking : négatifs 16.6% positifs 1.5%
+
+== PAR MOIS : n, % négatifs, % des négatifs citant le MM, part du MM dans tous les avis
+2024-12 1200 70970 16.1% 7.4% 2.2%
+2025-01 2000 61976 18.0% 10.9% 2.5%
+2025-02 1600 28234 18.9% 12.1% 3.0%
+2025-03 1600 16496 16.4% 20.3% 4.2%
+2025-04 1695 14442 20.4% 21.1% 5.5%
+2025-05 1905 9332 28.3% 29.1% 9.0%
+2025-06 1599 7343 31.9% 27.6% 11.1%
+2025-07 2000 8117 34.6% 37.0% 15.7%
+2025-08 1600 6711 38.5% 41.0% 19.2%
+2025-09 1727 4796 37.8% 33.9% 15.6%
+2025-10 1872 4587 37.6% 25.9% 12.4%
+2025-11 1600 9165 17.6% 17.3% 4.8%
+2025-12 1743 8092 28.1% 18.2% 6.6%
+2026-01 1856 7868 25.9% 15.4% 5.2%
+2026-02 1598 6388 27.8% 15.6% 5.7%
+2026-03 1654 5173 37.1% 13.4% 6.4%
+2026-04 1943 5412 36.7% 14.4% 6.4%
+2026-05 1600 4604 37.0% 14.7% 7.0%
+2026-06 1659 4709 36.9% 14.2% 6.6%
+2026-07 1941 7049 31.9% 8.8% 3.9%
+2026-08 1600 5668 35.7% 13.4% 5.9%
+2026-09 1998 6003 43.1% 10.5% 5.5%
+
+== PAR TEMPS DE JEU AU MOMENT DE L'AVIS
+0-10 h 5935 nég 24.5% MM parmi nég 2.8% MM parmi tous 1.5%
+10-50 h 9162 nég 14.3% MM parmi nég 9.2% MM parmi tous 1.9%
+50-200 h 10124 nég 20.3% MM parmi nég 18.3% MM parmi tous 4.6%
+200-1000 h 10695 nég 37.4% MM parmi nég 30.2% MM parmi tous 14.0%
+1000-+ h 2074 nég 43.1% MM parmi nég 22.4% MM parmi tous 12.0%
+
+== THÈMES dans les avis négatifs citant le matchmaking (n=2346)
+nouveaux joueurs / débutants: 3.4%  (tous avis nég: 1.3%)
+vétérans / Overwatch: 13.9%  (tous avis nég: 11.2%)
+écart de niveau / stomp: 13.9%  (tous avis nég: 2.6%)
+smurfs: 5.3%  (tous avis nég: 1.6%)
+bots: 10.0%  (tous avis nég: 4.2%)
+partie rapide: 12.7%  (tous avis nég: 4.5%)
+classé: 32.8%  (tous avis nég: 11.3%)
+rôles / compositions: 8.3%  (tous avis nég: 3.5%)
+EOMM / truqué: 35.5%  (tous avis nég: 6.0%)
+
+### VERBATIMS : nouveaux joueurs / débutants
+- [2025-06, 906 h, 4 utiles] MATCHMAKING IS HORRIBLE FOR THE CASUAL PLAYERS IN QUICKPLAY , WHY DOES A WHOLE TEAM OF BRONZE PLAYERS GET PAIRED AGAINST CELESTIAL/ETERNITY PLAYERS. NEEDS SOME KIND OF SBMM FOR QUICKPLAY
+- [2026-05, 779 h, 4 utiles] Bad balancing, bad optimization, bad matchmaking its a game for casual players because it ranks you up as long as you play more games. Even Celestial lobbies are a joke. and to top it off, they use genAI to churn out slop skins for that money
+- [2025-07, 17 h, 3 utiles] Either we destroy the enemy team or we get steamrolled — there's no balanced gameplay. This game is really sweaty and complex. New players shouldn't even try it unless they have a lot of friends to voice chat with, which can significantly increase their chances. But the matchmaking is so unbalanced that you're probably getting matched with players three ranks higher than you in both quick play and
+- [2025-08, 460 h, 3 utiles] MOST AWFUL MATCHMAKING IN HISTORY OF ALL GAMES! Ive NEVER EVER EVER!! HAVE SUCH A BAD EXPERIENCE WHIT THIS IN ANY GAME. THE EOMM, engagement matchmaking, is desing to keep u playing, so u have predictive patterns of winning and lossing streaks, example, yesterday night i played and win 9 games in a row NO EFFORT. Today i lost the 9 games in a row and i have 9 lords and 400 hours played, im not a n
+- [2025-10, 1011 h, 3 utiles] Marvel Rivals is a truly beautiful and engaging game. The visuals are impressive, the gameplay is dynamic, and the characters are well-designed — it’s clear that the developers are putting in a lot of effort. However, the ranked mode has serious problems. The matchmaking system feels completely unbalanced — new players and high-ranked veterans often end up in the same team, while smurfing and toxi
+- [2025-10, 1028 h, 2 utiles] Need to fix eomm remove it. Its obvious. Make Stupid healers get penalized for being garbage players. Healers and casual players ruined this game. Disgusting swine healers
+
+### VERBATIMS : écart de niveau / stomp
+- [2026-02, 579 h, 53 utiles] Worst matchmaking and balance of any competitive game. NetEase has no interest in fixing it, they are only focused on selling jeff skins and truly dont care about balance or making the game enjoyable. EOMM is so real if you play and loose too much the game puts you against bots so you stomp the AI and feel better to keep you hooked.
+- [2025-09, 157 h, 22 utiles] Remove group restrictions in ranked, i want to play my TEAM BASED GAME with my friends. I enjoy playing ranked because people take the game a little more seriously. instead im forced to either play quick play with a group and what? curb stomp with a full team? ridicolus inclusion for no reason other than those who have NO FRIENDS
+- [2025-07, 638 h, 11 utiles] Dont play this game. solo q is miserable EOMM is a thing in this game You can do your best in this game and you still lose because your teammates are win trading The game is stomp or get stomped no team fights are even, all matched teams are not fair waste of time
+- [2025-06, 542 h, 7 utiles] I never write reviews for any games but one of the things I want to put out there, Rivals uses EOMM (Engagement Optimized Matchmaking) meaning matchmaking isn't REALLY about your skill at all. It's about keeping you playing the game and manipulating your W/R ratio by giving you teammates who are worse and enemies who are better, this is why almost every comp game feels very "stomp or be stomped". 
+- [2026-06, 265 h, 7 utiles] Pros: Great, uniqie characters, good varierty of maps. Cons: EOMM ruins the experience. Since I found out about EOMM, it made sence why 1-2 matches after a losing streak were a complete stomp in my favour (competetive play). If you play normals though, the game will put all the losers in one lobby and have them play against the bots for an easy win. In general though, competative matches frequentl
+- [2025-05, 25 h, 6 utiles] Very unbalanced matchmaking system. I agree with others that it promotes unbalanced teams, where one team steamrolls the other one in most matches. If you look to play ranked, this isn't your best choice to go for, when it comes to multiplayer gameplay. The graphics, gameplay and experience can be fantastic, but if you are losing, one of the worst experiences around. If you end up with a good seri
+
+### VERBATIMS : rôles / compositions
+- [2025-08, 335 h, 36 utiles] Good game being slaughtered by: 1) greatest matchmaking of all time (devs basically admitted theres loser lobby, GOTY) 2) locked ranked for 4+ player teams in A TEAM BASED GAME, instead of making solo/duo and flex 3) unplayble Quick Play due to previous 2 issues and the smurfs as a result + bots in QP for loser streaks 4) devs vision where everyone have freedom to play any role any time, which tra
+- [2025-08, 191 h, 4 utiles] Game started out awesome, then the EOMM demons attacked. Match making is hell on earth, either stomped or get stomped no in between, more DPS characters then tanks and healers leads to lovely team comps, super unbalanced heroes receiving 0 nerfs, the amount of times I heard IMMA PUT ON A SHOW back to back with Loki Luna makes me want to commit seppuku. All of these in combination leads to an extre
+- [2025-10, 654 h, 4 utiles] I really used to love and enjoy this game, but the devs ruined it. It's so sad how this game doesn't respect your time and effort. I've never seen such horrible matchmaking and balancing in any other game I've played. Every match is a gamble even in high elo, and throwers are only given a slap on the wrist. In addition, the devs clearly don't know how to balance characters and they keep favoring d
+- [2025-04, 275 h, 3 utiles] 1) Non-existent optimization 2) Game size is over 100GB (UE5 slop) 3) Terrible matchmaking in ranked 4) No role queue 5) Ranked is dead on tokyo server
+- [2025-07, 335 h, 3 utiles] Fun, but the matchmaking is terrible. You can get to the third highest rank tier with a 45% winrate... Certain characters are poorly designed. DPS is the only role with freedom. 3/4 of the healers are throw picks in a 2 healer com. If you play tank, especially solo tank, you have very few options.
+- [2025-07, 122 h, 3 utiles] EOMM Sucks! Give us placement matches and an actual matchmaking system. Stomping is no fun, neither is getting stomped! I'd rather have a hard fought, long match that ends in a loss then this crap. This game could be awesome, but like this ist just Meh. Also: Add a f*cking role queue so I don't have to be the only tank with 4 dps and one healer, ffs.
+
+### VERBATIMS : partie rapide
+- [2025-08, 335 h, 36 utiles] Good game being slaughtered by: 1) greatest matchmaking of all time (devs basically admitted theres loser lobby, GOTY) 2) locked ranked for 4+ player teams in A TEAM BASED GAME, instead of making solo/duo and flex 3) unplayble Quick Play due to previous 2 issues and the smurfs as a result + bots in QP for loser streaks 4) devs vision where everyone have freedom to play any role any time, which tra
+- [2025-09, 157 h, 22 utiles] Remove group restrictions in ranked, i want to play my TEAM BASED GAME with my friends. I enjoy playing ranked because people take the game a little more seriously. instead im forced to either play quick play with a group and what? curb stomp with a full team? ridicolus inclusion for no reason other than those who have NO FRIENDS
+- [2025-08, 621 h, 7 utiles] qp sucks comp sucks because eomm remove eomm and make qp worth playing, game saved
+- [2025-07, 1108 h, 6 utiles] Overall fun when you're not getting rolled like the pillsbury doughboy because the matchmaking in this game is cold oversalted hotdog water. In what world is it a good idea to put Silver, gold, Plat, and Diamond-Celestial players in the same match...? IN RANKED? QP is just as bad, if not worse with the rank disparity. Only Marvel Rivals will put Diamond-Celestial on a team and face them off agains
+- [2025-07, 198 h, 5 utiles] The game is good, heroes have an enjoyable design and are fun to learn and master, team interactions and mechanics are very interesting. However the matchmaking completely ruins the experience and I just can't recommend it in the current state. Even in quickplay the game just serves you obvious steamrolls (i.e. matching six grandmasters vs one) and after you suffer three such games you get a 2v6 b
+- [2025-09, 165 h, 5 utiles] your eomm matchmaking finally broke me. If you wanna play this game as quick play, you can go ahead. If you lose couple of matches the system will give you bots match to boost your confidence even if you don't get bots match. Ranked is totally rigged, it keeps you in a interval and gives you loss streak, then win streak then lose streak again. When you start the rank at plat or gold or diamond aft
+
+### VERBATIMS : bots
+- [2026-07, 817 h, 315 utiles] The worst matchmaking the world has ever seen, well... If you can call that matchmaking. The only thing the community asked for since the game release and they don't fix it, they make it worse every update, you can have a bot match even if you're winning, what the hell is that? Season 9 is amazing, it's a new game with all the team ups, feels great to play every character but is the same .txt over
+- [2026-02, 579 h, 53 utiles] Worst matchmaking and balance of any competitive game. NetEase has no interest in fixing it, they are only focused on selling jeff skins and truly dont care about balance or making the game enjoyable. EOMM is so real if you play and loose too much the game puts you against bots so you stomp the AI and feel better to keep you hooked.
+- [2025-08, 335 h, 36 utiles] Good game being slaughtered by: 1) greatest matchmaking of all time (devs basically admitted theres loser lobby, GOTY) 2) locked ranked for 4+ player teams in A TEAM BASED GAME, instead of making solo/duo and flex 3) unplayble Quick Play due to previous 2 issues and the smurfs as a result + bots in QP for loser streaks 4) devs vision where everyone have freedom to play any role any time, which tra
+- [2026-06, 802 h, 20 utiles] The gameplay is great, but the completely broken, automated AI moderation system makes this game unplayable. The AI auto-bans and auto-mutes players instantly mid-match for completely normal, non-toxic tactical callouts. If you coordinate with your team or use basic comms, you risk getting slapped with an unappealable ban or mute because an algorithm lacks human context. Meanwhile, players who act
+- [2026-06, 265 h, 7 utiles] Pros: Great, uniqie characters, good varierty of maps. Cons: EOMM ruins the experience. Since I found out about EOMM, it made sence why 1-2 matches after a losing streak were a complete stomp in my favour (competetive play). If you play normals though, the game will put all the losers in one lobby and have them play against the bots for an easy win. In general though, competative matches frequentl
+- [2025-07, 1108 h, 6 utiles] Overall fun when you're not getting rolled like the pillsbury doughboy because the matchmaking in this game is cold oversalted hotdog water. In what world is it a good idea to put Silver, gold, Plat, and Diamond-Celestial players in the same match...? IN RANKED? QP is just as bad, if not worse with the rank disparity. Only Marvel Rivals will put Diamond-Celestial on a team and face them off agains
+
+### VERBATIMS : smurfs
+- [2025-08, 335 h, 36 utiles] Good game being slaughtered by: 1) greatest matchmaking of all time (devs basically admitted theres loser lobby, GOTY) 2) locked ranked for 4+ player teams in A TEAM BASED GAME, instead of making solo/duo and flex 3) unplayble Quick Play due to previous 2 issues and the smurfs as a result + bots in QP for loser streaks 4) devs vision where everyone have freedom to play any role any time, which tra
+- [2025-05, 158 h, 28 utiles] EOMM (Engagement Optimized Match Making) will destroy this games competitive side eventually. This highly competitive game is based on how much engagement/participation the game can generate from the consumers to maximize profits rather than match making based on skill level. This means that if you are someone who can tolerate losing more than others, the game will place you in more matches where 
+- [2026-06, 265 h, 7 utiles] Pros: Great, uniqie characters, good varierty of maps. Cons: EOMM ruins the experience. Since I found out about EOMM, it made sence why 1-2 matches after a losing streak were a complete stomp in my favour (competetive play). If you play normals though, the game will put all the losers in one lobby and have them play against the bots for an easy win. In general though, competative matches frequentl
+- [2025-08, 788 h, 4 utiles] I want to like this game but the matchmaking is the most unfair garbage I've ever seen in the history of online gaming. Every single day, regardless of the time, I'm constantly matched against people who were 2+ ranks higher than me in a previous season or people running smurf accounts. I've even been matched against people who were in the highest ranks in the world and I've never been past anythi
+- [2025-05, 482 h, 3 utiles] Crap matchmaking, Smurfs are out of control and the devs have literally no idea what they are doing regarding balancing characters. Nothing is being to to deal with the issue of cheaters and smurfs making multiple accounts.
+- [2025-06, 2467 h, 3 utiles] I fell in love with this game during season 0 and i been high rank every season yet I'm sick of EOMM. it's real and i'm tired of it. I'm tired of all the smurfs too. you either get a god smurf on your team or a trash smurf who throws on purpose. if you're into rigged matches or praying you dont get the trash smurf on your team, this game is for you.
