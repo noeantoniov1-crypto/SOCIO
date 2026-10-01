@@ -56,6 +56,7 @@ const U = {
   devtalk: "https://www.marvelrivals.com/devdiaries/20250210/40954_1210988.html",
   timesaver: "https://timesaver.gg/blog/marvel-rivals-season-10-rank-reset",
   bq: "https://cloud.google.com/bigquery/pricing",
+  tjm: "https://tjmetre.fr/barometre/data",
   rgpd: "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
   aiact: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
   gdoc: "https://docs.google.com/document/d/1nOhcAL2wfeAHOK6x6UZH-Hg5yh9Ofxxko7FY47r5Vzc/edit",
@@ -142,39 +143,7 @@ const U = {
   ], { x: 0.5, y: 4.6, w: 9, h: 0.55, fontFace: B, fontSize: 11, margin: 0, valign: "middle", isTextBox: true });
   source(s, [{ text: "vidéo NetEase du 21/08/2025", url: U.video }, { text: "Dev Talk Vol.10", url: U.devtalk }, { text: "inactivité (source tierce)", url: U.timesaver }, { text: "Steam Charts", url: U.steamcharts }]);
   pageNum(s, 3);
-  s.addNotes("[35 s] Pourquoi ? Notre hypothèse, testable : nouveaux et revenants subissent des écarts de niveau que le matchmaking ne compense pas, et partent. Deux mécanismes peuvent les produire. En partie rapide, faute de joueurs, le matchmaking accepte des écarts plus grands, NetEase l'a reconnu : le nouveau tombe sur des vétérans et part. En classé, un joueur qui revient après des mois retrouve un rang à peine abaissé, perd, et repart. Tout cela se mesure dans vos données.");
-
-  // 4. Diagnostic : contexte probable, non testable (≈ 25 s)
-  s = pres.addSlide(); s.background = { color: LIGHT };
-  title(s, "Contexte probable : deux publics opposés", "Diagnostic · hypothèse de contexte : plausible, mais invérifiable");
-  const pops = [
-    [fa.FaCrosshairs, "Les vétérans du genre", [["45 %", " des joueurs qui ont arrêté Overwatch 2 en décembre 2024 ont joué à Marvel Rivals (Newzoo)"], ["−22 %", " de joueurs moyens sur Overwatch 2 (PC) ce mois-là"]], NAVY],
-    [fa.FaMask, "Le grand public venu pour Marvel", [["10 M", " de joueurs en 3 jours, 40 M en 3 mois"], ["Gratuit", " et porté par une licence grand public : beaucoup découvrent le genre"]], RED],
-  ];
-  for (let i = 0; i < 2; i++) {
-    const x = 0.5 + i * 4.6;
-    s.addShape("roundRect", { x, y: 1.3, w: 4.4, h: 2.05, fill: { color: WHITE }, line: { color: LINE }, rectRadius: 0.08 });
-    await badge(s, pops[i][0], x + 0.2, 1.43, 0.42, pops[i][3]);
-    s.addText(pops[i][1], { x: x + 0.75, y: 1.43, w: 3.5, h: 0.42, fontFace: H, fontSize: 14, bold: true, color: INK, margin: 0, valign: "middle", isTextBox: true });
-    const runs = [];
-    pops[i][2].forEach((r, j) => {
-      runs.push({ text: r[0], options: { bold: true, color: pops[i][3], fontSize: 15 } });
-      runs.push({ text: r[1], options: { color: INK, breakLine: true } });
-      if (j === 0) runs.push({ text: " ", options: { fontSize: 4, breakLine: true } });
-    });
-    s.addText(runs, { x: x + 0.2, y: 1.98, w: 4.0, h: 1.3, fontFace: B, fontSize: 10.5, margin: 0, valign: "top", isTextBox: true });
-  }
-  s.addShape("roundRect", { x: 0.5, y: 3.5, w: 9, h: 1.6, fill: { color: NAVY }, line: { color: NAVY }, rectRadius: 0.08 });
-  s.addText([
-    { text: "Sans calibrage, ils se croisent ", options: { bold: true, color: RED } },
-    { text: "(Bronze III pour tous en classé jusqu'à la saison 5). Il reste surtout des vétérans : auteurs d'avis Steam à plus de 200 h, 5 % fin 2024, 42 % à l'été 2025.", options: { color: WHITE, breakLine: true } },
-    { text: " ", options: { fontSize: 5, breakLine: true } },
-    { text: "Limite : ", options: { bold: true, color: RED } },
-    { text: "la télémétrie ne dit pas pourquoi un joueur est venu ni d'où il vient. Ce récit n'est donc pas testé : aucune décision du plan n'en dépend.", options: { color: WHITE } },
-  ], { x: 0.75, y: 3.55, w: 8.5, h: 1.5, fontFace: B, fontSize: 11.5, margin: 0, valign: "middle", isTextBox: true });
-  source(s, [{ text: "Newzoo via Insider Gaming", url: U.newzoo }, { text: "VGC", url: U.vgc }, { text: "Game World Observer", url: U.gwo }, { text: "PCGamesN", url: U.pcg }, { text: "avis Steam", url: U.steamapi }, { text: "TheGamer", url: U.thegamer }]);
-  pageNum(s, 4);
-  s.addNotes("[20 s] D'où viennent probablement ces écarts ? Au lancement, des vétérans du genre, 45 % des joueurs qui ont quitté Overwatch 2 ont essayé Marvel Rivals, et un grand public venu pour Marvel. Sans calibrage, ils se sont croisés. C'est un contexte plausible, mais invérifiable : vos données ne disent pas pourquoi un joueur vient. Nous ne le testons pas, et aucune décision n'en dépend.");
+  s.addNotes("[50 s] Pourquoi ? Notre hypothèse, testable : nouveaux et revenants subissent des écarts de niveau que le matchmaking ne compense pas, et partent. Deux mécanismes peuvent les produire. En partie rapide, faute de joueurs, le matchmaking accepte des écarts plus grands, NetEase l'a reconnu : le nouveau tombe sur des vétérans et part. En classé, un joueur qui revient après des mois retrouve un rang à peine abaissé, perd, et repart. Tout cela se mesure dans vos données. D'où viennent ces écarts ? Probablement du lancement : des vétérans du genre, 45 % de ceux qui ont quitté Overwatch 2 ont essayé Marvel Rivals, face à un grand public venu pour Marvel. C'est plausible, mais vos données ne disent pas pourquoi un joueur est venu : nous ne bâtissons aucune décision dessus.");
 
   // 5. Recommandation : objectif + données prioritaires (≈ 45 s)
   s = pres.addSlide(); s.background = { color: LIGHT };
@@ -197,7 +166,7 @@ const U = {
   s.addTable(rows, { x: 0.5, y: 2.08, w: 9, colW: [3.5, 2.6, 2.9], fontFace: B, fontSize: 9, color: INK, border: { type: "solid", pt: 0.5, color: "D5D8E3" }, fill: { color: WHITE }, valign: "middle", margin: [1, 5, 1, 5], rowH: [0.26, 0.36, 0.36, 0.36, 0.36, 0.36, 0.36] });
   s.addText("Ensuite, pour écarter les autres explications : héros joué, parties avec bots, joueurs en groupe, comptes arrivés en 2025. Tout existe déjà dans vos serveurs.", { x: 0.5, y: 4.83, w: 9, h: 0.35, fontFace: B, fontSize: 9.5, italic: true, color: MUTED, margin: 0, isTextBox: true });
   source(s, [{ text: "plan de collecte complet (matrice ICE)", url: U.gdoc }, { text: "notes de patch S5", url: U.s5 }]);
-  pageNum(s, 5);
+  pageNum(s, 4);
   s.addNotes("[45 s] D'abord mesurer. L'objectif : d'ici fin mars 2027, un joueur qui perd au début ne doit pas partir plus de 1,2 fois plus souvent que les autres, nouveau ou de retour. Six données d'abord : la première mesure l'objectif, la deuxième dit où jouent les nouveaux, trois testent chacune une cause, la dernière exploite une expérience déjà faite en saison 5.");
 
   // 6. Recommandation : la matrice de collecte, visuelle (≈ 20 s)
@@ -233,7 +202,7 @@ const U = {
     { text: "aucune nouvelle collecte pour l'audit. Les deux collectes nouvelles (sondage, question d'onboarding) sont facultatives, sous consentement, après l'audit.", options: { color: INK } },
   ], { x: 6.85, y: 3.15, w: 2.6, h: 1.9, fontFace: B, fontSize: 10, margin: 0, valign: "top", isTextBox: true });
   source(s, [{ text: "plan de collecte complet (justification de chaque note)", url: U.gdoc }]);
-  pageNum(s, 6);
+  pageNum(s, 5);
   s.addNotes("[15 s] La matrice complète : treize données indispensables, toutes déjà dans votre télémétrie. Aucune nouvelle collecte pour l'audit.");
 
   // 7. Recommandation : les leviers par cause (≈ 35 s)
@@ -241,7 +210,7 @@ const U = {
   title(s, "Puis tester le levier qui correspond à la cause", "Recommandation · tests A/B de 60 jours, seulement si l'audit confirme le problème");
   const causes = [
     [fa.FaSnowflake, "A · Démarrage à froid", RED, "Le jeu ne connaît pas le niveau d'un nouveau compte et le place mal.", "Écart fort sur les premiers matchs, à toute heure.", ["Niveau de départ plus prudent", "File débutants jusqu'au niveau 15"]],
-    [fa.FaUsersSlash, "B · Manque de joueurs", NAVY, "File vide : le jeu accepte des écarts plus grands pour lancer la partie.", "L'écart grandit quand la file se vide.", ["Écart resserré aux heures creuses", "Arrêt si 10 % attendent plus de 5 min"]],
+    [fa.FaUsersSlash, "B · Manque de joueurs", NAVY, "File vide : le jeu accepte des écarts plus grands pour lancer la partie.", "L'écart grandit quand la file se vide.", ["Écart resserré aux heures creuses", "Arrêt si 10 % attendent plus de 3 min"]],
     [fa.FaRedo, "C · Rang périmé au retour", AMBER, "Le rang ne tient pas compte de la durée d'absence.", "Les revenants perdent plus, d'autant plus que l'absence a été longue.", ["Matchs de recalibrage au retour", "Baisse de rang selon l'absence"]],
   ];
   for (let i = 0; i < 3; i++) {
@@ -258,8 +227,8 @@ const U = {
     { text: "groupes séparés des joueurs seuls pour les nouveaux, étiquette « match d'entraînement » sur les parties avec bots, groupe témoin tiré au sort.", options: { color: INK } },
   ], { x: 0.5, y: 4.6, w: 9, h: 0.55, fontFace: B, fontSize: 10.5, margin: 0, valign: "middle", isTextBox: true });
   source(s, [{ text: "vidéo NetEase du 21/08/2025", url: U.video }, { text: "Dev Talk Vol.10", url: U.devtalk }]);
-  pageNum(s, 7);
-  s.addNotes("[35 s] On ne teste que si l'audit confirme le problème, et seulement le levier de la cause trouvée. Démarrage à froid : niveau de départ plus prudent. Manque de joueurs : écart resserré aux heures creuses, arrêté si l'attente dépasse 5 minutes. Rang périmé : matchs de recalibrage au retour. Toujours avec un groupe témoin.");
+  pageNum(s, 6);
+  s.addNotes("[35 s] On ne teste que si l'audit confirme le problème, et seulement le levier de la cause trouvée. Démarrage à froid : niveau de départ plus prudent. Manque de joueurs : écart resserré aux heures creuses, arrêté si l'attente dépasse 3 minutes. Rang périmé : matchs de recalibrage au retour. Toujours avec un groupe témoin.");
 
   // 8. Recommandation : ce que nous avons volontairement écarté (≈ 20 s)
   s = pres.addSlide(); s.background = { color: WHITE };
@@ -278,38 +247,43 @@ const U = {
     s.addText(out[i][2], { x: 1.1, y: y + 0.3, w: 8.4, h: 0.3, fontFace: B, fontSize: 10.5, color: MUTED, margin: 0, valign: "middle", isTextBox: true });
   }
   source(s, [{ text: "RGPD Art. 5", url: U.rgpd }, { text: "plan de collecte complet", url: U.gdoc }]);
-  pageNum(s, 8);
+  pageNum(s, 7);
   s.addNotes("[20 s] Nous avons volontairement écarté les données personnelles qu'aucune décision n'exige, le benchmark Newzoo, trop biaisé, et les rôles imposés, contraires à l'identité du jeu.");
 
   // 9. Roadmap : quand, qui, combien (≈ 60 s)
   s = pres.addSlide(); s.background = { color: LIGHT };
   title(s, "Roadmap : quand, qui, combien", "Trois phases, chacune avec sa porte de décision");
   const ph = [
-    ["0-30 j", "Audit", "1 data analyst à temps plein, 1 data engineer à mi-temps ; DPO NetEase pour l'accord et le hachage", "≈ 33 jours-homme ; aucune licence nouvelle", "Ratio ≤ 1,2 sur les deux cohortes → plan B"],
-    ["30-90 j", "Tests A/B", "Équipe matchmaking NetEase + analyste", "Développement chiffré par NetEase avant tout lancement", "Levier gardé si le ratio baisse et l'attente reste < 5 min"],
-    ["90-180 j", "Généralisation", "Live-ops et communication ; page publique « comment fonctionne le matchmaking »", "Pilotage mensuel sur les outils existants", "31/03/2027 : ratio ≤ 1,2"],
+    ["0-30 j", "Audit", "1 data analyst à temps plein, 1 data engineer à mi-temps ; DPO NetEase pour l'accord et le hachage", "≈ 33 jours-homme, soit ≈ 19 K€ ; aucune licence nouvelle", "Ratio ≤ 1,2 sur les deux cohortes → plan B"],
+    ["30-90 j", "Tests A/B", "Équipe matchmaking NetEase + analyste", "≈ 23 K€ d'analyse ; développement chiffré par NetEase avant tout lancement", "Levier gardé si le ratio baisse et l'attente reste < 3 min"],
+    ["90-180 j", "Généralisation", "Live-ops et communication ; page publique « comment fonctionne le matchmaking »", "≈ 3 K€ de pilotage mensuel, sur les outils existants", "31/03/2027 : ratio ≤ 1,2"],
   ];
   for (let i = 0; i < 3; i++) {
     const x = 0.5 + i * 3.05;
     s.addShape("ellipse", { x: x + 0.05, y: 1.3, w: 0.45, h: 0.45, fill: { color: RED }, line: { color: RED } });
     s.addText(String(i + 1), { x: x + 0.05, y: 1.3, w: 0.45, h: 0.45, fontFace: H, fontSize: 15, bold: true, color: WHITE, align: "center", valign: "middle", margin: 0, isTextBox: true });
     s.addText([{ text: ph[i][0] + "  ", options: { bold: true, color: INK } }, { text: ph[i][1], options: { color: MUTED } }], { x: x + 0.6, y: 1.3, w: 2.3, h: 0.45, fontFace: H, fontSize: 14, valign: "middle", margin: 0, isTextBox: true });
-    s.addShape("roundRect", { x, y: 1.9, w: 2.9, h: 2.45, fill: { color: WHITE }, line: { color: LINE }, rectRadius: 0.08 });
+    s.addShape("roundRect", { x, y: 1.9, w: 2.9, h: 2.0, fill: { color: WHITE }, line: { color: LINE }, rectRadius: 0.08 });
     s.addText([
       { text: "Qui : ", options: { bold: true, color: NAVY } }, { text: ph[i][2], options: { color: INK, breakLine: true } },
       { text: " ", options: { fontSize: 4, breakLine: true } },
       { text: "Combien : ", options: { bold: true, color: NAVY } }, { text: ph[i][3], options: { color: INK, breakLine: true } },
       { text: " ", options: { fontSize: 4, breakLine: true } },
       { text: "Décision : ", options: { bold: true, color: RED } }, { text: ph[i][4], options: { color: INK } },
-    ], { x: x + 0.15, y: 2.0, w: 2.6, h: 2.3, fontFace: B, fontSize: 10, margin: 0, valign: "top", isTextBox: true });
+    ], { x: x + 0.15, y: 1.98, w: 2.6, h: 1.85, fontFace: B, fontSize: 10, margin: 0, valign: "top", isTextBox: true });
   }
+  s.addShape("roundRect", { x: 0.5, y: 3.98, w: 9, h: 0.62, fill: { color: NAVY }, line: { color: NAVY }, rectRadius: 0.06 });
+  s.addText([
+    { text: "Budget estimé : ≈ 19 K€ engagés (audit) · ≈ 45 K€ si les tests sont lancés", options: { bold: true, color: WHITE, breakLine: true } },
+    { text: "39 à 51 K€ aux TJM médians 2026 (540 €/j analyste, 650 €/j ingénieur), hors développement et infrastructure", options: { color: SOFT, fontSize: 9 } },
+  ], { x: 0.7, y: 3.98, w: 8.6, h: 0.62, fontFace: B, fontSize: 12.5, margin: 0, valign: "middle", isTextBox: true });
   s.addText([
     { text: "Stack : ", options: { bold: true, color: INK } },
     { text: "télémétrie in-game existante → entrepôt existant (type BigQuery ou Snowflake ; requêtes ≈ 6,25 $ par To au-delà de 1 To gratuit par mois) → BI existante (type Looker ou Tableau).", options: { color: INK } },
-  ], { x: 0.5, y: 4.47, w: 9, h: 0.65, fontFace: B, fontSize: 10, margin: 0, valign: "middle", isTextBox: true });
-  source(s, [{ text: "tarifs BigQuery (01/10/2026)", url: U.bq }, { text: "plan de collecte complet (§5 et §7)", url: U.gdoc }]);
-  pageNum(s, 9);
-  s.addNotes("[60 s] Quand, qui, combien. Trente jours d'audit : un data analyst et un data engineer à mi-temps, environ 33 jours-homme, sans licence nouvelle, sur votre stack existante. Si le ratio est déjà sous 1,2, on s'arrête : plan B. Sinon, soixante jours de tests avec votre équipe matchmaking, puis généralisation jusqu'au 31 mars 2027.");
+  ], { x: 0.5, y: 4.66, w: 9, h: 0.5, fontFace: B, fontSize: 9, margin: 0, valign: "middle", isTextBox: true });
+  source(s, [{ text: "TJM Data 2026 (01/10/2026)", url: U.tjm }, { text: "tarifs BigQuery (01/10/2026)", url: U.bq }, { text: "plan de collecte complet (§5 et §7)", url: U.gdoc }]);
+  pageNum(s, 8);
+  s.addNotes("[60 s] Quand, qui, combien. Trente jours d'audit : un data analyst et un data engineer à mi-temps, environ 33 jours-homme, soit 19 000 euros aux tarifs du marché, sans licence nouvelle, sur votre stack existante. C'est le seul montant engagé aujourd'hui ; si les tests sont lancés, le total data monte à environ 45 000 euros, hors développement. Si le ratio est déjà sous 1,2, on s'arrête : plan B. Sinon, soixante jours de tests avec votre équipe matchmaking, puis généralisation jusqu'au 31 mars 2027.");
 
   // 10. Risques & KPIs de décision (≈ 30 s)
   s = pres.addSlide(); s.background = { color: WHITE };
@@ -320,7 +294,7 @@ const U = {
     [kh("KPI"), kh("Comment on le calcule"), kh("Seuil"), kh("Si le seuil est franchi"), kh("Sinon")],
     ["Ratio de départ des nouveaux comptes", "% des nouveaux qui perdent au moins 7 de leurs 10 premiers matchs et ne rejouent pas sous 7 jours, divisé par le même % chez les autres nouveaux", kr("> 1,2"), "H5 tient : tests A/B des causes A ou B", "Pas d'investissement matchmaking : plan B"],
     ["Ratio de départ des joueurs de retour", "Même calcul sur les 10 premiers matchs classés après au moins 60 jours d'absence", kr("> 1,2"), "H5c tient : test des matchs de recalibrage (cause C)", "Rang au retour inchangé"],
-    ["Attente p90", "Temps d'attente sous lequel 90 % des joueurs trouvent une partie, par rang et région", kr("> 5 min"), "Arrêt du resserrement de l'écart", "Test poursuivi"],
+    ["Attente p90 en partie rapide", "Temps d'attente sous lequel 90 % des joueurs trouvent une partie, par rang et région", kr("> 3 min"), "Arrêt du resserrement de l'écart", "Test poursuivi"],
     ["Part de la partie rapide", "Part des 10 premiers matchs des nouveaux joués en partie rapide", kr("> 50 %"), "Leviers sur la partie rapide en premier", "Leviers sur le mode dominant"],
     ["Avis négatifs citant le matchmaking (contrôle)", "Part des avis Steam négatifs qui le citent (base : 10,5 % en septembre 2026)", kr("> 8 %"), "Au 31/03/2027 : problème de perception, plus de transparence", "Corrections perçues : on généralise"],
   ];
@@ -332,8 +306,8 @@ const U = {
     { text: "Plan B : ", options: { bold: true, color: RED } }, { text: "ratio ≤ 1,2 sur les deux cohortes : pas d'investissement matchmaking ; les données extraites testent équilibrage et monétisation.", options: { color: INK } },
   ], { x: 0.7, y: 3.9, w: 8.6, h: 1.2, fontFace: B, fontSize: 10, margin: 0, valign: "middle", paraSpaceAfter: 3, isTextBox: true });
   source(s, [{ text: "RGPD", url: U.rgpd }, { text: "AI Act", url: U.aiact }, { text: "plan de collecte complet (§3)", url: U.gdoc }]);
-  pageNum(s, 10);
-  s.addNotes("[30 s] Chaque KPI dit comment il se calcule et ce qu'il déclenche. Le principal : la part des nouveaux qui perdent au début et ne reviennent pas sous 7 jours, comparée aux autres ; au-delà de 1,2, on teste. Même calcul pour les revenants. 5 minutes d'attente arrêtent le resserrement. Base légale : contrat et intérêt légitime documenté. Pour démarrer : signer l'accord de sous-traitance et lancer l'audit. Merci.");
+  pageNum(s, 9);
+  s.addNotes("[30 s] Chaque KPI dit comment il se calcule et ce qu'il déclenche. Le principal : la part des nouveaux qui perdent au début et ne reviennent pas sous 7 jours, comparée aux autres ; au-delà de 1,2, on teste. Même calcul pour les revenants. 3 minutes d'attente arrêtent le resserrement : au-delà, un hero shooter paraît mort. Base légale : contrat et intérêt légitime documenté. Pour démarrer : signer l'accord de sous-traitance et lancer l'audit. Merci.");
   // 11. Annexe : sources
   s = pres.addSlide(); s.background = { color: WHITE };
   title(s, "Sources", "Annexe · consultées du 29/09 au 01/10/2026 · liens cliquables");
@@ -352,11 +326,12 @@ const U = {
     ["Overwatch 2 : baisse des joueurs moyens sur PC (VGC)", U.vgc],
     ["« Plus un jeu pour le fan occasionnel » (TheGamer, 09/08/2025)", U.thegamer],
     ["Tarifs BigQuery, requêtes à la demande (Google Cloud)", U.bq],
+    ["Baromètre TJM Data 2026, médianes freelance France (tjmetre.fr, 01/10/2026)", U.tjm],
     ["RGPD (EUR-Lex)", U.rgpd], ["AI Act (EUR-Lex)", U.aiact],
     ["Plan de collecte complet (Google Docs)", U.gdoc],
   ];
   s.addText(src.map((r, i, a) => ({ text: r[0], options: { hyperlink: { url: r[1] }, color: "2F3C7E", bullet: true, breakLine: i < a.length - 1 } })), { x: 0.5, y: 1.25, w: 9, h: 3.9, fontFace: B, fontSize: 10, paraSpaceAfter: 1, valign: "top", isTextBox: true });
-  pageNum(s, 11);
+  pageNum(s, 10);
   s.addNotes("Annexe, à montrer seulement si on vous demande une source.");
 
   // 12. Annexe : questions du jury anticipées
@@ -364,21 +339,20 @@ const U = {
   title(s, "Questions anticipées", "Annexe · réponses courtes, à garder sous la main");
   const qa = [
     ["Pourquoi cette donnée et pas une autre ?", "Score ICE le plus haut, et elle tranche directement l'hypothèse (départ à 7 jours, cause A, B ou C)."],
-    ["Combien ça coûte ?", "≈ 33 jours-homme pour l'audit ; aucune licence nouvelle ; requêtes ≈ 6,25 $ par To au-delà de 1 To gratuit."],
+    ["Combien ça coûte ?", "≈ 19 K€ pour l'audit (33 jours-homme), ≈ 45 K€ en tout si les tests sont lancés ; aucune licence nouvelle ; requêtes ≈ 6,25 $ par To au-delà de 1 To gratuit."],
     ["Quelle base légale ?", "Contrat pour le matchmaking ; intérêt légitime documenté pour l'audit ; consentement pour les sondages."],
     ["Comment savoir si ça marche ?", "Ratio ≤ 1,2 au 31/03/2027 sur les deux cohortes ; sinon, plan B sans nouvelle collecte."],
     ["Qu'avez-vous écarté ?", "Données personnelles sans décision (chat, âge, téléphone, autres jeux), benchmark Newzoo (ICE 12), rôles imposés."],
-    ["Où avez-vous utilisé l'IA ?", "9 usages tracés en annexe du rapport : outil, prompt, réponse, analyse critique (retenu, rejeté, à vérifier)."],
   ];
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 5; i++) {
     const col = i % 2, r = Math.floor(i / 2);
-    const x = 0.5 + col * 4.6, y = 1.3 + r * 1.27;
-    s.addShape("roundRect", { x, y, w: 4.4, h: 1.15, fill: { color: WHITE }, line: { color: LINE }, rectRadius: 0.06 });
-    s.addText(qa[i][0], { x: x + 0.15, y: y + 0.08, w: 4.1, h: 0.3, fontFace: H, fontSize: 11, bold: true, color: RED, margin: 0, isTextBox: true });
-    s.addText(qa[i][1], { x: x + 0.15, y: y + 0.4, w: 4.1, h: 0.7, fontFace: B, fontSize: 10, color: INK, margin: 0, valign: "top", isTextBox: true });
+    const x = 0.5 + col * 4.6, y = 1.3 + r * 1.27, w = i === 4 ? 9 : 4.4;
+    s.addShape("roundRect", { x, y, w, h: 1.15, fill: { color: WHITE }, line: { color: LINE }, rectRadius: 0.06 });
+    s.addText(qa[i][0], { x: x + 0.15, y: y + 0.08, w: w - 0.3, h: 0.3, fontFace: H, fontSize: 11, bold: true, color: RED, margin: 0, isTextBox: true });
+    s.addText(qa[i][1], { x: x + 0.15, y: y + 0.4, w: w - 0.3, h: 0.7, fontFace: B, fontSize: 10, color: INK, margin: 0, valign: "top", isTextBox: true });
   }
-  pageNum(s, 12);
-  s.addNotes("Annexe pour les questions. Pour « Où avez-vous utilisé l'IA ? », ajoutez à l'oral un élément critique que vous avez fait sans IA (par exemple le choix final de l'hypothèse ou la vérification des chiffres), si c'est le cas.");
+  pageNum(s, 11);
+  s.addNotes("Annexe pour les questions. Question imposée du jury, sans carte à l'écran : « Où avez-vous utilisé l'IA ? ». Réponse : 10 usages tracés en annexe du rapport (outil, prompt, réponse, analyse critique), plus à l'oral un élément critique que vous avez fait sans IA (par exemple le choix final de l'hypothèse ou la vérification des chiffres), si c'est le cas.");
 
   await pres.writeFile({ fileName: "/home/user/SOCIO/docs/presentation/pitch_marvel_rivals_netease.pptx" });
   console.log("ok");
