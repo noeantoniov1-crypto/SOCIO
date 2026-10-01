@@ -105,41 +105,9 @@ const U = {
   pageNum(s, 2);
   s.addNotes("[20 s] Le problème, prouvé par les données. Moins 85 % de pic à pic. Chaque saison ramène des joueurs, repartis en deux mois. Et ceux qui partent accusent le matchmaking : de 7 à 41 % des avis négatifs, au point que NetEase a dû démentir un matchmaking truqué.");
 
-  // 3. Diagnostic : l'hypothèse, temps 1 (≈ 30 s)
-  s = pres.addSlide(); s.background = { color: LIGHT };
-  title(s, "Hypothèse : deux publics opposés réunis", "Diagnostic · pourquoi le problème existe (HYPOTHÈSE H5, à valider sur vos données)");
-  const pops = [
-    [fa.FaCrosshairs, "Les vétérans du genre", [["45 %", " des joueurs qui ont arrêté Overwatch 2 en décembre 2024 ont joué à Marvel Rivals (Newzoo)"], ["−22 %", " de joueurs moyens sur Overwatch 2 (PC) ce mois-là"]], NAVY],
-    [fa.FaMask, "Le grand public venu pour Marvel", [["10 M", " de joueurs en 3 jours, 40 M en 3 mois"], ["Gratuit", " et porté par une licence grand public : beaucoup découvrent le genre"]], RED],
-  ];
-  for (let i = 0; i < 2; i++) {
-    const x = 0.5 + i * 4.6;
-    s.addShape("roundRect", { x, y: 1.3, w: 4.4, h: 2.05, fill: { color: WHITE }, line: { color: LINE }, rectRadius: 0.08 });
-    await badge(s, pops[i][0], x + 0.2, 1.43, 0.42, pops[i][3]);
-    s.addText(pops[i][1], { x: x + 0.75, y: 1.43, w: 3.5, h: 0.42, fontFace: H, fontSize: 14, bold: true, color: INK, margin: 0, valign: "middle", isTextBox: true });
-    const runs = [];
-    pops[i][2].forEach((r, j) => {
-      runs.push({ text: r[0], options: { bold: true, color: pops[i][3], fontSize: 15 } });
-      runs.push({ text: r[1], options: { color: INK, breakLine: true } });
-      if (j === 0) runs.push({ text: " ", options: { fontSize: 4, breakLine: true } });
-    });
-    s.addText(runs, { x: x + 0.2, y: 1.98, w: 4.0, h: 1.3, fontFace: B, fontSize: 10.5, margin: 0, valign: "top", isTextBox: true });
-  }
-  s.addShape("roundRect", { x: 0.5, y: 3.5, w: 9, h: 1.6, fill: { color: NAVY }, line: { color: NAVY }, rectRadius: 0.08 });
-  s.addText([
-    { text: "Sans calibrage, ils se croisent ", options: { bold: true, color: RED } },
-    { text: "(Bronze III pour tous en classé jusqu'à la saison 5) : les écarts de niveau donnent l'impression d'un matchmaking injuste, et les moins expérimentés partent.", options: { color: WHITE, breakLine: true } },
-    { text: " ", options: { fontSize: 5, breakLine: true } },
-    { text: "Ce qu'il reste : ", options: { bold: true, color: RED } },
-    { text: "surtout des vétérans. Auteurs d'avis Steam à plus de 200 h : 5 % fin 2024, 42 % à l'été 2025. « Plus un jeu pour le fan de Marvel occasionnel » (TheGamer, 09/08/2025).", options: { color: WHITE } },
-  ], { x: 0.75, y: 3.55, w: 8.5, h: 1.5, fontFace: B, fontSize: 11.5, margin: 0, valign: "middle", isTextBox: true });
-  source(s, [{ text: "Newzoo via Insider Gaming", url: U.newzoo }, { text: "VGC", url: U.vgc }, { text: "Game World Observer", url: U.gwo }, { text: "PCGamesN", url: U.pcg }, { text: "avis Steam", url: U.steamapi }, { text: "TheGamer", url: U.thegamer }]);
-  pageNum(s, 3);
-  s.addNotes("[30 s] Pourquoi ? Notre hypothèse. Au lancement, deux publics opposés arrivent ensemble : des vétérans, 45 % des joueurs qui ont quitté Overwatch 2 ont essayé Marvel Rivals, et un grand public venu pour Marvel. Sans calibrage, ils se croisent : le matchmaking paraît injuste, les moins expérimentés partent. Il reste surtout des vétérans.");
-
-  // 4. Diagnostic : l'hypothèse, temps 2 (≈ 30 s)
+  // 3. Diagnostic : l'hypothèse testée (≈ 35 s)
   s = pres.addSlide(); s.background = { color: WHITE };
-  title(s, "Deux mécanismes entretiennent les écarts", "Diagnostic · aujourd'hui : ce que les données publiques montrent, et ce qu'elles ne montrent pas");
+  title(s, "Hypothèse : un écart de niveau qui fait partir", "Diagnostic · H5 : nouveaux et revenants subissent des écarts non compensés (testable)");
   const mech = [
     [fa.FaUserPlus, "H5b · Les nouveaux, en partie rapide", RED,
       "Faute de joueurs en file, le matchmaking accepte des écarts de niveau plus grands pour lancer la partie : NetEase le reconnaît (vidéo du 21/08/2025).",
@@ -164,12 +132,44 @@ const U = {
     ], { x: x + 0.2, y: 1.95, w: 4.0, h: 2.5, fontFace: B, fontSize: 10.5, margin: 0, valign: "top", isTextBox: true });
   }
   s.addText([
-    { text: "Ce qu'on ne sait pas encore : ", options: { bold: true, color: RED } },
-    { text: "où jouent les nouveaux, quel écart subissent nouveaux et revenants, et si cet écart les fait partir. Seules vos données internes peuvent trancher.", options: { color: INK } },
+    { text: "Ce qu'on teste : ", options: { bold: true, color: RED } },
+    { text: "l'écart de niveau subi par les nouveaux et les revenants, et s'il les fait partir dans les 7 jours. Tout se mesure dans votre télémétrie, sans savoir d'où viennent les joueurs.", options: { color: INK } },
   ], { x: 0.5, y: 4.6, w: 9, h: 0.55, fontFace: B, fontSize: 11, margin: 0, valign: "middle", isTextBox: true });
   source(s, [{ text: "vidéo NetEase du 21/08/2025", url: U.video }, { text: "Dev Talk Vol.10", url: U.devtalk }, { text: "inactivité (source tierce)", url: U.timesaver }, { text: "Steam Charts", url: U.steamcharts }]);
+  pageNum(s, 3);
+  s.addNotes("[35 s] Pourquoi ? Notre hypothèse, testable : nouveaux et revenants subissent des écarts de niveau que le matchmaking ne compense pas, et partent. Deux mécanismes peuvent les produire. En partie rapide, faute de joueurs, le matchmaking accepte des écarts plus grands, NetEase l'a reconnu : le nouveau tombe sur des vétérans et part. En classé, un joueur qui revient après des mois retrouve un rang à peine abaissé, perd, et repart. Tout cela se mesure dans vos données.");
+
+  // 4. Diagnostic : contexte probable, non testable (≈ 25 s)
+  s = pres.addSlide(); s.background = { color: LIGHT };
+  title(s, "Contexte probable : deux publics opposés", "Diagnostic · hypothèse de contexte : plausible, mais invérifiable");
+  const pops = [
+    [fa.FaCrosshairs, "Les vétérans du genre", [["45 %", " des joueurs qui ont arrêté Overwatch 2 en décembre 2024 ont joué à Marvel Rivals (Newzoo)"], ["−22 %", " de joueurs moyens sur Overwatch 2 (PC) ce mois-là"]], NAVY],
+    [fa.FaMask, "Le grand public venu pour Marvel", [["10 M", " de joueurs en 3 jours, 40 M en 3 mois"], ["Gratuit", " et porté par une licence grand public : beaucoup découvrent le genre"]], RED],
+  ];
+  for (let i = 0; i < 2; i++) {
+    const x = 0.5 + i * 4.6;
+    s.addShape("roundRect", { x, y: 1.3, w: 4.4, h: 2.05, fill: { color: WHITE }, line: { color: LINE }, rectRadius: 0.08 });
+    await badge(s, pops[i][0], x + 0.2, 1.43, 0.42, pops[i][3]);
+    s.addText(pops[i][1], { x: x + 0.75, y: 1.43, w: 3.5, h: 0.42, fontFace: H, fontSize: 14, bold: true, color: INK, margin: 0, valign: "middle", isTextBox: true });
+    const runs = [];
+    pops[i][2].forEach((r, j) => {
+      runs.push({ text: r[0], options: { bold: true, color: pops[i][3], fontSize: 15 } });
+      runs.push({ text: r[1], options: { color: INK, breakLine: true } });
+      if (j === 0) runs.push({ text: " ", options: { fontSize: 4, breakLine: true } });
+    });
+    s.addText(runs, { x: x + 0.2, y: 1.98, w: 4.0, h: 1.3, fontFace: B, fontSize: 10.5, margin: 0, valign: "top", isTextBox: true });
+  }
+  s.addShape("roundRect", { x: 0.5, y: 3.5, w: 9, h: 1.6, fill: { color: NAVY }, line: { color: NAVY }, rectRadius: 0.08 });
+  s.addText([
+    { text: "Sans calibrage, ils se croisent ", options: { bold: true, color: RED } },
+    { text: "(Bronze III pour tous en classé jusqu'à la saison 5). Il reste surtout des vétérans : auteurs d'avis Steam à plus de 200 h, 5 % fin 2024, 42 % à l'été 2025.", options: { color: WHITE, breakLine: true } },
+    { text: " ", options: { fontSize: 5, breakLine: true } },
+    { text: "Limite : ", options: { bold: true, color: RED } },
+    { text: "la télémétrie ne dit pas pourquoi un joueur est venu ni d'où il vient. Ce récit n'est donc pas testé : aucune décision du plan n'en dépend.", options: { color: WHITE } },
+  ], { x: 0.75, y: 3.55, w: 8.5, h: 1.5, fontFace: B, fontSize: 11.5, margin: 0, valign: "middle", isTextBox: true });
+  source(s, [{ text: "Newzoo via Insider Gaming", url: U.newzoo }, { text: "VGC", url: U.vgc }, { text: "Game World Observer", url: U.gwo }, { text: "PCGamesN", url: U.pcg }, { text: "avis Steam", url: U.steamapi }, { text: "TheGamer", url: U.thegamer }]);
   pageNum(s, 4);
-  s.addNotes("[30 s] Aujourd'hui, deux mécanismes entretiennent ces écarts. En partie rapide, faute de joueurs, le matchmaking accepte des écarts plus grands, NetEase l'a reconnu : le nouveau tombe sur des vétérans et part. En classé, un joueur qui revient après des mois retrouve un rang à peine abaissé, perd, et repart. Ce sont des hypothèses : vos données trancheront.");
+  s.addNotes("[20 s] D'où viennent probablement ces écarts ? Au lancement, des vétérans du genre, 45 % des joueurs qui ont quitté Overwatch 2 ont essayé Marvel Rivals, et un grand public venu pour Marvel. Sans calibrage, ils se sont croisés. C'est un contexte plausible, mais invérifiable : vos données ne disent pas pourquoi un joueur vient. Nous ne le testons pas, et aucune décision n'en dépend.");
 
   // 5. Recommandation : objectif + données prioritaires (≈ 45 s)
   s = pres.addSlide(); s.background = { color: LIGHT };
@@ -308,29 +308,27 @@ const U = {
 
   // 10. Risques & KPIs de décision (≈ 30 s)
   s = pres.addSlide(); s.background = { color: WHITE };
-  title(s, "KPIs de décision et garde-fous", "Risques / KPIs · chaque seuil déclenche une action");
-  const kpi = [["> 1,2", "ratio de départ des nouveaux qui perdent : on teste A ou B"], ["> 1,2", "ratio de départ des revenants qui perdent : on teste C"], ["> 5 min", "d'attente pour 10 % des joueurs : on arrête le resserrement"], ["> 50 %", "des premiers matchs en partie rapide : on la corrige en premier"]];
-  for (let i = 0; i < 4; i++) {
-    const x = 0.5 + i * 2.29;
-    s.addShape("roundRect", { x, y: 1.25, w: 2.15, h: 1.35, fill: { color: NAVY }, line: { color: NAVY }, rectRadius: 0.08 });
-    s.addText(kpi[i][0], { x: x + 0.15, y: 1.32, w: 1.9, h: 0.5, fontFace: H, fontSize: 24, bold: true, color: RED, margin: 0, isTextBox: true });
-    s.addText(kpi[i][1], { x: x + 0.15, y: 1.85, w: 1.9, h: 0.7, fontFace: B, fontSize: 9.5, color: WHITE, margin: 0, valign: "top", isTextBox: true });
-  }
-  const risks = [
-    [fa.FaBalanceScale, "Base légale", "Contrat pour le matchmaking lui-même ; intérêt légitime documenté (test de mise en balance) pour l'audit ; consentement pour les sondages."],
-    [fa.FaUserShield, "RGPD", "Accord de sous-traitance avant tout accès, identifiants hachés par NetEase, mineurs exclus ou traités à part."],
-    [fa.FaGavel, "AI Act", "Aucun profilage individuel des « perdants » : les leviers s'appliquent à tous ; bots toujours annoncés."],
-    [fa.FaRoute, "Plan B", "Ratio ≤ 1,2 sur les deux cohortes : pas d'investissement matchmaking ; les données extraites testent équilibrage et monétisation."],
+  title(s, "KPIs de décision et garde-fous", "Risques / KPIs · comment chaque KPI se calcule, et quelle décision il déclenche");
+  const kh = (t) => ({ text: t, options: { bold: true, color: WHITE, fill: { color: NAVY }, fontFace: H, fontSize: 9.5 } });
+  const kr = (t) => ({ text: t, options: { bold: true, color: RED, fontFace: H, fontSize: 11 } });
+  const krows = [
+    [kh("KPI"), kh("Comment on le calcule"), kh("Seuil"), kh("Si le seuil est franchi"), kh("Sinon")],
+    ["Ratio de départ des nouveaux comptes", "% des nouveaux qui perdent au moins 7 de leurs 10 premiers matchs et ne rejouent pas sous 7 jours, divisé par le même % chez les autres nouveaux", kr("> 1,2"), "H5 tient : tests A/B des causes A ou B", "Pas d'investissement matchmaking : plan B"],
+    ["Ratio de départ des joueurs de retour", "Même calcul sur les 10 premiers matchs classés après au moins 60 jours d'absence", kr("> 1,2"), "H5c tient : test des matchs de recalibrage (cause C)", "Rang au retour inchangé"],
+    ["Attente p90", "Temps d'attente sous lequel 90 % des joueurs trouvent une partie, par rang et région", kr("> 5 min"), "Arrêt du resserrement de l'écart", "Test poursuivi"],
+    ["Part de la partie rapide", "Part des 10 premiers matchs des nouveaux joués en partie rapide", kr("> 50 %"), "Leviers sur la partie rapide en premier", "Leviers sur le mode dominant"],
+    ["Avis négatifs citant le matchmaking (contrôle)", "Part des avis Steam négatifs qui le citent (base : 10,5 % en septembre 2026)", kr("> 8 %"), "Au 31/03/2027 : problème de perception, plus de transparence", "Corrections perçues : on généralise"],
   ];
-  for (let i = 0; i < 4; i++) {
-    const y = 2.75 + i * 0.6;
-    await badge(s, risks[i][0], 0.5, y + 0.06, 0.4);
-    s.addText([{ text: risks[i][1] + " : ", options: { bold: true, color: INK } }, { text: risks[i][2], options: { color: INK } }], { x: 1.05, y, w: 8.45, h: 0.55, fontFace: B, fontSize: 10.5, margin: 0, valign: "middle", isTextBox: true });
-  }
-  source(s, [{ text: "RGPD", url: U.rgpd }, { text: "AI Act", url: U.aiact }]);
+  s.addTable(krows, { x: 0.5, y: 1.25, w: 9, colW: [1.7, 3.3, 0.75, 1.8, 1.45], fontFace: B, fontSize: 8.5, color: INK, border: { type: "solid", pt: 0.5, color: "D5D8E3" }, fill: { color: WHITE }, valign: "middle", margin: [1, 4, 1, 4], rowH: [0.26, 0.52, 0.42, 0.42, 0.36, 0.42] });
+  s.addShape("roundRect", { x: 0.5, y: 3.85, w: 9, h: 1.3, fill: { color: LIGHT }, line: { color: LIGHT }, rectRadius: 0.06 });
+  s.addText([
+    { text: "Base légale : ", options: { bold: true, color: NAVY } }, { text: "contrat pour le matchmaking ; intérêt légitime documenté pour l'audit ; consentement pour les sondages.", options: { color: INK, breakLine: true } },
+    { text: "RGPD et AI Act : ", options: { bold: true, color: NAVY } }, { text: "accord de sous-traitance, identifiants hachés, mineurs exclus ; aucun profilage individuel, bots toujours annoncés.", options: { color: INK, breakLine: true } },
+    { text: "Plan B : ", options: { bold: true, color: RED } }, { text: "ratio ≤ 1,2 sur les deux cohortes : pas d'investissement matchmaking ; les données extraites testent équilibrage et monétisation.", options: { color: INK } },
+  ], { x: 0.7, y: 3.9, w: 8.6, h: 1.2, fontFace: B, fontSize: 10, margin: 0, valign: "middle", paraSpaceAfter: 3, isTextBox: true });
+  source(s, [{ text: "RGPD", url: U.rgpd }, { text: "AI Act", url: U.aiact }, { text: "plan de collecte complet (§3)", url: U.gdoc }]);
   pageNum(s, 10);
-  s.addNotes("[30 s] Chaque KPI déclenche une décision : 1,2 pour lancer les tests, 5 minutes pour les arrêter, 50 % pour choisir le mode. Base légale : contrat pour le matchmaking, intérêt légitime documenté pour l'audit. Pour démarrer : signer l'accord de sous-traitance et lancer l'audit. Merci.");
-
+  s.addNotes("[30 s] Chaque KPI dit comment il se calcule et ce qu'il déclenche. Le principal : la part des nouveaux qui perdent au début et ne reviennent pas sous 7 jours, comparée aux autres ; au-delà de 1,2, on teste. Même calcul pour les revenants. 5 minutes d'attente arrêtent le resserrement. Base légale : contrat et intérêt légitime documenté. Pour démarrer : signer l'accord de sous-traitance et lancer l'audit. Merci.");
   // 11. Annexe : sources
   s = pres.addSlide(); s.background = { color: WHITE };
   title(s, "Sources", "Annexe · consultées du 29/09 au 01/10/2026 · liens cliquables");
