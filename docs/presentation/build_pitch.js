@@ -80,7 +80,12 @@ const U = {
 
   // 2. Contexte : le problème business, prouvé par les données (≈ 20 s)
   s = pres.addSlide(); s.background = { color: WHITE };
-  title(s, "Le jeu perd ses joueurs et ne les regagne pas", "Contexte · le B du BODAK, prouvé par les données (Steam = PC uniquement)");
+  title(s, "Le problème business", "Contexte · le B du BODAK, prouvé par les données (Steam = PC uniquement)");
+  s.addShape("roundRect", { x: 0.5, y: 1.25, w: 9, h: 0.62, fill: { color: NAVY }, line: { color: NAVY }, rectRadius: 0.08 });
+  s.addText([
+    { text: "B : ", options: { bold: true, color: RED } },
+    { text: "Marvel Rivals perd ses joueurs et ne parvient plus à en regagner ; ceux qui partent accusent d'abord le matchmaking.", options: { color: WHITE } },
+  ], { x: 0.7, y: 1.27, w: 8.6, h: 0.58, fontFace: B, fontSize: 13, margin: 0, valign: "middle", isTextBox: true });
   const months = ["Déc. 24", "Janv.", "Févr.", "Mars", "Avr.", "Mai", "Juin", "Juil.", "Août", "Sept.", "Oct.", "Nov.", "Déc.", "Janv. 26", "Févr.", "Mars", "Avr.", "Mai", "Juin", "Juil.", "Août", "Sept.*"];
   const players = [279402, 306066, 228000, 144302, 134118, 102116, 79806, 82825, 77502, 64418, 63716, 65301, 75492, 88790, 81368, 65150, 70116, 67588, 69738, 84281, 80129, 67646];
   const mm = [7.4, 10.9, 12.1, 20.3, 21.1, 29.1, 27.6, 37.0, 41.0, 33.9, 25.9, 17.3, 18.2, 15.4, 15.6, 13.4, 14.4, 14.7, 14.2, 8.8, 13.4, 10.5];
@@ -88,9 +93,9 @@ const U = {
     valGridLine: { color: LINE, size: 0.5 }, catGridLine: { style: "none" }, lineSize: 2.5, lineDataSymbol: "circle", lineDataSymbolSize: 4,
     showTitle: true, titleFontSize: 11, titleColor: INK, titleFontFace: B };
   s.addChart(pres.charts.LINE, [{ name: "Joueurs simultanés (milliers)", labels: months, values: players.map(v => Math.round(v / 1000)) }],
-    { ...chartBase, x: 0.35, y: 1.25, w: 4.65, h: 2.75, chartColors: [RED], title: "Joueurs simultanés, moyenne mensuelle (milliers)" });
+    { ...chartBase, x: 0.35, y: 1.95, w: 4.65, h: 2.15, chartColors: [RED], title: "Joueurs simultanés, moyenne mensuelle (milliers)" });
   s.addChart(pres.charts.LINE, [{ name: "% des avis négatifs citant le matchmaking", labels: months, values: mm }],
-    { ...chartBase, x: 5.0, y: 1.25, w: 4.65, h: 2.75, chartColors: [NAVY], valAxisMaxVal: 45, valAxisLabelFormatCode: "0\"%\"", title: "% des avis Steam négatifs qui citent le matchmaking" });
+    { ...chartBase, x: 5.0, y: 1.95, w: 4.65, h: 2.15, chartColors: [NAVY], valAxisMaxVal: 45, valAxisLabelFormatCode: "0\"%\"", title: "% des avis Steam négatifs qui citent le matchmaking" });
   const proofs = [
     ["−85 %", "de pic à pic (644 K → 98 K) ; −76 % en moyenne depuis la sortie"],
     ["2 mois", "pour perdre les joueurs ramenés par une saison (+18 % en janv. 2026, +21 % en juil.)"],
@@ -98,12 +103,12 @@ const U = {
   ];
   for (let i = 0; i < 3; i++) {
     const x = 0.5 + i * 3.05;
-    s.addText(proofs[i][0], { x, y: 4.1, w: 2.9, h: 0.45, fontFace: H, fontSize: 22, bold: true, color: i === 2 ? NAVY : RED, margin: 0, isTextBox: true });
-    s.addText(proofs[i][1], { x, y: 4.55, w: 2.9, h: 0.6, fontFace: B, fontSize: 10, color: INK, margin: 0, valign: "top", isTextBox: true });
+    s.addText(proofs[i][0], { x, y: 4.15, w: 2.9, h: 0.42, fontFace: H, fontSize: 20, bold: true, color: i === 2 ? NAVY : RED, margin: 0, isTextBox: true });
+    s.addText(proofs[i][1], { x, y: 4.57, w: 2.9, h: 0.6, fontFace: B, fontSize: 9.5, color: INK, margin: 0, valign: "top", isTextBox: true });
   }
   source(s, [{ text: "Forbes (12/10/2025)", url: U.forbes }, { text: "Steam Charts (30/09/2026 ; * = 30 derniers jours)", url: U.steamcharts }, { text: "avis Steam, notre collecte", url: U.steamapi }, { text: "démenti EOMM", url: U.eomm }]);
   pageNum(s, 2);
-  s.addNotes("[20 s] Le problème, prouvé par les données. Moins 85 % de pic à pic. Chaque saison ramène des joueurs, repartis en deux mois. Et ceux qui partent accusent le matchmaking : de 7 à 41 % des avis négatifs, au point que NetEase a dû démentir un matchmaking truqué.");
+  s.addNotes("[20 s] Le problème business : Marvel Rivals perd ses joueurs et ne parvient plus à en regagner. Les preuves : moins 85 % de pic à pic. Chaque saison ramène des joueurs, repartis en deux mois. Et ceux qui partent accusent le matchmaking : de 7 à 41 % des avis négatifs, au point que NetEase a dû démentir un matchmaking truqué.");
 
   // 3. Diagnostic : l'hypothèse testée (≈ 35 s)
   s = pres.addSlide(); s.background = { color: WHITE };
