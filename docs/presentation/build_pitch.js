@@ -76,7 +76,7 @@ const U = {
   s.addText("Plan de collecte data pour le comité de direction de NetEase Games", { x: 0.5, y: 3.6, w: 9, h: 0.4, fontFace: B, fontSize: 15, color: SOFT, margin: 0, isTextBox: true });
   s.addText("Noé, consultant · 2 octobre 2026", { x: 0.5, y: 4.7, w: 6, h: 0.3, fontFace: B, fontSize: 12, color: SOFT, margin: 0, isTextBox: true });
   s.addText([{ text: "Forbes, 12/10/2025", options: { hyperlink: { url: U.forbes }, color: "9FB4FF" } }], { x: 6.5, y: 4.7, w: 3, h: 0.3, fontFace: B, fontSize: 10, align: "right", margin: 0, isTextBox: true });
-  s.addNotes("[10 s] 644 000 joueurs en janvier 2025, 98 000 dix mois plus tard. Je suis mandaté par votre comité pour comprendre pourquoi les joueurs ne restent pas, et quoi mesurer pour le savoir.");
+  s.addNotes("[10 s] 644 000 joueurs en janvier 2025, 98 000 dix mois plus tard. Votre comité m'a demandé pourquoi les joueurs ne restent pas.");
 
   // 2. Contexte : le problème business, prouvé par les données (≈ 20 s)
   s = pres.addSlide(); s.background = { color: WHITE };
@@ -103,7 +103,7 @@ const U = {
   }
   source(s, [{ text: "Forbes (12/10/2025)", url: U.forbes }, { text: "Steam Charts (30/09/2026 ; * = 30 derniers jours)", url: U.steamcharts }, { text: "avis Steam, notre collecte", url: U.steamapi }, { text: "démenti EOMM", url: U.eomm }]);
   pageNum(s, 2);
-  s.addNotes("[20 s] Le problème, prouvé par les données. Un : moins 85 % de pic à pic, moins 76 % en moyenne depuis la sortie. Deux : chaque saison ramène des joueurs, et en deux mois ils sont repartis. Trois : ceux qui partent accusent le matchmaking, de 7 à 41 % des avis négatifs, au point que NetEase a dû démentir publiquement un matchmaking truqué. Ma question : pourquoi les joueurs vivent-ils le matchmaking comme injuste au point de partir ?");
+  s.addNotes("[20 s] Le problème, prouvé par les données. Moins 85 % de pic à pic. Chaque saison ramène des joueurs, repartis en deux mois. Et ceux qui partent accusent le matchmaking : de 7 à 41 % des avis négatifs, au point que NetEase a dû démentir un matchmaking truqué.");
 
   // 3. Diagnostic : l'hypothèse, temps 1 (≈ 30 s)
   s = pres.addSlide(); s.background = { color: LIGHT };
@@ -135,7 +135,7 @@ const U = {
   ], { x: 0.75, y: 3.55, w: 8.5, h: 1.5, fontFace: B, fontSize: 11.5, margin: 0, valign: "middle", isTextBox: true });
   source(s, [{ text: "Newzoo via Insider Gaming", url: U.newzoo }, { text: "VGC", url: U.vgc }, { text: "Game World Observer", url: U.gwo }, { text: "PCGamesN", url: U.pcg }, { text: "avis Steam", url: U.steamapi }, { text: "TheGamer", url: U.thegamer }]);
   pageNum(s, 3);
-  s.addNotes("[30 s] Pourquoi ce problème existe ? Notre hypothèse, H5. Au lancement, deux publics opposés arrivent en même temps : des vétérans du genre, puisque 45 % des joueurs qui ont quitté Overwatch 2 en décembre ont joué à Marvel Rivals, et un grand public venu pour Marvel, 40 millions en trois mois. Sans calibrage, ils se croisent : les écarts de niveau donnent l'impression d'un matchmaking injuste, et les moins expérimentés partent. Il reste surtout des vétérans. Attention : Newzoo dit « ont joué », pas « ont migré ».");
+  s.addNotes("[30 s] Pourquoi ? Notre hypothèse. Au lancement, deux publics opposés arrivent ensemble : des vétérans, 45 % des joueurs qui ont quitté Overwatch 2 ont essayé Marvel Rivals, et un grand public venu pour Marvel. Sans calibrage, ils se croisent : le matchmaking paraît injuste, les moins expérimentés partent. Il reste surtout des vétérans.");
 
   // 4. Diagnostic : l'hypothèse, temps 2 (≈ 30 s)
   s = pres.addSlide(); s.background = { color: WHITE };
@@ -169,7 +169,7 @@ const U = {
   ], { x: 0.5, y: 4.6, w: 9, h: 0.55, fontFace: B, fontSize: 11, margin: 0, valign: "middle", isTextBox: true });
   source(s, [{ text: "vidéo NetEase du 21/08/2025", url: U.video }, { text: "Dev Talk Vol.10", url: U.devtalk }, { text: "inactivité (source tierce)", url: U.timesaver }, { text: "Steam Charts", url: U.steamcharts }]);
   pageNum(s, 4);
-  s.addNotes("[30 s] Et aujourd'hui ? Deux mécanismes entretiennent ces écarts. Pour les nouveaux, en partie rapide : faute de joueurs, le matchmaking accepte des écarts plus grands, NetEase l'a reconnu ; le nouveau tombe sur les vétérans et part. Pour les joueurs de retour, en classé : leur rang n'est abaissé que de six divisions, même après des mois d'absence ; ils affrontent des joueurs plus en forme, perdent, et repartent. C'est cohérent avec les retours de saison qui ne durent pas. Mais ce sont des hypothèses : seules vos données peuvent trancher.");
+  s.addNotes("[30 s] Aujourd'hui, deux mécanismes entretiennent ces écarts. En partie rapide, faute de joueurs, le matchmaking accepte des écarts plus grands, NetEase l'a reconnu : le nouveau tombe sur des vétérans et part. En classé, un joueur qui revient après des mois retrouve un rang à peine abaissé, perd, et repart. Ce sont des hypothèses : vos données trancheront.");
 
   // 5. Recommandation : objectif + données prioritaires (≈ 45 s)
   s = pres.addSlide(); s.background = { color: LIGHT };
@@ -193,7 +193,7 @@ const U = {
   s.addText("Ensuite, pour écarter les autres explications : héros joué, parties avec bots, joueurs en groupe, comptes arrivés en 2025. Tout existe déjà dans vos serveurs.", { x: 0.5, y: 4.83, w: 9, h: 0.35, fontFace: B, fontSize: 9.5, italic: true, color: MUTED, margin: 0, isTextBox: true });
   source(s, [{ text: "plan de collecte complet (matrice ICE)", url: U.gdoc }, { text: "notes de patch S5", url: U.s5 }]);
   pageNum(s, 5);
-  s.addNotes("[45 s] Recommandation : d'abord mesurer. L'objectif traduit l'hypothèse en chiffre : un joueur qui perd au début ne doit pas partir plus de 1,2 fois plus souvent que les autres, chez les nouveaux comme chez les revenants, d'ici fin mars 2027. Six données d'abord. La première mesure l'objectif. La deuxième dit où jouent les nouveaux. Les trois suivantes testent chacune une cause : le niveau de départ, le manque de joueurs, le rang au retour. La dernière exploite une expérience que NetEase a déjà faite en saison 5. Tout est déjà dans vos serveurs.");
+  s.addNotes("[45 s] D'abord mesurer. L'objectif : d'ici fin mars 2027, un joueur qui perd au début ne doit pas partir plus de 1,2 fois plus souvent que les autres, nouveau ou de retour. Six données d'abord : la première mesure l'objectif, la deuxième dit où jouent les nouveaux, trois testent chacune une cause, la dernière exploite une expérience déjà faite en saison 5.");
 
   // 6. Recommandation : la matrice de collecte, visuelle (≈ 20 s)
   s = pres.addSlide(); s.background = { color: WHITE };
@@ -229,7 +229,7 @@ const U = {
   ], { x: 6.85, y: 3.15, w: 2.6, h: 1.9, fontFace: B, fontSize: 10, margin: 0, valign: "top", isTextBox: true });
   source(s, [{ text: "plan de collecte complet (justification de chaque note)", url: U.gdoc }]);
   pageNum(s, 6);
-  s.addNotes("[20 s] Voici la matrice complète. Chaque donnée est notée sur l'impact sur la décision, la confiance et la facilité. Treize sont indispensables, et toutes existent déjà dans votre télémétrie : l'audit ne demande aucune nouvelle collecte. Les données écartées, à droite, je les détaille juste après.");
+  s.addNotes("[15 s] La matrice complète : treize données indispensables, toutes déjà dans votre télémétrie. Aucune nouvelle collecte pour l'audit.");
 
   // 7. Recommandation : les leviers par cause (≈ 35 s)
   s = pres.addSlide(); s.background = { color: LIGHT };
@@ -254,7 +254,7 @@ const U = {
   ], { x: 0.5, y: 4.6, w: 9, h: 0.55, fontFace: B, fontSize: 10.5, margin: 0, valign: "middle", isTextBox: true });
   source(s, [{ text: "vidéo NetEase du 21/08/2025", url: U.video }, { text: "Dev Talk Vol.10", url: U.devtalk }]);
   pageNum(s, 7);
-  s.addNotes("[35 s] On ne teste que si l'audit confirme le problème, et on teste le levier de la cause trouvée. A, démarrage à froid : le jeu place mal un nouveau ; on rend le niveau de départ plus prudent. B, manque de joueurs : on resserre l'écart aux heures creuses, et on arrête si l'attente dépasse 5 minutes. C, rang périmé : on ajoute des matchs de recalibrage au retour d'une longue absence. Chaque test a son groupe témoin tiré au sort.");
+  s.addNotes("[35 s] On ne teste que si l'audit confirme le problème, et seulement le levier de la cause trouvée. Démarrage à froid : niveau de départ plus prudent. Manque de joueurs : écart resserré aux heures creuses, arrêté si l'attente dépasse 5 minutes. Rang périmé : matchs de recalibrage au retour. Toujours avec un groupe témoin.");
 
   // 8. Recommandation : ce que nous avons volontairement écarté (≈ 20 s)
   s = pres.addSlide(); s.background = { color: WHITE };
@@ -274,7 +274,7 @@ const U = {
   }
   source(s, [{ text: "RGPD Art. 5", url: U.rgpd }, { text: "plan de collecte complet", url: U.gdoc }]);
   pageNum(s, 8);
-  s.addNotes("[20 s] Ce que nous avons volontairement écarté. Les données personnelles qu'aucune décision n'exige : historique sur d'autres jeux, chat, âge, téléphone. Le benchmark Newzoo, trop biaisé pour étudier des débutants. Les rôles imposés, contraires à l'identité du jeu. Et les avis Steam ne servent que de contrôle, jamais de preuve.");
+  s.addNotes("[20 s] Nous avons volontairement écarté les données personnelles qu'aucune décision n'exige, le benchmark Newzoo, trop biaisé, et les rôles imposés, contraires à l'identité du jeu.");
 
   // 9. Roadmap : quand, qui, combien (≈ 60 s)
   s = pres.addSlide(); s.background = { color: LIGHT };
@@ -304,7 +304,7 @@ const U = {
   ], { x: 0.5, y: 4.47, w: 9, h: 0.65, fontFace: B, fontSize: 10, margin: 0, valign: "middle", isTextBox: true });
   source(s, [{ text: "tarifs BigQuery (01/10/2026)", url: U.bq }, { text: "plan de collecte complet (§5 et §7)", url: U.gdoc }]);
   pageNum(s, 9);
-  s.addNotes("[60 s] La roadmap : quand, qui, combien. Trente jours d'audit, avec un data analyst à temps plein et un data engineer à mi-temps, soit environ 33 jours-homme, sans aucune licence nouvelle : tout passe par votre télémétrie, votre entrepôt et vos outils de BI. Si le ratio est déjà sous 1,2 sur les deux cohortes, on s'arrête et on bascule sur le plan B. Sinon, soixante jours de tests A/B avec votre équipe matchmaking, chiffrés par vos soins avant lancement. Puis généralisation et pilotage mensuel jusqu'au 31 mars 2027.");
+  s.addNotes("[60 s] Quand, qui, combien. Trente jours d'audit : un data analyst et un data engineer à mi-temps, environ 33 jours-homme, sans licence nouvelle, sur votre stack existante. Si le ratio est déjà sous 1,2, on s'arrête : plan B. Sinon, soixante jours de tests avec votre équipe matchmaking, puis généralisation jusqu'au 31 mars 2027.");
 
   // 10. Risques & KPIs de décision (≈ 30 s)
   s = pres.addSlide(); s.background = { color: WHITE };
@@ -329,7 +329,7 @@ const U = {
   }
   source(s, [{ text: "RGPD", url: U.rgpd }, { text: "AI Act", url: U.aiact }]);
   pageNum(s, 10);
-  s.addNotes("[30 s] Chaque KPI a un seuil qui déclenche une décision : 1,2 pour lancer les tests, chez les nouveaux comme chez les revenants ; 5 minutes d'attente pour les arrêter ; 50 % pour choisir le mode visé. Base légale : contrat pour le matchmaking, intérêt légitime documenté pour l'audit. Et si l'hypothèse tombe, le plan B réutilise les mêmes données. Pour démarrer : signer l'accord de sous-traitance et lancer l'audit de 30 jours. Merci, je prends vos questions.");
+  s.addNotes("[30 s] Chaque KPI déclenche une décision : 1,2 pour lancer les tests, 5 minutes pour les arrêter, 50 % pour choisir le mode. Base légale : contrat pour le matchmaking, intérêt légitime documenté pour l'audit. Pour démarrer : signer l'accord de sous-traitance et lancer l'audit. Merci.");
 
   // 11. Annexe : sources
   s = pres.addSlide(); s.background = { color: WHITE };
