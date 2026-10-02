@@ -120,8 +120,8 @@ const U = {
       "Faute de joueurs en file, le matchmaking accepte des écarts de niveau plus grands pour lancer la partie : NetEase le reconnaît (vidéo du 21/08/2025).",
       "Le nouveau tombe sur les vétérans restants, perd et part : la base ne se renouvelle pas.",
       "Aucune correction publiée pour la partie rapide, où passe chaque nouveau avant le niveau 15."],
-    [fa.FaRedo, "H5c · Les joueurs de retour, en classé", NAVY,
-      "À chaque saison, le rang n'est abaissé que de 6 divisions, quelle que soit la durée de l'absence (Dev Talk Vol.10).",
+    [fa.FaRedo, "H5c · Les joueurs de retour", NAVY,
+      "En classé, le rang n'est abaissé que de 6 divisions par saison, quelle que soit l'absence (Dev Talk Vol.10). En partie rapide, rien n'indique que le niveau caché baisse (à vérifier).",
       "Un joueur absent plusieurs mois affronte des joueurs restés actifs, plus en forme : il perd et repart.",
       "Les saisons ramènent des joueurs (+18 %, +21 %), qui repartent en deux mois."],
   ];
@@ -161,18 +161,19 @@ const U = {
     ["Mode et plateforme de ces 10 premiers matchs", "Où jouent les nouveaux", "Dit quel mode corriger en premier (Steam = PC seul)"],
     ["Niveau de départ attribué / niveau réel après 50 matchs", "Si le jeu place mal un nouveau", "Teste la cause A (démarrage à froid)"],
     ["Écart de niveau par match, selon les joueurs en file, l'heure, la région", "Si l'écart grandit quand la file se vide", "Teste la cause B (manque de joueurs)"],
-    ["Durée d'absence, rang au retour et bilan des 10 premiers matchs classés", "Si le rang au retour est périmé", "Teste la cause C (joueurs de retour)"],
+    ["Revenants en classé : absence, rang avant / après, bilan, départ à 7 jours", "Si le rang au retour est périmé", "Teste la cause C en classé"],
+    ["Revenants hors classé : mode rejoué ; en partie rapide, écart subi, bilan, départ", "Si un revenant est mal placé en partie rapide", "Teste C hors classé (il ne rejoue pas forcément en classé)"],
     ["Départs en classé avant / après les placements de la saison 5", "Si mieux placer les joueurs les a retenus", "Expérience déjà faite : la preuve la moins chère"],
   ];
-  s.addTable(rows, { x: 0.5, y: 2.08, w: 9, colW: [3.5, 2.6, 2.9], fontFace: B, fontSize: 9, color: INK, border: { type: "solid", pt: 0.5, color: "D5D8E3" }, fill: { color: WHITE }, valign: "middle", margin: [1, 5, 1, 5], rowH: [0.26, 0.36, 0.36, 0.36, 0.36, 0.36, 0.36] });
-  s.addText("Ensuite, pour écarter les autres explications : héros joué, parties avec bots, joueurs en groupe, comptes arrivés en 2025. Tout existe déjà dans vos serveurs.", { x: 0.5, y: 4.83, w: 9, h: 0.35, fontFace: B, fontSize: 9.5, italic: true, color: MUTED, margin: 0, isTextBox: true });
+  s.addTable(rows, { x: 0.5, y: 2.08, w: 9, colW: [3.95, 2.4, 2.65], fontFace: B, fontSize: 8.5, color: INK, border: { type: "solid", pt: 0.5, color: "D5D8E3" }, fill: { color: WHITE }, valign: "middle", margin: [1, 5, 1, 5], rowH: [0.25, 0.28, 0.28, 0.28, 0.28, 0.28, 0.28, 0.28] });
+  s.addText("Ensuite, pour écarter les autres explications : héros joué, parties avec bots, joueurs en groupe, comptes arrivés en 2025. Tout existe déjà dans vos serveurs.", { x: 0.5, y: 4.86, w: 9, h: 0.33, fontFace: B, fontSize: 9, italic: true, color: MUTED, margin: 0, isTextBox: true });
   source(s, [{ text: "plan de collecte complet (matrice ICE)", url: U.gdoc }, { text: "notes de patch S5", url: U.s5 }]);
   pageNum(s, 4);
-  s.addNotes("[45 s] D'abord mesurer. L'objectif : d'ici fin mars 2027, un joueur qui perd au début ne doit pas partir plus de 1,2 fois plus souvent que les autres, nouveau ou de retour. Six données d'abord : la première mesure l'objectif, la deuxième dit où jouent les nouveaux, trois testent chacune une cause, la dernière exploite une expérience déjà faite en saison 5.");
+  s.addNotes("[45 s] D'abord mesurer. L'objectif : d'ici fin mars 2027, un joueur qui perd au début ne doit pas partir plus de 1,2 fois plus souvent que les autres, nouveau ou de retour. Sept données d'abord : la première mesure l'objectif, la deuxième dit où jouent les nouveaux, quatre testent les causes, dont deux pour les joueurs de retour, en classé et hors classé, car un revenant ne rejoue pas forcément en classé. La dernière exploite une expérience déjà faite en saison 5.");
 
   // 6. Recommandation : la matrice de collecte, visuelle (≈ 20 s)
   s = pres.addSlide(); s.background = { color: WHITE };
-  title(s, "Matrice ICE : 13 données indispensables", "Recommandation · Impact × Confiance × Facilité, chacun sur 5 = score sur 125 · coupe sous 30");
+  title(s, "Matrice ICE : 15 données indispensables", "Recommandation · Impact × Confiance × Facilité, chacun sur 5 = score sur 125 · coupe sous 30");
   const IC = "1E8C93", CC = "C2185B", EC = "C98A00";
   const th = (t) => ({ text: t, options: { bold: true, color: WHITE, fill: { color: NAVY }, fontFace: H, fontSize: 9.5, align: "center" } });
   const dec = { I: ["Indispensable", GREEN], U: ["Utile", AMBER], X: ["Écartée", GREY] };
@@ -181,8 +182,9 @@ const U = {
     ["Écart de niveau accepté × joueurs en file (heure, région)", 5, 5, 5, "I", "cause B"],
     ["Départ à 7 jours × bilan des 10 premiers matchs", 5, 4, 5, "I", "mesure l'objectif"],
     ["Niveau de départ et vitesse de convergence", 5, 5, 4, "I", "cause A"],
-    ["Joueurs de retour : absence × rang au retour × bilan", 5, 4, 5, "I", "cause C"],
-    ["Écart de niveau subi en partie rapide", 5, 4, 4, "I", ""],
+    ["Revenants en classé : absence × rang au retour × bilan", 5, 4, 5, "I", "cause C"],
+    ["Revenants : mode rejoué au retour", 4, 5, 5, "I", "où agir pour C"],
+    ["Revenants en partie rapide : écart subi × bilan", 5, 4, 5, "I", "cause C hors classé"],
     ["Performance des comptes neufs (smurfs)", 4, 4, 4, "U", ""],
     ["Avis Steam agrégés (collecte déjà faite)", 3, 3, 5, "U", "contrôle"],
     ["Sondage d'équité perçue (1 match sur 10)", 4, 3, 3, "U", "après l'audit"],
@@ -198,14 +200,14 @@ const U = {
       { text: String(r[1] * r[2] * r[3]), options: { bold: true, color: INK, align: "center", fontFace: H, fontSize: 10.5 } },
       { text: lab + (r[5] ? " · " + r[5] : ""), options: { bold: true, color: WHITE, fill: { color: colr }, align: "center", fontSize: 8.5 } }]);
   });
-  s.addTable(mt, { x: 0.5, y: 1.3, w: 9, colW: [3.9, 0.6, 0.6, 0.6, 0.75, 2.55], fontFace: B, fontSize: 9, color: INK, border: { type: "solid", pt: 0.75, color: WHITE }, fill: { color: LIGHT }, valign: "middle", margin: [1, 5, 1, 5], rowH: 0.255 });
+  s.addTable(mt, { x: 0.5, y: 1.3, w: 9, colW: [3.9, 0.6, 0.6, 0.6, 0.75, 2.55], fontFace: B, fontSize: 9, color: INK, border: { type: "solid", pt: 0.75, color: WHITE }, fill: { color: LIGHT }, valign: "middle", margin: [1, 5, 1, 5], rowH: 0.235 });
   s.addText([
-    { text: "Les 13 indispensables existent déjà dans votre télémétrie : ", options: { bold: true, color: INK } },
-    { text: "aucune nouvelle collecte pour l'audit. Extrait de la matrice : 7 autres indispensables (ICE 80 à 100) et 5 autres utiles sont notés dans le plan de collecte.", options: { color: INK } },
+    { text: "Les 15 indispensables existent déjà dans votre télémétrie : ", options: { bold: true, color: INK } },
+    { text: "aucune nouvelle collecte pour l'audit. Extrait de la matrice : 8 autres indispensables (ICE 80 à 100) et 5 autres utiles sont notés dans le plan de collecte.", options: { color: INK } },
   ], { x: 0.5, y: 4.67, w: 9, h: 0.45, fontFace: B, fontSize: 9.5, margin: 0, valign: "middle", isTextBox: true });
   source(s, [{ text: "plan de collecte complet (justification de chaque note)", url: U.gdoc }]);
   pageNum(s, 5);
-  s.addNotes("[15 s] Chaque donnée est notée sur l'impact, la confiance et la facilité ; le score est leur produit. Treize dépassent 80, toutes déjà dans votre télémétrie. Le chat ou le téléphone tombent sous 30 : risque RGPD sans décision.");
+  s.addNotes("[15 s] Chaque donnée est notée sur l'impact, la confiance et la facilité ; le score est leur produit. Quinze dépassent 80, toutes déjà dans votre télémétrie. Le chat ou le téléphone tombent sous 30 : risque RGPD sans décision.");
 
   // 7. Recommandation : les leviers par cause (≈ 35 s)
   s = pres.addSlide(); s.background = { color: LIGHT };
@@ -213,7 +215,7 @@ const U = {
   const causes = [
     [fa.FaSnowflake, "A · Démarrage à froid", RED, "Le jeu ne connaît pas le niveau d'un nouveau compte et le place mal.", "Écart déjà fort aux heures pleines, quand la file est remplie.", ["Niveau de départ plus prudent", "File débutants jusqu'au niveau 15"]],
     [fa.FaUsersSlash, "B · Manque de joueurs", NAVY, "File vide : le jeu accepte des écarts plus grands pour lancer la partie.", "Écart en plus aux heures creuses, quand la file se vide.", ["Écart resserré aux heures creuses", "Arrêt si 10 % attendent plus de 3 min"]],
-    [fa.FaRedo, "C · Rang périmé au retour", AMBER, "Le rang ne tient pas compte de la durée d'absence.", "Les revenants perdent plus, d'autant plus que l'absence a été longue.", ["Matchs de recalibrage au retour", "Baisse de rang selon l'absence"]],
+    [fa.FaRedo, "C · Niveau périmé au retour", AMBER, "Le rang (classé) et le niveau caché (partie rapide) ignorent la durée d'absence.", "Les revenants perdent plus, d'autant plus que l'absence a été longue.", ["Matchs de recalibrage au retour", "Niveau ajusté selon l'absence, dans les deux modes"]],
   ];
   for (let i = 0; i < 3; i++) {
     const x = 0.5 + i * 3.05;
@@ -230,7 +232,7 @@ const U = {
   ], { x: 0.5, y: 4.6, w: 9, h: 0.55, fontFace: B, fontSize: 10.5, margin: 0, valign: "middle", isTextBox: true });
   source(s, [{ text: "vidéo NetEase du 21/08/2025", url: U.video }, { text: "Dev Talk Vol.10", url: U.devtalk }]);
   pageNum(s, 6);
-  s.addNotes("[35 s] On ne teste que si le ratio dépasse 1,2, et seulement les causes que l'audit confirme : une, deux ou les trois, chacune avec son levier. Démarrage à froid : niveau de départ plus prudent. Manque de joueurs : écart resserré aux heures creuses, arrêté si l'attente dépasse 3 minutes. Rang périmé : matchs de recalibrage au retour. Toujours avec un groupe témoin.");
+  s.addNotes("[35 s] On ne teste que si le ratio dépasse 1,2, et seulement les causes que l'audit confirme : une, deux ou les trois, chacune avec son levier. Démarrage à froid : niveau de départ plus prudent. Manque de joueurs : écart resserré aux heures creuses, arrêté si l'attente dépasse 3 minutes. Niveau périmé : recalibrage au retour, en classé comme en partie rapide. Toujours avec un groupe témoin.");
 
   // 8. Recommandation : ce que nous avons volontairement écarté (≈ 20 s)
   s = pres.addSlide(); s.background = { color: WHITE };
@@ -320,7 +322,7 @@ const U = {
   const krows = [
     [kh("KPI"), kh("Comment on le calcule"), kh("Seuil"), kh("Si le seuil est franchi"), kh("Sinon")],
     ["Ratio de départ des nouveaux comptes", "% des nouveaux qui perdent au moins 7 de leurs 10 premiers matchs et ne rejouent pas sous 7 jours, divisé par le même % chez les autres nouveaux", kr("> 1,2"), "H5 tient : tests des causes confirmées (A, B ou les deux)", "Pas d'investissement matchmaking : plan B"],
-    ["Ratio de départ des joueurs de retour", "Même calcul sur les 10 premiers matchs classés après au moins 60 jours d'absence", kr("> 1,2"), "H5c tient : test des matchs de recalibrage (cause C)", "Rang au retour inchangé"],
+    ["Ratio de départ des joueurs de retour", "Même calcul sur les 10 premiers matchs après au moins 60 jours d'absence, classé et partie rapide séparés", kr("> 1,2"), "H5c tient : recalibrage au retour (cause C) dans le mode concerné", "Niveau au retour inchangé"],
     ["Attente p90 en partie rapide", "Temps d'attente sous lequel 90 % des joueurs trouvent une partie, par rang et région", kr("> 3 min"), "Arrêt du resserrement de l'écart", "Test poursuivi"],
     ["Part de la partie rapide", "Part des 10 premiers matchs des nouveaux joués en partie rapide", kr("> 50 %"), "Leviers sur la partie rapide en premier", "Leviers sur le mode dominant"],
     ["Avis négatifs citant le matchmaking (contrôle)", "Part des avis Steam négatifs qui le citent (base : 10,5 % en septembre 2026)", kr("> 8 %"), "Au 31/03/2027 : problème de perception, plus de transparence", "Corrections perçues : on généralise"],
