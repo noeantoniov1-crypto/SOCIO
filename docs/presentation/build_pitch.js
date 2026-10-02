@@ -41,6 +41,42 @@ function title(slide, t, sub) {
   if (rest) slide.addText(rest, { x: 0.6, y: 0.82, w: 8.0, h: 0.26, fontFace: B, fontSize: 11, color: GOLD, margin: 0, valign: "middle", isTextBox: true });
   slide.addImage({ path: LOGO, x: 8.72, y: 0.22, w: 1.05, h: 0.44 });
 }
+// graphiques rendus en image (SVG → PNG) : identiques dans tous les lecteurs
+async function svgChart(kind, labels, values, opt) {
+  const W = 930, Hh = 430, L = 58, R = 34, T = 54, Bm = 70;
+  const pw = W - L - R, ph = Hh - T - Bm, max = opt.max, n = values.length;
+  const x = (i) => L + (kind === "bar" ? (i + 0.5) * pw / n : i * pw / (n - 1));
+  const y = (v) => T + ph - (v / max) * ph;
+  let g = "";
+  for (let k = 0; k <= opt.ticks; k++) {
+    const v = max * k / opt.ticks, yy = y(v);
+    g += `<line x1="${L}" x2="${W - R}" y1="${yy}" y2="${yy}" stroke="#E3E5EE" stroke-width="1.5"/>`;
+    g += `<text x="${L - 10}" y="${yy + 6}" font-size="17" fill="#5E6378" text-anchor="end">${Math.round(v)}${opt.unit || ""}</text>`;
+  }
+  labels.forEach((lb, i) => { if (i % 3 === 0 || i === n - 1) g += `<text x="${x(i)}" y="${T + ph + 28}" font-size="16" fill="#5E6378" text-anchor="middle">${lb}</text>`; });
+  let body = "";
+  if (kind === "area") {
+    const pts = values.map((v, i) => `${x(i)},${y(v)}`).join(" ");
+    body += `<defs><linearGradient id="gr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E62429" stop-opacity="0.75"/><stop offset="1" stop-color="#E62429" stop-opacity="0.08"/></linearGradient></defs>`;
+    body += `<polygon points="${x(0)},${y(0)} ${pts} ${x(n - 1)},${y(0)}" fill="url(#gr)"/>`;
+    body += `<polyline points="${pts}" fill="none" stroke="#E62429" stroke-width="4" stroke-linejoin="round"/>`;
+    (opt.marks || []).forEach(([i, txt]) => {
+      body += `<circle cx="${x(i)}" cy="${y(values[i])}" r="7" fill="#0D1020"/>`;
+      body += `<text x="${x(i) + (i > n / 2 ? -12 : 12)}" y="${y(values[i]) - 14}" font-size="19" font-weight="bold" fill="#0D1020" text-anchor="${i > n / 2 ? "end" : "start"}">${txt}</text>`;
+    });
+  } else {
+    const bw = pw / n * 0.68, top = values.indexOf(Math.max(...values));
+    values.forEach((v, i) => {
+      body += `<rect x="${x(i) - bw / 2}" y="${y(v)}" width="${bw}" height="${y(0) - y(v)}" rx="3" fill="${i === top ? "#E62429" : "#FFC72C"}"/>`;
+    });
+    body += `<text x="${x(top)}" y="${y(values[top]) - 10}" font-size="19" font-weight="bold" fill="#E62429" text-anchor="middle">${values[top]} %</text>`;
+  }
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${Hh}" font-family="Arial, Helvetica, sans-serif">
+<rect width="${W}" height="${Hh}" fill="#FFFFFF"/>
+<text x="${W / 2}" y="30" font-size="22" font-weight="bold" fill="#1F2233" text-anchor="middle">${opt.title}</text>${g}${body}</svg>`;
+  const buf = await sharp(Buffer.from(svg)).resize(W * 2).png().toBuffer();
+  return "image/png;base64," + buf.toString("base64");
+}
 function source(slide, parts, dark = false) {
   const runs = [{ text: "Sources : ", options: { color: dark ? SOFT : MUTED } }];
   parts.forEach((p, i) => {
@@ -116,10 +152,10 @@ const U = {
   const chartBase = { showLegend: false, catAxisLabelColor: MUTED, valAxisLabelColor: MUTED, catAxisLabelFontSize: 7, valAxisLabelFontSize: 8,
     valGridLine: { color: LINE, size: 0.5 }, catGridLine: { style: "none" }, lineSize: 2.5, lineDataSymbol: "circle", lineDataSymbolSize: 4,
     showTitle: true, titleFontSize: 11, titleColor: INK, titleFontFace: B };
-  s.addChart(pres.charts.AREA, [{ name: "Joueurs simultanés (milliers)", labels: months, values: players.map(v => Math.round(v / 1000)) }],
-    { ...chartBase, x: 0.35, y: 1.95, w: 4.65, h: 2.15, chartColors: [RED], chartColorsOpacity: 55, title: "Joueurs simultanés, moyenne mensuelle (milliers)" });
-  s.addChart(pres.charts.BAR, [{ name: "% des avis négatifs citant le matchmaking", labels: months, values: mm }],
-    { ...chartBase, barDir: "col", barGapWidthPct: 35, x: 5.0, y: 1.95, w: 4.65, h: 2.15, chartColors: [GOLD], valAxisMaxVal: 45, valAxisLabelFormatCode: "0\"%\"", title: "% des avis Steam négatifs qui citent le matchmaking" });
+  const kp = players.map(v => Math.round(v / 1000));
+  const ml = months.map((m, i) => (i === 12 ? "Déc. 25" : i === 21 ? "Sept. 26" : m));
+  s.addImage({ data: await svgChart("area", ml, kp, { max: 350, ticks: 7, title: "Joueurs simultanés, moyenne mensuelle (milliers)", marks: [[1, "306 K (janv. 25)"], [21, "68 K"]] }), x: 0.35, y: 1.97, w: 4.65, h: 2.15 });
+  s.addImage({ data: await svgChart("bar", ml, mm, { max: 45, ticks: 3, unit: " %", title: "% des avis Steam négatifs qui citent le matchmaking" }), x: 5.0, y: 1.97, w: 4.65, h: 2.15 });
   const proofs = [
     ["−85 %", "de pic à pic (644 K → 98 K) ; −76 % en moyenne depuis la sortie"],
     ["2 mois", "pour perdre les joueurs ramenés par une saison (+18 % en janv. 2026, +21 % en juil.)"],
