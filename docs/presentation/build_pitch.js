@@ -57,6 +57,7 @@ const U = {
   timesaver: "https://timesaver.gg/blog/marvel-rivals-season-10-rank-reset",
   bq: "https://cloud.google.com/bigquery/pricing",
   tjm: "https://tjmetre.fr/barometre/data",
+  pbi: "https://www.microsoft.com/en-us/power-platform/products/power-bi/pricing",
   rgpd: "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
   aiact: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
   gdoc: "https://docs.google.com/document/d/1nOhcAL2wfeAHOK6x6UZH-Hg5yh9Ofxxko7FY47r5Vzc/edit",
@@ -143,7 +144,7 @@ const U = {
   ], { x: 0.5, y: 4.6, w: 9, h: 0.55, fontFace: B, fontSize: 11, margin: 0, valign: "middle", isTextBox: true });
   source(s, [{ text: "vidéo NetEase du 21/08/2025", url: U.video }, { text: "Dev Talk Vol.10", url: U.devtalk }, { text: "inactivité (source tierce)", url: U.timesaver }, { text: "Steam Charts", url: U.steamcharts }]);
   pageNum(s, 3);
-  s.addNotes("[50 s] Pourquoi ? Notre hypothèse, testable : nouveaux et revenants subissent des écarts de niveau que le matchmaking ne compense pas, et partent. Deux mécanismes peuvent les produire. En partie rapide, faute de joueurs, le matchmaking accepte des écarts plus grands, NetEase l'a reconnu : le nouveau tombe sur des vétérans et part. En classé, un joueur qui revient après des mois retrouve un rang à peine abaissé, perd, et repart. Tout cela se mesure dans vos données. D'où viennent ces écarts ? Probablement du lancement : des vétérans du genre, 45 % de ceux qui ont quitté Overwatch 2 ont essayé Marvel Rivals, face à un grand public venu pour Marvel. C'est plausible, mais vos données ne disent pas pourquoi un joueur est venu : nous ne bâtissons aucune décision dessus.");
+  s.addNotes("[40 s] Pourquoi ? Notre hypothèse : nouveaux et revenants subissent des écarts de niveau non compensés, et partent. En partie rapide, faute de joueurs, le jeu accepte des écarts plus grands, NetEase l'a reconnu. En classé, un joueur qui revient retrouve un rang à peine abaissé, perd et repart. L'origine probable : au lancement, des vétérans d'Overwatch face à un grand public venu pour Marvel. Plausible, mais invérifiable : aucune décision n'en dépend.");
 
   // 5. Recommandation : objectif + données prioritaires (≈ 45 s)
   s = pres.addSlide(); s.background = { color: LIGHT };
@@ -251,41 +252,65 @@ const U = {
   pageNum(s, 7);
   s.addNotes("[20 s] Nous avons volontairement écarté les données personnelles qu'aucune décision n'exige, le benchmark Newzoo, trop biaisé, et les rôles imposés, contraires à l'identité du jeu.");
 
-  // 9. Roadmap : quand, qui, combien (≈ 60 s)
+  // 9. Roadmap : qui, ce qui change pour le joueur, quel résultat déclenche quoi (≈ 45 s)
   s = pres.addSlide(); s.background = { color: LIGHT };
-  title(s, "Roadmap : quand, qui, combien", "Trois phases, chacune avec sa porte de décision");
-  const ph = [
-    ["0-30 j", "Audit", "1 data analyst à temps plein, 1 data engineer à mi-temps ; DPO NetEase pour l'accord et le hachage", "≈ 33 jours-homme, soit ≈ 19 K€ ; aucune licence nouvelle", "Cohorte > 1,2 → tests de ses causes ; les deux ≤ 1,2 → plan B"],
-    ["30-90 j", "Tests A/B", "Équipe matchmaking NetEase + analyste", "≈ 23 K€ d'analyse ; développement chiffré par NetEase avant tout lancement", "Levier gardé si le ratio baisse et l'attente reste < 3 min"],
-    ["90-180 j", "Généralisation", "Live-ops et communication ; page publique « comment fonctionne le matchmaking »", "≈ 3 K€ de pilotage mensuel, sur les outils existants", "31/03/2027 : ratio ≤ 1,2"],
+  title(s, "Roadmap : qui agit, ce que vit le joueur", "Trois phases ; chaque résultat ouvre ou ferme la phase suivante");
+  const rh = (t) => ({ text: t, options: { bold: true, color: WHITE, fill: { color: NAVY }, fontFace: H, fontSize: 9.5 } });
+  const ph = (n, t, d) => ({ text: [{ text: n + " · " + t, options: { bold: true, color: RED, fontFace: H, fontSize: 10.5, breakLine: true } }, { text: d, options: { color: MUTED, fontSize: 9 } }] });
+  const res = (pairs) => ({ text: pairs.flatMap(([c, r], i) => [{ text: c + " → ", options: { bold: true, color: INK } }, { text: r, options: { color: INK, breakLine: i < pairs.length - 1 } }]) });
+  const rrows = [
+    [rh("Phase"), rh("Qui s'en occupe"), rh("Ce qui change pour le joueur"), rh("Résultat → changement")],
+    [ph("1", "Audit", "0-30 j"),
+      "1 data analyst (temps plein) et 1 data engineer (mi-temps) ; DPO de NetEase : accord de sous-traitance et hachage",
+      "Rien en jeu : on analyse les matchs déjà enregistrés, identifiants hachés.",
+      res([["Nouveaux > 1,2", "tests A et/ou B (écart aux heures pleines = A, surplus aux heures creuses = B)"], ["Revenants > 1,2", "test C"], ["Les deux ≤ 1,2", "plan B, on ne touche pas au matchmaking"]])],
+    [ph("2", "Tests", "30-90 j, si un ratio > 1,2"),
+      "Équipe matchmaking NetEase (code les réglages) ; analyste (mesure) ; live-ops (annonce)",
+      "Une partie des joueurs, tirée au sort, reçoit le nouveau réglage, les autres servent de témoin. A : nouveaux placés plus bas, entre débutants jusqu'au niveau 15. B : matchs plus serrés aux heures creuses. C : matchs de recalibrage au retour.",
+      res([["Départs en baisse face au témoin", "réglage gardé"], ["Attente p90 > 3 min", "arrêt immédiat du réglage B"], ["Aucune baisse", "réglage abandonné"]])],
+    [ph("3", "Déploiement", "90-180 j"),
+      "Équipe matchmaking (mise en production) ; live-ops et communication ; analyste 2 j par mois",
+      "Les réglages gagnants passent à tous, annoncés dans les notes de patch ; page publique « comment fonctionne le matchmaking ».",
+      res([["31/03/2027 : ratio ≤ 1,2 et avis < 8 %", "objectif atteint"], ["Ratio bon, avis > 8 %", "problème de perception : plus de transparence"], ["Ratio qui remonte", "retour en phase 2"]])],
   ];
-  for (let i = 0; i < 3; i++) {
-    const x = 0.5 + i * 3.05;
-    s.addShape("ellipse", { x: x + 0.05, y: 1.3, w: 0.45, h: 0.45, fill: { color: RED }, line: { color: RED } });
-    s.addText(String(i + 1), { x: x + 0.05, y: 1.3, w: 0.45, h: 0.45, fontFace: H, fontSize: 15, bold: true, color: WHITE, align: "center", valign: "middle", margin: 0, isTextBox: true });
-    s.addText([{ text: ph[i][0] + "  ", options: { bold: true, color: INK } }, { text: ph[i][1], options: { color: MUTED } }], { x: x + 0.6, y: 1.3, w: 2.3, h: 0.45, fontFace: H, fontSize: 14, valign: "middle", margin: 0, isTextBox: true });
-    s.addShape("roundRect", { x, y: 1.9, w: 2.9, h: 1.82, fill: { color: WHITE }, line: { color: LINE }, rectRadius: 0.08 });
-    s.addText([
-      { text: "Qui : ", options: { bold: true, color: NAVY } }, { text: ph[i][2], options: { color: INK, breakLine: true } },
-      { text: " ", options: { fontSize: 4, breakLine: true } },
-      { text: "Combien : ", options: { bold: true, color: NAVY } }, { text: ph[i][3], options: { color: INK, breakLine: true } },
-      { text: " ", options: { fontSize: 4, breakLine: true } },
-      { text: "Décision : ", options: { bold: true, color: RED } }, { text: ph[i][4], options: { color: INK } },
-    ], { x: x + 0.15, y: 1.96, w: 2.6, h: 1.72, fontFace: B, fontSize: 9.5, margin: 0, valign: "top", isTextBox: true });
-  }
-  s.addShape("roundRect", { x: 0.5, y: 3.8, w: 9, h: 0.95, fill: { color: NAVY }, line: { color: NAVY }, rectRadius: 0.06 });
+  s.addTable(rrows, { x: 0.5, y: 1.22, w: 9, colW: [1.3, 1.9, 2.75, 3.05], fontFace: B, fontSize: 8.5, color: INK, border: { type: "solid", pt: 0.5, color: "D5D8E3" }, fill: { color: WHITE }, valign: "middle", margin: [2, 5, 2, 5], rowH: [0.27, 0.95, 1.12, 0.95] });
+  s.addShape("roundRect", { x: 0.5, y: 4.62, w: 9, h: 0.5, fill: { color: NAVY }, line: { color: NAVY }, rectRadius: 0.06 });
   s.addText([
-    { text: "Budget : ≈ 19 K€ engagés (audit) · ≈ 45 K€ si les tests sont lancés", options: { bold: true, color: WHITE, fontSize: 12.5, breakLine: true } },
-    { text: "Audit : 22 j × 540 € + 11 j × 650 € = 19 K€  ·  Tests : 43 j × 540 € = 23 K€  ·  Pilotage : 6 j × 540 € = 3 K€", options: { color: WHITE, breakLine: true } },
-    { text: "TJM médians 2026 : 540 €/j analyste, 650 €/j ingénieur (tjmetre.fr, 1 186 freelances, 01/10/2026) · fourchette 39 à 51 K€ · hors développement", options: { color: SOFT, fontSize: 8 } },
-  ], { x: 0.65, y: 3.82, w: 8.75, h: 0.91, fontFace: B, fontSize: 9.5, margin: 0, valign: "middle", paraSpaceAfter: 2, isTextBox: true });
+    { text: "Budget : ≈ 19 K€ engagés (audit) · ≈ 45 K€ si les tests sont lancés", options: { bold: true, color: WHITE } },
+    { text: "  ·  détail du calcul slide suivante", options: { color: SOFT, fontSize: 10 } },
+  ], { x: 0.7, y: 4.62, w: 8.6, h: 0.5, fontFace: B, fontSize: 12, margin: 0, valign: "middle", isTextBox: true });
+  source(s, [{ text: "plan de collecte complet (§7)", url: U.gdoc }]);
+  pageNum(s, 8);
+  s.addNotes("[45 s] Phase 1 : trente jours d'audit par un data analyst et un data engineer ; rien ne change pour les joueurs. Si un ratio dépasse 1,2, phase 2 : votre équipe matchmaking teste le réglage de chaque cause confirmée sur des joueurs tirés au sort. Un réglage n'est gardé que s'il réduit les départs sans dépasser 3 minutes d'attente. Phase 3 : les gagnants passent à tous, annoncés dans les notes de patch.");
+
+  // 9 bis. Budget : le calcul et les sources (≈ 15 s)
+  s = pres.addSlide(); s.background = { color: WHITE };
+  title(s, "Combien : 19 K€ engagés, 45 K€ au total", "Roadmap · personnes aux TJM médians du marché, outils aux tarifs publics");
+  const bh = (t) => ({ text: t, options: { bold: true, color: WHITE, fill: { color: NAVY }, fontFace: H, fontSize: 9.5 } });
+  const amt = (t, c) => ({ text: t, options: { bold: true, color: c || INK, fontFace: H, fontSize: 10, align: "right" } });
+  const brows = [
+    [bh("Poste"), bh("Calcul"), bh("Montant"), bh("Source")],
+    ["Audit, 0-30 j : analyste et ingénieur", "22 j × 540 € + 11 j × 650 €", amt("19 K€", RED), "TJM médians 2026, tjmetre.fr"],
+    ["Tests, 30-90 j : analyste", "43 j × 540 €", amt("23 K€"), "idem"],
+    ["Déploiement, 90-180 j : pilotage", "6 j × 540 €", amt("3 K€"), "idem"],
+    ["Entrepôt (BigQuery à la demande)", "6,25 $ par To au-delà de 1 To gratuit ; plafond prudent : 100 To par mois pendant 6 mois", amt("≤ 3,7 K$"), "Google Cloud"],
+    ["Tableaux de bord", "Outil BI existant ; sinon Power BI Pro, 14 $ × 3 utilisateurs × 6 mois", amt("0 à 0,3 K$"), "Microsoft"],
+    ["Développement des réglages", "Équipe matchmaking NetEase", amt("à chiffrer"), "avant la phase 2"],
+    [{ text: "Total", options: { bold: true } }, { text: "Fourchette des TJM bas et hauts : 39 à 51 K€", options: { color: MUTED } }, amt("≈ 45 K€ + ≤ 4 K$", RED), ""],
+  ];
+  s.addTable(brows, { x: 0.5, y: 1.22, w: 9, colW: [2.6, 3.6, 1.35, 1.45], fontFace: B, fontSize: 8.5, color: INK, border: { type: "solid", pt: 0.5, color: "D5D8E3" }, fill: { color: WHITE }, valign: "middle", margin: [1, 5, 1, 5], rowH: [0.26, 0.3, 0.27, 0.27, 0.4, 0.4, 0.27, 0.3] });
+  s.addShape("roundRect", { x: 0.5, y: 3.85, w: 9, h: 0.88, fill: { color: LIGHT }, line: { color: LIGHT }, rectRadius: 0.06 });
+  s.addText([
+    { text: "Outils volontairement non achetés (ordres de grandeur du coaching 2) : ", options: { bold: true, color: NAVY, breakLine: true } },
+    { text: "SDK analytics (GameAnalytics, deltaDNA : 300 à 5 000 $ par mois) : votre télémétrie existe déjà · attribution (AppsFlyer, Adjust : 0,05 à 0,10 $ par installation) : utile au mobile, pas à un jeu PC et consoles · CDP (Segment, Tealium : 5 à 50 K€ par an) : profils unifiés contraires à la minimisation · CRM et push (Braze : 1 à 3 K$ par mois) : marketing, hors périmètre.", options: { color: INK } },
+  ], { x: 0.7, y: 3.88, w: 8.6, h: 0.82, fontFace: B, fontSize: 9, margin: 0, valign: "middle", isTextBox: true });
   s.addText([
     { text: "Stack : ", options: { bold: true, color: INK } },
-    { text: "télémétrie in-game existante → entrepôt existant (type BigQuery ou Snowflake ; requêtes ≈ 6,25 $ par To au-delà de 1 To gratuit par mois) → BI existante (type Looker ou Tableau).", options: { color: INK } },
-  ], { x: 0.5, y: 4.8, w: 9, h: 0.38, fontFace: B, fontSize: 8.5, margin: 0, valign: "middle", isTextBox: true });
-  source(s, [{ text: "TJM Data 2026 (01/10/2026)", url: U.tjm }, { text: "tarifs BigQuery (01/10/2026)", url: U.bq }, { text: "plan de collecte complet (§5 et §7)", url: U.gdoc }]);
-  pageNum(s, 8);
-  s.addNotes("[60 s] Quand, qui, combien. Trente jours d'audit : un data analyst et un data engineer à mi-temps, environ 33 jours-homme, soit 19 000 euros aux tarifs du marché, sans licence nouvelle, sur votre stack existante. C'est le seul montant engagé aujourd'hui ; si les tests sont lancés, le total data monte à environ 45 000 euros, hors développement. Si le ratio est déjà sous 1,2, on s'arrête : plan B. Sinon, soixante jours de tests avec votre équipe matchmaking, puis généralisation jusqu'au 31 mars 2027.");
+    { text: "télémétrie in-game existante → entrepôt existant (type BigQuery ou Snowflake) → BI existante (type Looker ou Power BI).", options: { color: INK } },
+  ], { x: 0.5, y: 4.8, w: 9, h: 0.35, fontFace: B, fontSize: 9, margin: 0, valign: "middle", isTextBox: true });
+  source(s, [{ text: "TJM Data 2026 (01/10/2026)", url: U.tjm }, { text: "tarifs BigQuery (01/10/2026)", url: U.bq }, { text: "tarifs Power BI (02/10/2026)", url: U.pbi }, { text: "plan de collecte (§5)", url: U.gdoc }]);
+  pageNum(s, 9);
+  s.addNotes("[15 s] Seuls 19 000 euros sont engagés aujourd'hui. Si les tests sont lancés, 45 000 euros d'analyse et moins de 4 000 dollars d'outils. Nous n'achetons ni SDK, ni CDP, ni CRM : votre stack suffit.");
 
   // 10. Risques & KPIs de décision (≈ 30 s)
   s = pres.addSlide(); s.background = { color: WHITE };
@@ -308,7 +333,7 @@ const U = {
     { text: "Plan B : ", options: { bold: true, color: RED } }, { text: "ratio ≤ 1,2 sur les deux cohortes : pas d'investissement matchmaking ; les données extraites testent équilibrage et monétisation.", options: { color: INK } },
   ], { x: 0.7, y: 3.9, w: 8.6, h: 1.2, fontFace: B, fontSize: 10, margin: 0, valign: "middle", paraSpaceAfter: 3, isTextBox: true });
   source(s, [{ text: "RGPD", url: U.rgpd }, { text: "AI Act", url: U.aiact }, { text: "plan de collecte complet (§3)", url: U.gdoc }]);
-  pageNum(s, 9);
+  pageNum(s, 10);
   s.addNotes("[30 s] Chaque KPI dit comment il se calcule et ce qu'il déclenche. Le principal : la part des nouveaux qui perdent au début et ne reviennent pas sous 7 jours, comparée aux autres ; au-delà de 1,2, on teste. Même calcul pour les revenants. 3 minutes d'attente arrêtent le resserrement : au-delà, un hero shooter paraît mort. Base légale : contrat et intérêt légitime documenté. Pour démarrer : signer l'accord de sous-traitance et lancer l'audit. Merci.");
   // 11. Annexe : sources
   s = pres.addSlide(); s.background = { color: WHITE };
@@ -328,12 +353,13 @@ const U = {
     ["Overwatch 2 : baisse des joueurs moyens sur PC (VGC)", U.vgc],
     ["« Plus un jeu pour le fan occasionnel » (TheGamer, 09/08/2025)", U.thegamer],
     ["Tarifs BigQuery, requêtes à la demande (Google Cloud)", U.bq],
+    ["Tarifs Power BI (Microsoft, 02/10/2026)", U.pbi],
     ["Baromètre TJM Data 2026, médianes freelance France (tjmetre.fr, 01/10/2026)", U.tjm],
     ["RGPD (EUR-Lex)", U.rgpd], ["AI Act (EUR-Lex)", U.aiact],
     ["Plan de collecte complet (Google Docs)", U.gdoc],
   ];
   s.addText(src.map((r, i, a) => ({ text: r[0], options: { hyperlink: { url: r[1] }, color: "2F3C7E", bullet: true, breakLine: i < a.length - 1 } })), { x: 0.5, y: 1.25, w: 9, h: 3.9, fontFace: B, fontSize: 10, paraSpaceAfter: 1, valign: "top", isTextBox: true });
-  pageNum(s, 10);
+  pageNum(s, 11);
   s.addNotes("Annexe, à montrer seulement si on vous demande une source.");
 
   // 12. Annexe : questions du jury anticipées
@@ -341,7 +367,7 @@ const U = {
   title(s, "Questions anticipées", "Annexe · réponses courtes, à garder sous la main");
   const qa = [
     ["Pourquoi cette donnée et pas une autre ?", "Score ICE le plus haut, et elle tranche directement l'hypothèse (départ à 7 jours, causes A, B et C)."],
-    ["Combien ça coûte ?", "≈ 19 K€ pour l'audit (33 jours-homme), ≈ 45 K€ en tout si les tests sont lancés ; aucune licence nouvelle ; requêtes ≈ 6,25 $ par To au-delà de 1 To gratuit."],
+    ["Combien ça coûte ?", "≈ 19 K€ pour l'audit (33 jours-homme), ≈ 45 K€ si les tests sont lancés, plus ≤ 4 K$ d'outils ; ni SDK, ni CDP, ni CRM à acheter."],
     ["Quelle base légale ?", "Contrat pour le matchmaking ; intérêt légitime documenté pour l'audit ; consentement pour les sondages."],
     ["Comment savoir si ça marche ?", "Ratio ≤ 1,2 au 31/03/2027 sur les deux cohortes ; sinon, plan B sans nouvelle collecte."],
     ["Qu'avez-vous écarté ?", "Données personnelles sans décision (chat, âge, téléphone, autres jeux), benchmark Newzoo (ICE 12), rôles imposés."],
@@ -353,7 +379,7 @@ const U = {
     s.addText(qa[i][0], { x: x + 0.15, y: y + 0.08, w: w - 0.3, h: 0.3, fontFace: H, fontSize: 11, bold: true, color: RED, margin: 0, isTextBox: true });
     s.addText(qa[i][1], { x: x + 0.15, y: y + 0.4, w: w - 0.3, h: 0.7, fontFace: B, fontSize: 10, color: INK, margin: 0, valign: "top", isTextBox: true });
   }
-  pageNum(s, 11);
+  pageNum(s, 12);
   s.addNotes("Annexe pour les questions. Question imposée du jury, sans carte à l'écran : « Où avez-vous utilisé l'IA ? ». Réponse : 10 usages tracés en annexe du rapport (outil, prompt, réponse, analyse critique), plus à l'oral un élément critique que vous avez fait sans IA (par exemple le choix final de l'hypothèse ou la vérification des chiffres), si c'est le cas.");
 
   await pres.writeFile({ fileName: "/home/user/SOCIO/docs/presentation/pitch_marvel_rivals_netease.pptx" });
