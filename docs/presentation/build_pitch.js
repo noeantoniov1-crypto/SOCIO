@@ -6,9 +6,11 @@ const RDS = require("react-dom/server");
 const sharp = require("sharp");
 const fa = require("react-icons/fa");
 
-const NAVY = "161A33", RED = "E23636", LIGHT = "F4F5F9", INK = "1F2233", MUTED = "5E6378", WHITE = "FFFFFF", SOFT = "C9CCDA";
+const NAVY = "0D1020", RED = "E62429", GOLD = "FFC72C", LIGHT = "F4F5F9", INK = "1F2233", MUTED = "5E6378", WHITE = "FFFFFF", SOFT = "C9CCDA";
 const GREEN = "2E7D5B", AMBER = "B7791F", GREY = "8A8FA3", LINE = "E3E5EE";
-const H = "Arial", B = "Calibri";
+const H = "Arial", B = "Calibri", HB = "Arial Black";
+const path = require("path");
+const LOGO = path.join(__dirname, "assets", "logo.png"), COVER = path.join(__dirname, "assets", "cover.jpg"); // logo et visuel : marvelrivals.com
 
 async function icon(Comp, color = WHITE, size = 256) {
   const svg = RDS.renderToStaticMarkup(React.createElement(Comp, { color: "#" + color, size }));
@@ -21,9 +23,23 @@ async function badge(slide, Comp, x, y, d = 0.55, fill = RED) {
   const p = d * 0.25;
   slide.addImage({ data: await icon(Comp), x: x + p, y: y + p, w: d - 2 * p, h: d - 2 * p });
 }
-function title(slide, t, sub, dark = false) {
-  slide.addText(t, { x: 0.5, y: 0.3, w: 9, h: 0.6, fontFace: H, fontSize: 26, bold: true, color: dark ? WHITE : INK, margin: 0, isTextBox: true });
-  if (sub) slide.addText(sub, { x: 0.5, y: 0.88, w: 9, h: 0.32, fontFace: B, fontSize: 12, color: dark ? SOFT : MUTED, margin: 0, isTextBox: true });
+function title(slide, t, sub) {
+  // bandeau sombre façon Marvel Rivals : accent rouge incliné, étiquette de section jaune, logo à droite
+  slide.addShape("rect", { x: 0, y: 0, w: 10, h: 1.12, fill: { color: NAVY }, line: { color: NAVY } });
+  slide.addShape("parallelogram", { x: -0.15, y: 1.12, w: 4.2, h: 0.07, fill: { color: RED }, line: { color: RED } });
+  slide.addShape("parallelogram", { x: 3.95, y: 1.12, w: 1.6, h: 0.07, fill: { color: GOLD }, line: { color: GOLD } });
+  slide.addShape("parallelogram", { x: 0.32, y: 0.36, w: 0.16, h: 0.46, fill: { color: RED }, line: { color: RED } });
+  let sec = "", rest = sub || "";
+  const k = rest.indexOf(" · ");
+  if (k > 0 && k < 20) { sec = rest.slice(0, k).toUpperCase(); rest = rest.slice(k + 3); }
+  if (sec) {
+    const w = 0.22 + sec.length * 0.085;
+    slide.addShape("parallelogram", { x: 0.55, y: 0.12, w, h: 0.22, fill: { color: GOLD }, line: { color: GOLD } });
+    slide.addText(sec, { x: 0.55, y: 0.12, w, h: 0.22, fontFace: H, fontSize: 8, bold: true, color: NAVY, align: "center", valign: "middle", margin: 0, charSpacing: 1, isTextBox: true });
+  }
+  slide.addText(t, { x: 0.6, y: 0.34, w: 7.9, h: 0.5, fontFace: H, fontSize: 22, bold: true, color: WHITE, margin: 0, valign: "middle", isTextBox: true });
+  if (rest) slide.addText(rest, { x: 0.6, y: 0.82, w: 8.0, h: 0.26, fontFace: B, fontSize: 11, color: GOLD, margin: 0, valign: "middle", isTextBox: true });
+  slide.addImage({ path: LOGO, x: 8.72, y: 0.22, w: 1.05, h: 0.44 });
 }
 function source(slide, parts, dark = false) {
   const runs = [{ text: "Sources : ", options: { color: dark ? SOFT : MUTED } }];
@@ -33,8 +49,9 @@ function source(slide, parts, dark = false) {
   });
   slide.addText(runs, { x: 0.5, y: 5.22, w: 8.6, h: 0.28, fontFace: B, fontSize: 8.5, margin: 0, isTextBox: true });
 }
-function pageNum(slide, n, dark = false) {
-  slide.addText(String(n), { x: 9.2, y: 5.22, w: 0.3, h: 0.28, fontFace: B, fontSize: 9, color: dark ? SOFT : MUTED, align: "right", margin: 0, isTextBox: true });
+function pageNum(slide, n) {
+  slide.addShape("parallelogram", { x: 9.25, y: 5.25, w: 0.55, h: 0.24, fill: { color: RED }, line: { color: RED } });
+  slide.addText(String(n), { x: 9.25, y: 5.25, w: 0.55, h: 0.24, fontFace: H, fontSize: 9, bold: true, color: WHITE, align: "center", valign: "middle", margin: 0, isTextBox: true });
 }
 function chip(slide, text, x, y, w, color) {
   slide.addShape("roundRect", { x, y, w, h: 0.26, fill: { color }, line: { color }, rectRadius: 0.05 });
@@ -71,33 +88,38 @@ const U = {
 
   // 1. Titre + accroche chiffre choc (≈ 10 s)
   let s = pres.addSlide(); s.background = { color: NAVY };
-  await badge(s, fa.FaGamepad, 0.5, 0.5, 0.6);
-  s.addText("644 000 → 98 000", { x: 0.5, y: 1.3, w: 9, h: 0.9, fontFace: H, fontSize: 54, bold: true, color: RED, margin: 0, isTextBox: true });
-  s.addText("joueurs simultanés sur Steam, en dix mois", { x: 0.5, y: 2.2, w: 9, h: 0.4, fontFace: B, fontSize: 18, color: SOFT, margin: 0, isTextBox: true });
-  s.addText("Marvel Rivals : pourquoi les joueurs ne restent pas", { x: 0.5, y: 3.0, w: 9, h: 0.6, fontFace: H, fontSize: 28, bold: true, color: WHITE, margin: 0, isTextBox: true });
-  s.addText("Plan de collecte data pour le comité de direction de NetEase Games", { x: 0.5, y: 3.6, w: 9, h: 0.4, fontFace: B, fontSize: 15, color: SOFT, margin: 0, isTextBox: true });
-  s.addText("Noé, consultant · 2 octobre 2026", { x: 0.5, y: 4.7, w: 6, h: 0.3, fontFace: B, fontSize: 12, color: SOFT, margin: 0, isTextBox: true });
-  s.addText([{ text: "Forbes, 12/10/2025", options: { hyperlink: { url: U.forbes }, color: "9FB4FF" } }], { x: 6.5, y: 4.7, w: 3, h: 0.3, fontFace: B, fontSize: 10, align: "right", margin: 0, isTextBox: true });
+  s.addImage({ path: COVER, x: 0, y: 0, w: 10, h: 5.625 });
+  s.addShape("rect", { x: 0, y: 0, w: 10, h: 5.625, fill: { color: NAVY, transparency: 50 }, line: { color: NAVY, transparency: 100 } });
+  s.addShape("rect", { x: 0, y: 0, w: 7.0, h: 5.625, fill: { color: NAVY, transparency: 25 }, line: { color: NAVY, transparency: 100 } });
+  s.addImage({ path: LOGO, x: 0.5, y: 0.35, w: 2.1, h: 0.88 });
+  s.addShape("parallelogram", { x: 0.35, y: 1.5, w: 5.6, h: 0.95, fill: { color: RED }, line: { color: RED } });
+  s.addText("644 000 → 98 000", { x: 0.55, y: 1.5, w: 5.3, h: 0.95, fontFace: HB, fontSize: 38, bold: true, color: WHITE, valign: "middle", margin: 0, isTextBox: true });
+  s.addText("joueurs simultanés sur Steam, en dix mois", { x: 0.55, y: 2.5, w: 5.6, h: 0.35, fontFace: B, fontSize: 16, color: GOLD, margin: 0, isTextBox: true });
+  s.addText("Pourquoi les joueurs ne restent pas", { x: 0.55, y: 3.05, w: 6.6, h: 0.55, fontFace: H, fontSize: 24, bold: true, color: WHITE, margin: 0, isTextBox: true });
+  s.addText("Plan de collecte data pour le comité de direction de NetEase Games", { x: 0.55, y: 3.62, w: 6.6, h: 0.35, fontFace: B, fontSize: 13, color: SOFT, margin: 0, isTextBox: true });
+  s.addShape("parallelogram", { x: 0.35, y: 4.62, w: 2.2, h: 0.07, fill: { color: GOLD }, line: { color: GOLD } });
+  s.addText("Noé, consultant · 2 octobre 2026", { x: 0.55, y: 4.75, w: 5, h: 0.3, fontFace: B, fontSize: 12, color: WHITE, margin: 0, isTextBox: true });
+  s.addText([{ text: "Forbes, 12/10/2025", options: { hyperlink: { url: U.forbes }, color: GOLD } }, { text: " · visuel et logo : marvelrivals.com", options: { color: SOFT } }], { x: 5.0, y: 5.2, w: 4.8, h: 0.28, fontFace: B, fontSize: 9, align: "right", margin: 0, isTextBox: true });
   s.addNotes("[10 s] 644 000 joueurs en janvier 2025, 98 000 dix mois plus tard. Votre comité m'a demandé pourquoi les joueurs ne restent pas.");
 
   // 2. Contexte : le problème business, prouvé par les données (≈ 20 s)
   s = pres.addSlide(); s.background = { color: WHITE };
   title(s, "Le problème business", "Contexte · le B du BODAK, prouvé par les données (Steam = PC uniquement)");
-  s.addShape("roundRect", { x: 0.5, y: 1.25, w: 9, h: 0.62, fill: { color: NAVY }, line: { color: NAVY }, rectRadius: 0.08 });
+  s.addShape("parallelogram", { x: 0.4, y: 1.27, w: 9.2, h: 0.6, fill: { color: RED }, line: { color: RED } });
   s.addText([
-    { text: "B : ", options: { bold: true, color: RED } },
+    { text: "B : ", options: { bold: true, color: GOLD } },
     { text: "Marvel Rivals perd ses joueurs et ne parvient plus à en regagner ; ceux qui partent accusent d'abord le matchmaking.", options: { color: WHITE } },
-  ], { x: 0.7, y: 1.27, w: 8.6, h: 0.58, fontFace: B, fontSize: 13, margin: 0, valign: "middle", isTextBox: true });
+  ], { x: 0.75, y: 1.28, w: 8.5, h: 0.58, fontFace: B, fontSize: 13, bold: true, margin: 0, valign: "middle", isTextBox: true });
   const months = ["Déc. 24", "Janv.", "Févr.", "Mars", "Avr.", "Mai", "Juin", "Juil.", "Août", "Sept.", "Oct.", "Nov.", "Déc.", "Janv. 26", "Févr.", "Mars", "Avr.", "Mai", "Juin", "Juil.", "Août", "Sept.*"];
   const players = [279402, 306066, 228000, 144302, 134118, 102116, 79806, 82825, 77502, 64418, 63716, 65301, 75492, 88790, 81368, 65150, 70116, 67588, 69738, 84281, 80129, 67646];
   const mm = [7.4, 10.9, 12.1, 20.3, 21.1, 29.1, 27.6, 37.0, 41.0, 33.9, 25.9, 17.3, 18.2, 15.4, 15.6, 13.4, 14.4, 14.7, 14.2, 8.8, 13.4, 10.5];
   const chartBase = { showLegend: false, catAxisLabelColor: MUTED, valAxisLabelColor: MUTED, catAxisLabelFontSize: 7, valAxisLabelFontSize: 8,
     valGridLine: { color: LINE, size: 0.5 }, catGridLine: { style: "none" }, lineSize: 2.5, lineDataSymbol: "circle", lineDataSymbolSize: 4,
     showTitle: true, titleFontSize: 11, titleColor: INK, titleFontFace: B };
-  s.addChart(pres.charts.LINE, [{ name: "Joueurs simultanés (milliers)", labels: months, values: players.map(v => Math.round(v / 1000)) }],
-    { ...chartBase, x: 0.35, y: 1.95, w: 4.65, h: 2.15, chartColors: [RED], title: "Joueurs simultanés, moyenne mensuelle (milliers)" });
-  s.addChart(pres.charts.LINE, [{ name: "% des avis négatifs citant le matchmaking", labels: months, values: mm }],
-    { ...chartBase, x: 5.0, y: 1.95, w: 4.65, h: 2.15, chartColors: [NAVY], valAxisMaxVal: 45, valAxisLabelFormatCode: "0\"%\"", title: "% des avis Steam négatifs qui citent le matchmaking" });
+  s.addChart(pres.charts.AREA, [{ name: "Joueurs simultanés (milliers)", labels: months, values: players.map(v => Math.round(v / 1000)) }],
+    { ...chartBase, x: 0.35, y: 1.95, w: 4.65, h: 2.15, chartColors: [RED], chartColorsOpacity: 55, title: "Joueurs simultanés, moyenne mensuelle (milliers)" });
+  s.addChart(pres.charts.BAR, [{ name: "% des avis négatifs citant le matchmaking", labels: months, values: mm }],
+    { ...chartBase, barDir: "col", barGapWidthPct: 35, x: 5.0, y: 1.95, w: 4.65, h: 2.15, chartColors: [GOLD], valAxisMaxVal: 45, valAxisLabelFormatCode: "0\"%\"", title: "% des avis Steam négatifs qui citent le matchmaking" });
   const proofs = [
     ["−85 %", "de pic à pic (644 K → 98 K) ; −76 % en moyenne depuis la sortie"],
     ["2 mois", "pour perdre les joueurs ramenés par une saison (+18 % en janv. 2026, +21 % en juil.)"],
@@ -105,7 +127,7 @@ const U = {
   ];
   for (let i = 0; i < 3; i++) {
     const x = 0.5 + i * 3.05;
-    s.addText(proofs[i][0], { x, y: 4.15, w: 2.9, h: 0.42, fontFace: H, fontSize: 20, bold: true, color: i === 2 ? NAVY : RED, margin: 0, isTextBox: true });
+    s.addText(proofs[i][0], { x, y: 4.15, w: 2.9, h: 0.42, fontFace: H, fontSize: 20, bold: true, color: RED, margin: 0, isTextBox: true });
     s.addText(proofs[i][1], { x, y: 4.57, w: 2.9, h: 0.6, fontFace: B, fontSize: 9.5, color: INK, margin: 0, valign: "top", isTextBox: true });
   }
   source(s, [{ text: "Forbes (12/10/2025)", url: U.forbes }, { text: "Steam Charts (30/09/2026 ; * = 30 derniers jours)", url: U.steamcharts }, { text: "avis Steam, notre collecte", url: U.steamapi }, { text: "démenti EOMM", url: U.eomm }]);
@@ -246,7 +268,7 @@ const U = {
   ];
   for (let i = 0; i < out.length; i++) {
     const y = 1.3 + i * 0.75;
-    await badge(s, out[i][0], 0.5, y + 0.05, 0.45, GREY);
+    await badge(s, out[i][0], 0.5, y + 0.05, 0.45, i % 2 ? NAVY : RED);
     s.addText(out[i][1], { x: 1.1, y, w: 8.4, h: 0.3, fontFace: H, fontSize: 12, bold: true, color: INK, margin: 0, valign: "middle", isTextBox: true });
     s.addText(out[i][2], { x: 1.1, y: y + 0.3, w: 8.4, h: 0.3, fontFace: B, fontSize: 10.5, color: MUTED, margin: 0, valign: "middle", isTextBox: true });
   }
@@ -256,7 +278,7 @@ const U = {
 
   // 9. Roadmap : qui, ce qui change pour le joueur, quel résultat déclenche quoi (≈ 45 s)
   s = pres.addSlide(); s.background = { color: LIGHT };
-  title(s, "Roadmap : qui agit, ce que vit le joueur", "Trois phases ; chaque résultat ouvre ou ferme la phase suivante");
+  title(s, "Roadmap : qui agit, ce que vit le joueur", "Roadmap · trois phases ; chaque résultat ouvre ou ferme la phase suivante");
   const rh = (t) => ({ text: t, options: { bold: true, color: WHITE, fill: { color: NAVY }, fontFace: H, fontSize: 9.5 } });
   const ph = (n, t, d) => ({ text: [{ text: n + " · " + t, options: { bold: true, color: RED, fontFace: H, fontSize: 10.5, breakLine: true } }, { text: d, options: { color: MUTED, fontSize: 9 } }] });
   const res = (pairs) => ({ text: pairs.flatMap(([c, r], i) => [{ text: c + " → ", options: { bold: true, color: INK } }, { text: r, options: { color: INK, breakLine: i < pairs.length - 1 } }]) });
