@@ -308,7 +308,7 @@ const U = {
     s.addText(out[i][1], { x: 1.1, y, w: 8.4, h: 0.3, fontFace: H, fontSize: 12, bold: true, color: INK, margin: 0, valign: "middle", isTextBox: true });
     s.addText(out[i][2], { x: 1.1, y: y + 0.3, w: 8.4, h: 0.3, fontFace: B, fontSize: 10.5, color: MUTED, margin: 0, valign: "middle", isTextBox: true });
   }
-  source(s, [{ text: "RGPD Art. 5", url: U.rgpd }, { text: "plan de collecte, partie 6 (PDF, p. 18)", url: U.gdoc }]);
+  source(s, [{ text: "RGPD Art. 5", url: U.rgpd }, { text: "plan de collecte, partie 6 (PDF, p. 20)", url: U.gdoc }]);
   pageNum(s, 7);
   s.addNotes("[20 s] Nous avons volontairement écarté les données personnelles qu'aucune décision n'exige, le benchmark Newzoo, trop biaisé, et les rôles imposés, contraires à l'identité du jeu.");
 
@@ -339,7 +339,7 @@ const U = {
     { text: "Budget : ≈ 19 K€ engagés (audit) · ≈ 45 K€ si les tests sont lancés", options: { bold: true, color: WHITE } },
     { text: "  ·  détail du calcul slide suivante", options: { color: SOFT, fontSize: 10 } },
   ], { x: 0.7, y: 4.62, w: 8.6, h: 0.5, fontFace: B, fontSize: 12, margin: 0, valign: "middle", isTextBox: true });
-  source(s, [{ text: "plan de collecte, partie 7 (PDF, p. 20)", url: U.gdoc }]);
+  source(s, [{ text: "plan de collecte, partie 7 (PDF, p. 22)", url: U.gdoc }]);
   pageNum(s, 8);
   s.addNotes("[45 s] Phase 1 : trente jours d'audit par un data analyst et un data engineer ; rien ne change pour les joueurs. Si un ratio dépasse 1,2, phase 2 : votre équipe matchmaking teste le réglage de chaque cause confirmée sur des joueurs tirés au sort. Un réglage n'est gardé que s'il réduit les départs sans dépasser 3 minutes d'attente. Phase 3 : les gagnants passent à tous, annoncés dans les notes de patch.");
 
@@ -368,7 +368,7 @@ const U = {
     { text: "Stack : ", options: { bold: true, color: INK } },
     { text: "télémétrie in-game existante → entrepôt existant (type BigQuery ou Snowflake) → BI existante (type Looker ou Power BI).", options: { color: INK } },
   ], { x: 0.5, y: 4.8, w: 9, h: 0.35, fontFace: B, fontSize: 9, margin: 0, valign: "middle", isTextBox: true });
-  source(s, [{ text: "TJM Data 2026 (01/10/2026)", url: U.tjm }, { text: "tarifs BigQuery (01/10/2026)", url: U.bq }, { text: "tarifs Power BI (02/10/2026)", url: U.pbi }, { text: "plan de collecte, partie 5 (PDF, p. 15)", url: U.gdoc }]);
+  source(s, [{ text: "TJM Data 2026 (01/10/2026)", url: U.tjm }, { text: "tarifs BigQuery (01/10/2026)", url: U.bq }, { text: "tarifs Power BI (02/10/2026)", url: U.pbi }, { text: "plan de collecte, partie 5 (PDF, p. 16)", url: U.gdoc }]);
   pageNum(s, 9);
   s.addNotes("[15 s] Seuls 19 000 euros sont engagés aujourd'hui. Si les tests sont lancés, 45 000 euros d'analyse et moins de 4 000 dollars d'outils. Nous n'achetons ni SDK, ni CDP, ni CRM : votre stack suffit.");
 
