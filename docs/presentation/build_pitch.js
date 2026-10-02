@@ -171,39 +171,40 @@ const U = {
 
   // 6. Recommandation : la matrice de collecte, visuelle (≈ 20 s)
   s = pres.addSlide(); s.background = { color: WHITE };
-  title(s, "La matrice de collecte : 13 données indispensables", "Recommandation · score ICE = Impact × Confiance × Facilité, sur 125 ; coupe sous 30");
-  const cols = [
-    ["INDISPENSABLE · ICE ≥ 80", GREEN, [
-      ["Mode et plateforme des 10 premiers matchs", 125], ["Écart accepté × joueurs en file", 125], ["Départ à 7 jours × bilan des 10 matchs", 100],
-      ["Niveau de départ et convergence", 100], ["Joueurs de retour : absence × rang × bilan", 100], ["Filtrage de la population", 100],
-      ["Écart de score en classé", 100], ["Compositions par rôle", 100], ["Parties avec bots", 100], ["Écart subi en partie rapide", 80],
-      ["Cohortes 2025", 80], ["Rétention avant / après la S5", 80], ["Groupes contre solos", 80]]],
-    ["UTILE · 30 à 79", AMBER, [
-      ["Performance des comptes neufs (smurfs)", 64], ["Rôle joué / rôle habituel", 64], ["Avis Steam (collecte faite)", 45],
-      ["Attente simulée", 36], ["Durée des ultimes de soin", 36], ["Sondage d'équité perçue", 36], ["Question d'onboarding", 36], ["Héros maîtrisés", 30]]],
-    ["ÉCARTÉ · < 30 ou inutile", GREY, [
-      ["Benchmark Newzoo (panel biaisé)", 12], ["Chat vocal ou texte complet", 9], ["Historique sur d'autres jeux", 6], ["Âge exact", 6], ["Numéro de téléphone", 4]]],
+  title(s, "Matrice ICE : 13 données indispensables", "Recommandation · Impact × Confiance × Facilité, chacun sur 5 = score sur 125 · coupe sous 30");
+  const IC = "1E8C93", CC = "C2185B", EC = "C98A00";
+  const th = (t) => ({ text: t, options: { bold: true, color: WHITE, fill: { color: NAVY }, fontFace: H, fontSize: 9.5, align: "center" } });
+  const dec = { I: ["Indispensable", GREEN], U: ["Utile", AMBER], X: ["Écartée", GREY] };
+  const mrows = [
+    ["Mode et plateforme des 10 premiers matchs", 5, 5, 5, "I", ""],
+    ["Écart de niveau accepté × joueurs en file (heure, région)", 5, 5, 5, "I", "cause B"],
+    ["Départ à 7 jours × bilan des 10 premiers matchs", 5, 4, 5, "I", "mesure l'objectif"],
+    ["Niveau de départ et vitesse de convergence", 5, 5, 4, "I", "cause A"],
+    ["Joueurs de retour : absence × rang au retour × bilan", 5, 4, 5, "I", "cause C"],
+    ["Écart de niveau subi en partie rapide", 5, 4, 4, "I", ""],
+    ["Performance des comptes neufs (smurfs)", 4, 4, 4, "U", ""],
+    ["Avis Steam agrégés (collecte déjà faite)", 3, 3, 5, "U", "contrôle"],
+    ["Sondage d'équité perçue (1 match sur 10)", 4, 3, 3, "U", "après l'audit"],
+    ["Benchmark Newzoo (panel biaisé)", 2, 2, 3, "X", "sous 30"],
+    ["Chat vocal ou texte complet", 3, 3, 1, "X", "RGPD lourd"],
+    ["Numéro de téléphone (anti-smurf)", 2, 2, 1, "X", "disproportionné"],
   ];
-  const cw = [3.35, 3.0, 2.65];
-  let cx = 0.5;
-  for (let c = 0; c < 3; c++) {
-    const [lab, col, items] = cols[c];
-    chip(s, lab, cx, 1.28, cw[c] - 0.15, col);
-    items.forEach((it, i) => {
-      const y = 1.62 + i * 0.27;
-      s.addShape("rect", { x: cx, y: y + 0.02, w: cw[c] - 0.15, h: 0.24, fill: { color: c === 0 ? "EAF4EF" : c === 1 ? "FBF3E6" : "F0F1F4" }, line: { color: WHITE } });
-      s.addText(it[0], { x: cx + 0.06, y: y + 0.02, w: cw[c] - 0.7, h: 0.24, fontFace: B, fontSize: 8.5, color: INK, margin: 0, valign: "middle", isTextBox: true });
-      s.addText(String(it[1]), { x: cx + cw[c] - 0.62, y: y + 0.02, w: 0.42, h: 0.24, fontFace: H, fontSize: 9, bold: true, color: col, align: "right", margin: 0, valign: "middle", isTextBox: true });
-    });
-    cx += cw[c];
-  }
+  const mt = [[th("Donnée candidate"), th("I /5"), th("C /5"), th("E /5"), th("Score"), th("Décision")]];
+  mrows.forEach((r) => {
+    const [lab, colr] = dec[r[4]];
+    const n = (v, c) => ({ text: String(v), options: { bold: true, color: c, align: "center", fontFace: H } });
+    mt.push([r[0], n(r[1], IC), n(r[2], CC), n(r[3], EC),
+      { text: String(r[1] * r[2] * r[3]), options: { bold: true, color: INK, align: "center", fontFace: H, fontSize: 10.5 } },
+      { text: lab + (r[5] ? " · " + r[5] : ""), options: { bold: true, color: WHITE, fill: { color: colr }, align: "center", fontSize: 8.5 } }]);
+  });
+  s.addTable(mt, { x: 0.5, y: 1.3, w: 9, colW: [3.9, 0.6, 0.6, 0.6, 0.75, 2.55], fontFace: B, fontSize: 9, color: INK, border: { type: "solid", pt: 0.75, color: WHITE }, fill: { color: LIGHT }, valign: "middle", margin: [1, 5, 1, 5], rowH: 0.255 });
   s.addText([
     { text: "Les 13 indispensables existent déjà dans votre télémétrie : ", options: { bold: true, color: INK } },
-    { text: "aucune nouvelle collecte pour l'audit. Les deux collectes nouvelles (sondage, question d'onboarding) sont facultatives, sous consentement, après l'audit.", options: { color: INK } },
-  ], { x: 6.85, y: 3.15, w: 2.6, h: 1.9, fontFace: B, fontSize: 10, margin: 0, valign: "top", isTextBox: true });
+    { text: "aucune nouvelle collecte pour l'audit. Extrait de la matrice : 7 autres indispensables (ICE 80 à 100) et 5 autres utiles sont notés dans le plan de collecte.", options: { color: INK } },
+  ], { x: 0.5, y: 4.67, w: 9, h: 0.45, fontFace: B, fontSize: 9.5, margin: 0, valign: "middle", isTextBox: true });
   source(s, [{ text: "plan de collecte complet (justification de chaque note)", url: U.gdoc }]);
   pageNum(s, 5);
-  s.addNotes("[15 s] La matrice complète : treize données indispensables, toutes déjà dans votre télémétrie. Aucune nouvelle collecte pour l'audit.");
+  s.addNotes("[15 s] Chaque donnée est notée sur l'impact, la confiance et la facilité ; le score est leur produit. Treize dépassent 80, toutes déjà dans votre télémétrie. Le chat ou le téléphone tombent sous 30 : risque RGPD sans décision.");
 
   // 7. Recommandation : les leviers par cause (≈ 35 s)
   s = pres.addSlide(); s.background = { color: LIGHT };
@@ -263,24 +264,25 @@ const U = {
     s.addShape("ellipse", { x: x + 0.05, y: 1.3, w: 0.45, h: 0.45, fill: { color: RED }, line: { color: RED } });
     s.addText(String(i + 1), { x: x + 0.05, y: 1.3, w: 0.45, h: 0.45, fontFace: H, fontSize: 15, bold: true, color: WHITE, align: "center", valign: "middle", margin: 0, isTextBox: true });
     s.addText([{ text: ph[i][0] + "  ", options: { bold: true, color: INK } }, { text: ph[i][1], options: { color: MUTED } }], { x: x + 0.6, y: 1.3, w: 2.3, h: 0.45, fontFace: H, fontSize: 14, valign: "middle", margin: 0, isTextBox: true });
-    s.addShape("roundRect", { x, y: 1.9, w: 2.9, h: 2.0, fill: { color: WHITE }, line: { color: LINE }, rectRadius: 0.08 });
+    s.addShape("roundRect", { x, y: 1.9, w: 2.9, h: 1.82, fill: { color: WHITE }, line: { color: LINE }, rectRadius: 0.08 });
     s.addText([
       { text: "Qui : ", options: { bold: true, color: NAVY } }, { text: ph[i][2], options: { color: INK, breakLine: true } },
       { text: " ", options: { fontSize: 4, breakLine: true } },
       { text: "Combien : ", options: { bold: true, color: NAVY } }, { text: ph[i][3], options: { color: INK, breakLine: true } },
       { text: " ", options: { fontSize: 4, breakLine: true } },
       { text: "Décision : ", options: { bold: true, color: RED } }, { text: ph[i][4], options: { color: INK } },
-    ], { x: x + 0.15, y: 1.98, w: 2.6, h: 1.85, fontFace: B, fontSize: 10, margin: 0, valign: "top", isTextBox: true });
+    ], { x: x + 0.15, y: 1.96, w: 2.6, h: 1.72, fontFace: B, fontSize: 9.5, margin: 0, valign: "top", isTextBox: true });
   }
-  s.addShape("roundRect", { x: 0.5, y: 3.98, w: 9, h: 0.62, fill: { color: NAVY }, line: { color: NAVY }, rectRadius: 0.06 });
+  s.addShape("roundRect", { x: 0.5, y: 3.8, w: 9, h: 0.95, fill: { color: NAVY }, line: { color: NAVY }, rectRadius: 0.06 });
   s.addText([
-    { text: "Budget estimé : ≈ 19 K€ engagés (audit) · ≈ 45 K€ si les tests sont lancés", options: { bold: true, color: WHITE, breakLine: true } },
-    { text: "39 à 51 K€ aux TJM médians 2026 (540 €/j analyste, 650 €/j ingénieur), hors développement et infrastructure", options: { color: SOFT, fontSize: 9 } },
-  ], { x: 0.7, y: 3.98, w: 8.6, h: 0.62, fontFace: B, fontSize: 12.5, margin: 0, valign: "middle", isTextBox: true });
+    { text: "Budget : ≈ 19 K€ engagés (audit) · ≈ 45 K€ si les tests sont lancés", options: { bold: true, color: WHITE, fontSize: 12.5, breakLine: true } },
+    { text: "Audit : 22 j × 540 € + 11 j × 650 € = 19 K€  ·  Tests : 43 j × 540 € = 23 K€  ·  Pilotage : 6 j × 540 € = 3 K€", options: { color: WHITE, breakLine: true } },
+    { text: "TJM médians 2026 : 540 €/j analyste, 650 €/j ingénieur (tjmetre.fr, 1 186 freelances, 01/10/2026) · fourchette 39 à 51 K€ · hors développement", options: { color: SOFT, fontSize: 8 } },
+  ], { x: 0.65, y: 3.82, w: 8.75, h: 0.91, fontFace: B, fontSize: 9.5, margin: 0, valign: "middle", paraSpaceAfter: 2, isTextBox: true });
   s.addText([
     { text: "Stack : ", options: { bold: true, color: INK } },
     { text: "télémétrie in-game existante → entrepôt existant (type BigQuery ou Snowflake ; requêtes ≈ 6,25 $ par To au-delà de 1 To gratuit par mois) → BI existante (type Looker ou Tableau).", options: { color: INK } },
-  ], { x: 0.5, y: 4.66, w: 9, h: 0.5, fontFace: B, fontSize: 9, margin: 0, valign: "middle", isTextBox: true });
+  ], { x: 0.5, y: 4.8, w: 9, h: 0.38, fontFace: B, fontSize: 8.5, margin: 0, valign: "middle", isTextBox: true });
   source(s, [{ text: "TJM Data 2026 (01/10/2026)", url: U.tjm }, { text: "tarifs BigQuery (01/10/2026)", url: U.bq }, { text: "plan de collecte complet (§5 et §7)", url: U.gdoc }]);
   pageNum(s, 8);
   s.addNotes("[60 s] Quand, qui, combien. Trente jours d'audit : un data analyst et un data engineer à mi-temps, environ 33 jours-homme, soit 19 000 euros aux tarifs du marché, sans licence nouvelle, sur votre stack existante. C'est le seul montant engagé aujourd'hui ; si les tests sont lancés, le total data monte à environ 45 000 euros, hors développement. Si le ratio est déjà sous 1,2, on s'arrête : plan B. Sinon, soixante jours de tests avec votre équipe matchmaking, puis généralisation jusqu'au 31 mars 2027.");
