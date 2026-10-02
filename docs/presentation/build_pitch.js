@@ -208,10 +208,10 @@ const U = {
 
   // 7. Recommandation : les leviers par cause (≈ 35 s)
   s = pres.addSlide(); s.background = { color: LIGHT };
-  title(s, "Puis tester le levier qui correspond à la cause", "Recommandation · tests A/B de 60 jours, seulement si l'audit confirme le problème");
+  title(s, "Puis tester le levier de chaque cause confirmée", "Recommandation · tests A/B de 60 jours si le ratio dépasse 1,2 ; les causes peuvent se cumuler");
   const causes = [
-    [fa.FaSnowflake, "A · Démarrage à froid", RED, "Le jeu ne connaît pas le niveau d'un nouveau compte et le place mal.", "Écart fort sur les premiers matchs, à toute heure.", ["Niveau de départ plus prudent", "File débutants jusqu'au niveau 15"]],
-    [fa.FaUsersSlash, "B · Manque de joueurs", NAVY, "File vide : le jeu accepte des écarts plus grands pour lancer la partie.", "L'écart grandit quand la file se vide.", ["Écart resserré aux heures creuses", "Arrêt si 10 % attendent plus de 3 min"]],
+    [fa.FaSnowflake, "A · Démarrage à froid", RED, "Le jeu ne connaît pas le niveau d'un nouveau compte et le place mal.", "Écart déjà fort aux heures pleines, quand la file est remplie.", ["Niveau de départ plus prudent", "File débutants jusqu'au niveau 15"]],
+    [fa.FaUsersSlash, "B · Manque de joueurs", NAVY, "File vide : le jeu accepte des écarts plus grands pour lancer la partie.", "Écart en plus aux heures creuses, quand la file se vide.", ["Écart resserré aux heures creuses", "Arrêt si 10 % attendent plus de 3 min"]],
     [fa.FaRedo, "C · Rang périmé au retour", AMBER, "Le rang ne tient pas compte de la durée d'absence.", "Les revenants perdent plus, d'autant plus que l'absence a été longue.", ["Matchs de recalibrage au retour", "Baisse de rang selon l'absence"]],
   ];
   for (let i = 0; i < 3; i++) {
@@ -229,7 +229,7 @@ const U = {
   ], { x: 0.5, y: 4.6, w: 9, h: 0.55, fontFace: B, fontSize: 10.5, margin: 0, valign: "middle", isTextBox: true });
   source(s, [{ text: "vidéo NetEase du 21/08/2025", url: U.video }, { text: "Dev Talk Vol.10", url: U.devtalk }]);
   pageNum(s, 6);
-  s.addNotes("[35 s] On ne teste que si l'audit confirme le problème, et seulement le levier de la cause trouvée. Démarrage à froid : niveau de départ plus prudent. Manque de joueurs : écart resserré aux heures creuses, arrêté si l'attente dépasse 3 minutes. Rang périmé : matchs de recalibrage au retour. Toujours avec un groupe témoin.");
+  s.addNotes("[35 s] On ne teste que si le ratio dépasse 1,2, et seulement les causes que l'audit confirme : une, deux ou les trois, chacune avec son levier. Démarrage à froid : niveau de départ plus prudent. Manque de joueurs : écart resserré aux heures creuses, arrêté si l'attente dépasse 3 minutes. Rang périmé : matchs de recalibrage au retour. Toujours avec un groupe témoin.");
 
   // 8. Recommandation : ce que nous avons volontairement écarté (≈ 20 s)
   s = pres.addSlide(); s.background = { color: WHITE };
@@ -255,7 +255,7 @@ const U = {
   s = pres.addSlide(); s.background = { color: LIGHT };
   title(s, "Roadmap : quand, qui, combien", "Trois phases, chacune avec sa porte de décision");
   const ph = [
-    ["0-30 j", "Audit", "1 data analyst à temps plein, 1 data engineer à mi-temps ; DPO NetEase pour l'accord et le hachage", "≈ 33 jours-homme, soit ≈ 19 K€ ; aucune licence nouvelle", "Ratio ≤ 1,2 sur les deux cohortes → plan B"],
+    ["0-30 j", "Audit", "1 data analyst à temps plein, 1 data engineer à mi-temps ; DPO NetEase pour l'accord et le hachage", "≈ 33 jours-homme, soit ≈ 19 K€ ; aucune licence nouvelle", "Cohorte > 1,2 → tests de ses causes ; les deux ≤ 1,2 → plan B"],
     ["30-90 j", "Tests A/B", "Équipe matchmaking NetEase + analyste", "≈ 23 K€ d'analyse ; développement chiffré par NetEase avant tout lancement", "Levier gardé si le ratio baisse et l'attente reste < 3 min"],
     ["90-180 j", "Généralisation", "Live-ops et communication ; page publique « comment fonctionne le matchmaking »", "≈ 3 K€ de pilotage mensuel, sur les outils existants", "31/03/2027 : ratio ≤ 1,2"],
   ];
@@ -294,7 +294,7 @@ const U = {
   const kr = (t) => ({ text: t, options: { bold: true, color: RED, fontFace: H, fontSize: 11 } });
   const krows = [
     [kh("KPI"), kh("Comment on le calcule"), kh("Seuil"), kh("Si le seuil est franchi"), kh("Sinon")],
-    ["Ratio de départ des nouveaux comptes", "% des nouveaux qui perdent au moins 7 de leurs 10 premiers matchs et ne rejouent pas sous 7 jours, divisé par le même % chez les autres nouveaux", kr("> 1,2"), "H5 tient : tests A/B des causes A ou B", "Pas d'investissement matchmaking : plan B"],
+    ["Ratio de départ des nouveaux comptes", "% des nouveaux qui perdent au moins 7 de leurs 10 premiers matchs et ne rejouent pas sous 7 jours, divisé par le même % chez les autres nouveaux", kr("> 1,2"), "H5 tient : tests des causes confirmées (A, B ou les deux)", "Pas d'investissement matchmaking : plan B"],
     ["Ratio de départ des joueurs de retour", "Même calcul sur les 10 premiers matchs classés après au moins 60 jours d'absence", kr("> 1,2"), "H5c tient : test des matchs de recalibrage (cause C)", "Rang au retour inchangé"],
     ["Attente p90 en partie rapide", "Temps d'attente sous lequel 90 % des joueurs trouvent une partie, par rang et région", kr("> 3 min"), "Arrêt du resserrement de l'écart", "Test poursuivi"],
     ["Part de la partie rapide", "Part des 10 premiers matchs des nouveaux joués en partie rapide", kr("> 50 %"), "Leviers sur la partie rapide en premier", "Leviers sur le mode dominant"],
@@ -340,7 +340,7 @@ const U = {
   s = pres.addSlide(); s.background = { color: LIGHT };
   title(s, "Questions anticipées", "Annexe · réponses courtes, à garder sous la main");
   const qa = [
-    ["Pourquoi cette donnée et pas une autre ?", "Score ICE le plus haut, et elle tranche directement l'hypothèse (départ à 7 jours, cause A, B ou C)."],
+    ["Pourquoi cette donnée et pas une autre ?", "Score ICE le plus haut, et elle tranche directement l'hypothèse (départ à 7 jours, causes A, B et C)."],
     ["Combien ça coûte ?", "≈ 19 K€ pour l'audit (33 jours-homme), ≈ 45 K€ en tout si les tests sont lancés ; aucune licence nouvelle ; requêtes ≈ 6,25 $ par To au-delà de 1 To gratuit."],
     ["Quelle base légale ?", "Contrat pour le matchmaking ; intérêt légitime documenté pour l'audit ; consentement pour les sondages."],
     ["Comment savoir si ça marche ?", "Ratio ≤ 1,2 au 31/03/2027 sur les deux cohortes ; sinon, plan B sans nouvelle collecte."],
