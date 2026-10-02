@@ -113,7 +113,7 @@ const U = {
   pbi: "https://www.microsoft.com/en-us/power-platform/products/power-bi/pricing",
   rgpd: "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
   aiact: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
-  gdoc: "https://docs.google.com/document/d/1nOhcAL2wfeAHOK6x6UZH-Hg5yh9Ofxxko7FY47r5Vzc/edit",
+  gdoc: "Marvel_Rivals_plan_de_collecte_NetEase.pdf", // PDF joint, à garder dans le même dossier que le pptx
 };
 
 (async () => {
@@ -225,7 +225,7 @@ const U = {
   ];
   s.addTable(rows, { x: 0.5, y: 2.08, w: 9, colW: [3.95, 2.4, 2.65], fontFace: B, fontSize: 8.5, color: INK, border: { type: "solid", pt: 0.5, color: "D5D8E3" }, fill: { color: WHITE }, valign: "middle", margin: [1, 5, 1, 5], rowH: [0.25, 0.28, 0.28, 0.28, 0.28, 0.28, 0.28, 0.28] });
   s.addText("Ensuite, pour écarter les autres explications : héros joué, parties avec bots, joueurs en groupe, comptes arrivés en 2025. Tout existe déjà dans vos serveurs.", { x: 0.5, y: 4.86, w: 9, h: 0.33, fontFace: B, fontSize: 9, italic: true, color: MUTED, margin: 0, isTextBox: true });
-  source(s, [{ text: "plan de collecte complet (matrice ICE)", url: U.gdoc }, { text: "notes de patch S5", url: U.s5 }]);
+  source(s, [{ text: "plan de collecte, partie 4 : matrice ICE (PDF, p. 12)", url: U.gdoc }, { text: "notes de patch S5", url: U.s5 }]);
   pageNum(s, 4);
   s.addNotes("[45 s] D'abord mesurer. L'objectif : d'ici fin mars 2027, un joueur qui perd au début ne doit pas partir plus de 1,2 fois plus souvent que les autres, nouveau ou de retour. Sept données d'abord : la première mesure l'objectif, la deuxième dit où jouent les nouveaux, quatre testent les causes, dont deux pour les joueurs de retour, en classé et hors classé, car un revenant ne rejoue pas forcément en classé. La dernière exploite une expérience déjà faite en saison 5.");
 
@@ -263,7 +263,7 @@ const U = {
     { text: "Les 15 indispensables existent déjà dans votre télémétrie : ", options: { bold: true, color: INK } },
     { text: "aucune nouvelle collecte pour l'audit. Extrait de la matrice : 8 autres indispensables (ICE 80 à 100) et 5 autres utiles sont notés dans le plan de collecte.", options: { color: INK } },
   ], { x: 0.5, y: 4.67, w: 9, h: 0.45, fontFace: B, fontSize: 9.5, margin: 0, valign: "middle", isTextBox: true });
-  source(s, [{ text: "plan de collecte complet (justification de chaque note)", url: U.gdoc }]);
+  source(s, [{ text: "plan de collecte, partie 4 : justification de chaque note (PDF, p. 12)", url: U.gdoc }]);
   pageNum(s, 5);
   s.addNotes("[15 s] Chaque donnée est notée sur l'impact, la confiance et la facilité ; le score est leur produit. Quinze dépassent 80, toutes déjà dans votre télémétrie. Le chat ou le téléphone tombent sous 30 : risque RGPD sans décision.");
 
@@ -308,7 +308,7 @@ const U = {
     s.addText(out[i][1], { x: 1.1, y, w: 8.4, h: 0.3, fontFace: H, fontSize: 12, bold: true, color: INK, margin: 0, valign: "middle", isTextBox: true });
     s.addText(out[i][2], { x: 1.1, y: y + 0.3, w: 8.4, h: 0.3, fontFace: B, fontSize: 10.5, color: MUTED, margin: 0, valign: "middle", isTextBox: true });
   }
-  source(s, [{ text: "RGPD Art. 5", url: U.rgpd }, { text: "plan de collecte complet", url: U.gdoc }]);
+  source(s, [{ text: "RGPD Art. 5", url: U.rgpd }, { text: "plan de collecte, partie 6 (PDF, p. 18)", url: U.gdoc }]);
   pageNum(s, 7);
   s.addNotes("[20 s] Nous avons volontairement écarté les données personnelles qu'aucune décision n'exige, le benchmark Newzoo, trop biaisé, et les rôles imposés, contraires à l'identité du jeu.");
 
@@ -339,7 +339,7 @@ const U = {
     { text: "Budget : ≈ 19 K€ engagés (audit) · ≈ 45 K€ si les tests sont lancés", options: { bold: true, color: WHITE } },
     { text: "  ·  détail du calcul slide suivante", options: { color: SOFT, fontSize: 10 } },
   ], { x: 0.7, y: 4.62, w: 8.6, h: 0.5, fontFace: B, fontSize: 12, margin: 0, valign: "middle", isTextBox: true });
-  source(s, [{ text: "plan de collecte complet (§7)", url: U.gdoc }]);
+  source(s, [{ text: "plan de collecte, partie 7 (PDF, p. 20)", url: U.gdoc }]);
   pageNum(s, 8);
   s.addNotes("[45 s] Phase 1 : trente jours d'audit par un data analyst et un data engineer ; rien ne change pour les joueurs. Si un ratio dépasse 1,2, phase 2 : votre équipe matchmaking teste le réglage de chaque cause confirmée sur des joueurs tirés au sort. Un réglage n'est gardé que s'il réduit les départs sans dépasser 3 minutes d'attente. Phase 3 : les gagnants passent à tous, annoncés dans les notes de patch.");
 
@@ -368,7 +368,7 @@ const U = {
     { text: "Stack : ", options: { bold: true, color: INK } },
     { text: "télémétrie in-game existante → entrepôt existant (type BigQuery ou Snowflake) → BI existante (type Looker ou Power BI).", options: { color: INK } },
   ], { x: 0.5, y: 4.8, w: 9, h: 0.35, fontFace: B, fontSize: 9, margin: 0, valign: "middle", isTextBox: true });
-  source(s, [{ text: "TJM Data 2026 (01/10/2026)", url: U.tjm }, { text: "tarifs BigQuery (01/10/2026)", url: U.bq }, { text: "tarifs Power BI (02/10/2026)", url: U.pbi }, { text: "plan de collecte (§5)", url: U.gdoc }]);
+  source(s, [{ text: "TJM Data 2026 (01/10/2026)", url: U.tjm }, { text: "tarifs BigQuery (01/10/2026)", url: U.bq }, { text: "tarifs Power BI (02/10/2026)", url: U.pbi }, { text: "plan de collecte, partie 5 (PDF, p. 15)", url: U.gdoc }]);
   pageNum(s, 9);
   s.addNotes("[15 s] Seuls 19 000 euros sont engagés aujourd'hui. Si les tests sont lancés, 45 000 euros d'analyse et moins de 4 000 dollars d'outils. Nous n'achetons ni SDK, ni CDP, ni CRM : votre stack suffit.");
 
@@ -392,7 +392,7 @@ const U = {
     { text: "RGPD et AI Act : ", options: { bold: true, color: NAVY } }, { text: "accord de sous-traitance, identifiants hachés, mineurs exclus ; aucun profilage individuel, bots toujours annoncés.", options: { color: INK, breakLine: true } },
     { text: "Plan B : ", options: { bold: true, color: RED } }, { text: "ratio ≤ 1,2 sur les deux cohortes : pas d'investissement matchmaking ; les données extraites testent équilibrage et monétisation.", options: { color: INK } },
   ], { x: 0.7, y: 3.9, w: 8.6, h: 1.2, fontFace: B, fontSize: 10, margin: 0, valign: "middle", paraSpaceAfter: 3, isTextBox: true });
-  source(s, [{ text: "RGPD", url: U.rgpd }, { text: "AI Act", url: U.aiact }, { text: "plan de collecte complet (§3)", url: U.gdoc }]);
+  source(s, [{ text: "RGPD", url: U.rgpd }, { text: "AI Act", url: U.aiact }, { text: "plan de collecte, partie 3 (PDF, p. 10)", url: U.gdoc }]);
   pageNum(s, 10);
   s.addNotes("[30 s] Chaque KPI dit comment il se calcule et ce qu'il déclenche. Le principal : la part des nouveaux qui perdent au début et ne reviennent pas sous 7 jours, comparée aux autres ; au-delà de 1,2, on teste. Même calcul pour les revenants. 3 minutes d'attente arrêtent le resserrement : au-delà, un hero shooter paraît mort. Base légale : contrat et intérêt légitime documenté. Pour démarrer : signer l'accord de sous-traitance et lancer l'audit. Merci.");
   // 11. Annexe : sources
@@ -416,7 +416,7 @@ const U = {
     ["Tarifs Power BI (Microsoft, 02/10/2026)", U.pbi],
     ["Baromètre TJM Data 2026, médianes freelance France (tjmetre.fr, 01/10/2026)", U.tjm],
     ["RGPD (EUR-Lex)", U.rgpd], ["AI Act (EUR-Lex)", U.aiact],
-    ["Plan de collecte complet (Google Docs)", U.gdoc],
+    ["Plan de collecte complet (PDF joint : Marvel_Rivals_plan_de_collecte_NetEase.pdf)", U.gdoc],
   ];
   s.addText(src.map((r, i, a) => ({ text: r[0], options: { hyperlink: { url: r[1] }, color: "2F3C7E", bullet: true, breakLine: i < a.length - 1 } })), { x: 0.5, y: 1.25, w: 9, h: 3.9, fontFace: B, fontSize: 10, paraSpaceAfter: 1, valign: "top", isTextBox: true });
   pageNum(s, 11);
